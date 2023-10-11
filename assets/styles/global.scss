@@ -1,0 +1,15 @@
+@import 'normalize.css';
+@import './fonts.scss';
+@import './variables.scss';
+
+html {
+  overflow-x: hidden;
+  font-size: 1vw;
+  scroll-behavior: smooth;
+  font-family: Roboto;
+  color: $font-color;
+}
+
+body {
+  overflow-x: hidden;
+}
