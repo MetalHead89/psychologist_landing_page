@@ -23,19 +23,21 @@ const loadAnimation = () => {
   $gsap.from('.hero-text', {
     x: '-10vw',
     opacity: 0,
-    duration: 1
+    duration: 1,
+    autoAlpha: 0
   })
 
   $gsap.from('.photo', {
     x: '10vw',
     opacity: 0,
-    duration: 1
+    duration: 1,
+    autoAlpha: 0
   })
 
   $gsap.to('.hero-text', {
     scrollTrigger: {
       trigger: '.hero-section',
-      start: () => 'top top',
+      start: 'top top',
       scrub: true
     },
     yPercent: -30,
@@ -46,8 +48,8 @@ const loadAnimation = () => {
   $gsap.to('.photo', {
     scrollTrigger: {
       trigger: '.hero-section',
-      start: () => 'top top',
-      end: () => 'bottom 33%',
+      start: 'top top',
+      end: 'bottom 33%',
       scrub: true
     },
     yPercent: 20,
@@ -73,6 +75,7 @@ const loadAnimation = () => {
     z-index: 1;
     margin: 0;
     line-height: 1.2;
+    visibility: hidden;
   }
 
   .photo {
@@ -80,6 +83,7 @@ const loadAnimation = () => {
     width: calc(#{$view-size-index} * 25);
     left: 47vw;
     top: 11vh;
+    visibility: hidden;
   }
 
   @media screen and (orientation: portrait) {
