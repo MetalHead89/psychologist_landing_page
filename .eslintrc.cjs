@@ -9,6 +9,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
     'arrow-parens': ['error', 'as-needed'],
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'vue/multi-word-component-names': 'off'
   }
 }
