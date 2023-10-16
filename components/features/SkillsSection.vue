@@ -23,11 +23,6 @@ let timeline: gsap.core.Timeline | null = null
 
 onMounted(() => {
   loadAnimation()
-  // if (window.matchMedia('(min-width: 768px)').matches) {
-  //   loadDesktopAnimation()
-  // } else {
-  //   loadMobileAnimation()
-  // }
 })
 
 const loadAnimation = () => {
@@ -48,36 +43,19 @@ const loadAnimation = () => {
   ScrollTrigger.create({
     trigger: '.skills-section',
     start: 'top 50%',
-    toggleActions: 'play none none reverse',
+    toggleActions: 'play none none none',
     animation: timeline
   })
 }
-
-// const loadDesktopAnimation = () => {
-//   timeline = $gsap.timeline()
-
-//   timeline
-//     .from('.skills__title', {
-//       y: '-5vh',
-//       opacity: 0,
-//       duration: 0.5
-//     })
-//     .from('.skills__card', {
-//       x: '-5vw',
-//       opacity: 0,
-//       stagger: 0.3
-//     })
-
-//   ScrollTrigger.create({
-//     trigger: '.skills-section',
-//     start: 'top 50%',
-//     toggleActions: 'play none none reverse',
-//     animation: timeline
-//   })
-// }
 </script>
 
 <style lang="scss" scoped>
+$cards-gap: 30px;
+
+@function card-width($cards-count) {
+  @return calc(100% / $cards-count - ($cards-count * $cards-gap));
+}
+
 .skills-section {
   background: #f4f7f9;
   padding: 10vh $content-padding;
@@ -86,11 +64,7 @@ const loadAnimation = () => {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
-
-    @media screen and (min-width: $md) {
-      justify-content: space-between;
-    }
+    gap: $cards-gap;
   }
 
   .skills__title {
@@ -107,11 +81,15 @@ const loadAnimation = () => {
     }
 
     @media screen and (min-width: $md) {
-      max-width: 31%;
+      max-width: card-width(2);
     }
 
     @media screen and (min-width: $lg) {
-      max-width: 18%;
+      max-width: card-width(3);
+    }
+
+    @media screen and (min-width: $xl) {
+      max-width: card-width(4);
     }
   }
 }
