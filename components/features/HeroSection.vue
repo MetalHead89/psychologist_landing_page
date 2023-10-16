@@ -72,7 +72,6 @@ const loadAnimation = () => {
     width: min-content;
     font-size: calc(#{$view-size-index} * 6);
     font-weight: 800;
-    z-index: 1;
     margin: 0;
     line-height: 1.2;
     visibility: hidden;
@@ -84,6 +83,7 @@ const loadAnimation = () => {
     left: 47vw;
     top: 11vh;
     visibility: hidden;
+    z-index: -1;
   }
 
   @media screen and (orientation: portrait) {

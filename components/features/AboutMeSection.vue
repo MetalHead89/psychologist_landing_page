@@ -12,13 +12,28 @@
         </h2>
 
         <div class="about-me__text">
-          <p
-            v-for="(paragraph, index) in $tm('about_me.text')"
-            :key="index"
-            class="about-me__paragraph"
-          >
-            {{ paragraph }}
+          <p class="about-me__text-section">
+            {{ $t('about_me.name') }}
           </p>
+
+          <p
+            class="about-me__text-section"
+            v-html="$t('about_me.education')"
+          />
+
+          <h3 class="about-me__text-section about-me__section-title">
+            {{ $t('about_me.tasks_title') }}
+          </h3>
+
+          <ul class="list">
+            <li
+              v-for="(item, index) in $tm('about_me.tasks')"
+              :key="index"
+              class="about-me__task-item"
+            >
+              {{ item }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -53,8 +68,13 @@ const loadMobileAnimation = () => {
       opacity: 0,
       duration: 0.5
     })
-    .from('.about-me__paragraph', {
+    .from('.about-me__text-section', {
       x: '-5vw',
+      opacity: 0,
+      stagger: 0.3
+    })
+    .from('.about-me__task-item', {
+      y: '-5px',
       opacity: 0,
       stagger: 0.3
     })
@@ -62,7 +82,7 @@ const loadMobileAnimation = () => {
   ScrollTrigger.create({
     trigger: '.about-me-section',
     start: 'top 50%',
-    toggleActions: 'play none none reverse',
+    toggleActions: 'play none none none',
     animation: timeline
   })
 }
@@ -76,8 +96,13 @@ const loadDesktopAnimation = () => {
       opacity: 0,
       duration: 0.5
     })
-    .from('.about-me__paragraph', {
+    .from('.about-me__text-section', {
       x: '-5vw',
+      opacity: 0,
+      stagger: 0.3
+    })
+    .from('.about-me__task-item', {
+      y: '-1vh',
       opacity: 0,
       stagger: 0.3
     })
@@ -85,7 +110,7 @@ const loadDesktopAnimation = () => {
   ScrollTrigger.create({
     trigger: '.about-me-section',
     start: 'top 50%',
-    toggleActions: 'play none none reverse',
+    toggleActions: 'play none none none',
     animation: timeline
   })
 }
@@ -105,6 +130,22 @@ const loadDesktopAnimation = () => {
   &__picture {
     width: 80%;
   }
+
+  .about-me__section-title {
+    margin-bottom: 1vh;
+  }
+
+  .list {
+    margin: 0;
+  }
+
+  .about-me__title {
+      margin-top: 30px;
+
+      @media screen and (min-width: $md) {
+        margin-top: 0;
+      }
+    }
 
   @media screen and (min-width: $md) {
     .content {
