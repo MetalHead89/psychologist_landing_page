@@ -63,7 +63,7 @@ const loadAnimation = () => {
   ScrollTrigger.create({
     trigger: '.feedback',
     start: 'top 50%',
-    toggleActions: 'play none none reverse',
+    toggleActions: 'play none none none',
     animation: timeline
   })
 }

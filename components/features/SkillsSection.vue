@@ -1,8 +1,6 @@
 <template>
   <div class="skills-section">
-    <h2 class="skills__title">
-      {{ $t('skills.title') }}
-    </h2>
+    <h2 class="skills__title" v-html="$t('skills.title')"/>
     <div class="skills">
       <UiSkillCard
         v-for="({ title, text }, index) in $tm('skills.cards')"
@@ -29,11 +27,6 @@ const loadAnimation = () => {
   timeline = $gsap.timeline()
 
   timeline
-    .from('.skills__title', {
-      x: '-20px',
-      opacity: 0,
-      duration: 0.5
-    })
     .from('.skills__card', {
       y: '-20px',
       opacity: 0,
@@ -53,7 +46,7 @@ const loadAnimation = () => {
 $cards-gap: 30px;
 
 @function card-width($cards-count) {
-  @return calc(100% / $cards-count - ($cards-count * $cards-gap));
+  @return calc(100% / $cards-count - ($cards-gap));
 }
 
 .skills-section {

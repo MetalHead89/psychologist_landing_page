@@ -67,6 +67,7 @@ $questions-gap: 30px;
 
   .questions {
     @media screen and (min-width: $md) {
+      padding: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

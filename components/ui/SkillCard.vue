@@ -55,8 +55,8 @@ const setScreenType = () => {
     background: #ffffff;
     border-radius: 20px;
     padding: 20px;
-    min-height: 150px;
     width: 100%;
+    box-sizing: border-box;
 
     .skill-description {
       max-width: 300px;

@@ -2,7 +2,7 @@
 
 export default {
   skills: {
-    title: 'Использую техники следующих направлений',
+    title: '<span class="accent-text">Использую техники</span> следующих направлений',
     cards: [
       {
         title: 'КПТ',
