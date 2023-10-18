@@ -57,7 +57,7 @@ $cards-gap: 30px;
 }
 
 .skills-section {
-  background: #f4f7f9;
+  background: $primary-background;
   padding: 10vh $content-padding;
 
   .skills {
