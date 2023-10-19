@@ -10,6 +10,10 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'arrow-parens': ['error', 'as-needed'],
     'linebreak-style': 0,
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'space-before-function-paren': ['error', {
+      anonymous: 'never',
+      named: 'never'
+    }]
   }
 }

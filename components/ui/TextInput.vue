@@ -1,15 +1,38 @@
 <template>
-  <input
-    type="text"
-    v-bind="$attrs"
-    class="text-input"
-  >
+  <UiControlWrapper :error-key="errorKey">
+    <input
+      type="text"
+      v-bind="$attrs"
+      class="text-input"
+      :value="modelValue"
+      @input="handleTextInput"
+    >
+  </UiControlWrapper>
 </template>
 
 <script lang="ts" setup>
 defineOptions({
   inheritAttrs: false
 })
+
+defineProps({
+  modelValue: {
+    type: String,
+    default: ''
+  },
+
+  errorKey: {
+    type: String,
+    default: ''
+  }
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const handleTextInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
+}
 </script>
 
 <style lang="scss" scoped>
