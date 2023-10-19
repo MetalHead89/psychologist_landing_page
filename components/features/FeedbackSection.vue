@@ -47,7 +47,8 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 
 const { $gsap } = useNuxtApp()
-const { setErrors } = useForm()
+const { setErrors, afterRequest } = useForm()
+const { t } = useI18n()
 let timeline: gsap.core.Timeline | null = null
 
 onMounted(() => {
@@ -89,14 +90,14 @@ const form = reactive({
 
 const rules = {
   name: {
-    required: helpers.withMessage('Не может быть пустым', required)
+    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
   },
   email: {
-    required: helpers.withMessage('Не может быть пустым', required),
-    email: helpers.withMessage('Не верный формат почты', email)
+    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required),
+    email: helpers.withMessage(t('feedback.errors.invalid_email_format'), email)
   },
   appealReason: {
-    required: helpers.withMessage('Не может быть пустым', required)
+    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
   }
 }
 
@@ -104,16 +105,19 @@ const v$ = useVuelidate(rules, form)
 
 const onSubmit = async () => {
   await v$.value.$validate()
+
   setErrors(v$, form)
 
   if (v$.value.$error) {
     return null
   }
 
-  $fetch('/api/send_email', {
+  const response = $fetch('/api/send_email', {
     method: 'POST',
     body: { ...form }
   })
+
+  afterRequest(response)
 }
 </script>
 

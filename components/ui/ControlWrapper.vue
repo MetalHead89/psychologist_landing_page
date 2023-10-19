@@ -28,7 +28,13 @@ const props = defineProps({
 })
 
 const error = computed(() => {
-  return props.errorKey && errors.value && errors.value[props.errorKey]
+  const error = props.errorKey && errors.value && errors.value[props.errorKey]
+
+  if (!error) {
+    return false
+  }
+
+  return typeof error === 'object' ? error[0] : error
 })
 </script>
 

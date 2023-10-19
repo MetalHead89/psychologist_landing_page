@@ -1,5 +1,5 @@
 export default {
   hero: {
-    text: 'Психолог-конультант'
+    text: 'Психолог'
   }
 }

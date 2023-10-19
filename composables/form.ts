@@ -22,5 +22,21 @@ export function useForm() {
     errors.value = localErrors
   }
 
-  return { setErrors }
+  const afterRequest = (response: Promise<unknown>) => {
+    response
+      .then(() => {
+        errors.value = {}
+      })
+      .catch(({ data }) => {
+        const localErrors = data?.data?.errors
+
+        if (!errors) {
+          return null
+        }
+
+        errors.value = localErrors
+      })
+  }
+
+  return { setErrors, afterRequest }
 }

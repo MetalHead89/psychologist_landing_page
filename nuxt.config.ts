@@ -20,6 +20,14 @@ export default defineNuxtConfig({
     'floating-vue/nuxt'
   ],
 
+  runtimeConfig: {
+    mailHost: process.env.MAIL_HOST,
+    mailPort: process.env.MAIL_PORT,
+    mailUser: process.env.MAIL_USER,
+    mailPassword: process.env.MAIL_PASSWORD,
+    contactMail: process.env.CONTACT_MAIL
+  },
+
   css: ['@/assets/styles/global.scss'],
 
   vite: {
