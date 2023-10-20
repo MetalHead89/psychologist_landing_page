@@ -11,10 +11,15 @@
         {{ $t('about_me.name') }}
       </p>
 
-      <p
+      <i18n-t
+        keypath="about_me.education"
+        tag="p"
         class="about-me__text-section"
-        v-html="$t('about_me.education')"
-      />
+      >
+        <template #accent>
+          <b class="accent-text">{{ $t('about_me.education_accent') }}</b>
+        </template>
+      </i18n-t>
 
       <h3 class="about-me__text-section about-me__section-title accent-text">
         {{ $t('about_me.tasks_title') }}

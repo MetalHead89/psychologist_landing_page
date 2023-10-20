@@ -2,7 +2,8 @@
 
 export default {
   skills: {
-    title: '<span class="accent-text">Использую техники</span> следующих направлений',
+    title: '{accent} следующих направлений',
+    title_accent: 'Использую техники',
     cards: [
       {
         title: 'КПТ',

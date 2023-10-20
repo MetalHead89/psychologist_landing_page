@@ -1,6 +1,14 @@
 <template>
   <div class="consultation-section">
-    <h2 v-html="$t('consultation.title')" />
+    <i18n-t
+      keypath="consultation.title"
+      tag="h2"
+    >
+      <template #accent>
+        <span class="accent-text">{{ $t('consultation.title_accent') }}</span>
+      </template>
+    </i18n-t>
+
     <ul class="questions">
       <li
         v-for="(question, index) in $tm('consultation.questions')"

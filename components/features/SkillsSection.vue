@@ -1,6 +1,15 @@
 <template>
   <div class="skills-section">
-    <h2 class="skills__title" v-html="$t('skills.title')"/>
+    <i18n-t
+      keypath="skills.title"
+      tag="h2"
+      class="skills__title"
+    >
+      <template #accent>
+        <span class="accent-text">{{ $t('skills.title_accent') }}</span>
+      </template>
+    </i18n-t>
+
     <div class="skills">
       <UiSkillCard
         v-for="({ title, text }, index) in $tm('skills.cards')"

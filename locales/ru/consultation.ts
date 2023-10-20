@@ -1,6 +1,7 @@
 export default {
   consultation: {
-    title: '<span class="accent-text">Консультирую</span>  по вопросам',
+    title: '{accent}  по вопросам',
+    title_accent: 'Консультирую',
     questions: [
       'Как справиться с конфликтом?',
       'Как справиться с жизненным кризисом?',
