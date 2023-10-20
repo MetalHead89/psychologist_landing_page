@@ -17,8 +17,14 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/i18n',
-    'floating-vue/nuxt'
+    'floating-vue/nuxt',
+    'nuxt-snackbar'
   ],
+
+  snackbar: {
+    bottom: true,
+    duration: 5000
+  },
 
   runtimeConfig: {
     mailHost: process.env.MAIL_HOST,

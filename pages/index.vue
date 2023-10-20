@@ -5,5 +5,6 @@
     <FeaturesConsultationSection />
     <FeaturesSkillsSection />
     <FeaturesFeedbackSection />
+    <NuxtSnackbar />
   </div>
 </template>

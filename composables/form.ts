@@ -1,10 +1,11 @@
 import { Validation } from '@vuelidate/core'
 import { provide } from 'vue'
 
-type TAnyObject = { [prop: string]: string }
-
 export function useForm() {
+  const snackbar = useSnackbar()
+  const { t } = useI18n()
   const errors: Ref<TAnyObject> = ref({})
+  const isLoading : Ref<boolean> = ref(false)
 
   provide('errors', errors)
 
@@ -22,21 +23,40 @@ export function useForm() {
     errors.value = localErrors
   }
 
-  const afterRequest = (response: Promise<unknown>) => {
+  const afterRequest = (response: Promise<any>) => {
     response
-      .then(() => {
+      .then(({ title, text }) => {
         errors.value = {}
+
+        snackbar.add({
+          type: 'success',
+          title,
+          text
+        })
       })
       .catch(({ data }) => {
-        const localErrors = data?.data?.errors
+        if (data.statusCode === 500) {
+          snackbar.add({
+            type: 'error',
+            title: t('composables.form.snackbar.server_error_title'),
+            text: t('composables.form.snackbar.server_error_text')
+          })
 
-        if (!errors) {
           return null
         }
 
-        errors.value = localErrors
+        const { statusMessage, data: errorData } = data
+
+        snackbar.add({
+          type: 'error',
+          title: t('composables.form.snackbar.server_error_title'),
+          text: statusMessage
+        })
+
+        errors.value = errorData?.errors || {}
       })
+      .finally(() => { isLoading.value = false })
   }
 
-  return { setErrors, afterRequest }
+  return { setErrors, afterRequest, isLoading }
 }

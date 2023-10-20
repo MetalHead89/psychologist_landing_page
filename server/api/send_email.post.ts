@@ -25,21 +25,29 @@ export default defineEventHandler(async event => {
         await transporter.sendMail({
           from: `${name} <${email}>`,
           to: config.contactMail,
-          subject: 'Запись на прием',
-          html: `<b>Клиент:</b> ${name}<br />` +
-            `<b>Почта:</b> ${email}<br />` +
-            `<b>Причина обращения:</b> ${appealReason}<br />`
+          subject: t('feedback.mail.subject'),
+          html: `<b>${t('feedback.mail.client')}:</b> ${name}<br />` +
+            `<b>${t('feedback.mail.mail')}:</b> ${email}<br />` +
+            `<b>${t('feedback.mail.appeal_reason')}:</b> ${appealReason}<br />`
         })
       })
-      .catch(errors => {
-        return Promise.reject(errors)
+      .catch(error => {
+        return Promise.reject(error)
       })
-  } catch (errors) {
-    sendError(event, createError(({
-      statusCode: 400,
-      data: {
-        errors
+  } catch (error: any) {
+    const { statusCode, errors, message } = error?.cause || {}
+    const data = errors
+      ? {
+        data: {
+          errors: errors || error.message || t('feedback.errors.unknown_server_error')
+        }
       }
+      : {}
+
+    sendError(event, createError(({
+      statusCode: statusCode || 500,
+      ...data,
+      statusMessage: message || error?.message
     })))
   }
 })
@@ -68,7 +76,13 @@ const isValid = ({ name, email, appealReason }: TFeedbackData) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    return Promise.reject(errors)
+    return Promise.reject(new Error('Ошибка', {
+      cause: {
+        statusCode: 400,
+        errors,
+        message: t('feedback.errors.problems_with_parameters')
+      }
+    }))
   } else {
     return Promise.resolve({
       name: escape(name),

@@ -32,6 +32,7 @@
       </div>
 
       <UiButton
+        :is-loading="(isLoading)"
         class="feedback__submit"
         @click="onSubmit"
       >
@@ -47,7 +48,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 
 const { $gsap } = useNuxtApp()
-const { setErrors, afterRequest } = useForm()
+const { setErrors, afterRequest, isLoading } = useForm()
 const { t } = useI18n()
 let timeline: gsap.core.Timeline | null = null
 
@@ -112,10 +113,18 @@ const onSubmit = async () => {
     return null
   }
 
+  isLoading.value = true
+
   const response = $fetch('/api/send_email', {
     method: 'POST',
     body: { ...form }
   })
+    .then(() => {
+      return Promise.resolve({
+        title: t('feedback.snackbar.success_title'),
+        text: t('feedback.snackbar.success_text')
+      })
+    })
 
   afterRequest(response)
 }
