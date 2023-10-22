@@ -1,0 +1,108 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: 18.18.0
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Setup node version
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install deps
+        run: npm ci
+      - name: Linting
+        run: npm run lint
+
+  create-deployment-artifacts:
+    needs: lint
+    name: Create Deployment Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Setup node version
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Setup env
+        run: |
+          touch .env
+          echo MAIL_HOST=${{ secrets.MAIL_HOST }} >> .env
+          echo MAIL_PORT=${{ secrets.MAIL_PORT }} >> .env
+          echo MAIL_USER=${{ secrets.MAIL_USER }} >> .env
+          echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
+          echo CONTACT_MAIL=${{ secrets.CONTACT_MAIL }} >> .env
+      - name: Install deps
+        run: npm ci
+      - name: Build app
+        run: |
+          npm run build
+          cp .env .output/server/.env
+          tar -czf "${{ github.sha }}".tar.gz .output
+      - name: Create app artifacts
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: app-artifacts
+          path: ${{ github.sha }}.tar.gz
+
+  prepare-release-on-server:
+    needs: create-deployment-artifacts
+    name: Prepare release on server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: app-artifacts
+      - name: Upload artifacts
+        uses: easingthemes/ssh-deploy@v4.1.10
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SOURCE: ${{ github.sha }}.tar.gz
+          TARGET: /var/www/html/artifacts
+      - name: Extract archive and create directories
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            mkdir -p "/var/www/html/releases/${GITHUB_SHA}"
+            tar xzf /var/www/html/artifacts/${GITHUB_SHA}.tar.gz -C "/var/www/html/releases/${GITHUB_SHA}"
+            rm -rf /var/www/html/artifacts/${GITHUB_SHA}.tar.gz
+
+  activate-release:
+    needs: prepare-release-on-server
+    name: Activate release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Activate Release
+        uses: appleboy/ssh-action@master
+        env:
+          RELEASE_PATH: /var/www/html/releases/${{ github.sha }}
+          ACTIVE_RELEASE_PATH: /var/www/html/live
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: RELEASE_PATH,ACTIVE_RELEASE_PATH
+          script: |
+            ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
+            systemctl restart psychology-site
+            chown -R www-data:www-data ${RELEASE_PATH}

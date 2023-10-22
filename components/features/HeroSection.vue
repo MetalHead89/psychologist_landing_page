@@ -4,11 +4,11 @@
       {{ $t('hero.text') }}
     </h1>
 
-    <img
+    <!-- <img
       src="@/assets/images/photo.png"
       alt="photo"
       class="photo"
-    >
+    > -->
   </div>
 </template>
 
