@@ -1,9 +1,8 @@
+/* eslint-disable import/no-named-as-default-member */
+
 import { createTransport } from 'nodemailer'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
-import isEmpty from 'validator/lib/isEmpty'
-import isEmail from 'validator/lib/isEmail'
-import escape from 'validator/lib/escape'
-import normalizeEmail from 'validator/lib/normalizeEmail'
+import validator from 'validator'
 
 const config = useRuntimeConfig()
 
@@ -59,19 +58,19 @@ type TValidationErrors = {
 const isValid = ({ name, email, appealReason }: TFeedbackData) => {
   const errors: TValidationErrors = {}
 
-  if (isEmpty(name)) {
+  if (validator.isEmpty(name)) {
     setError(errors, 'name', t('feedback.errors.cannot_be_empty'))
   }
 
-  if (isEmpty(email)) {
+  if (validator.isEmpty(email)) {
     setError(errors, 'email', t('feedback.errors.cannot_be_empty'))
   }
 
-  if (!isEmail(email)) {
+  if (!validator.isEmail(email)) {
     setError(errors, 'email', t('feedback.errors.invalid_email_format'))
   }
 
-  if (isEmpty(appealReason)) {
+  if (validator.isEmpty(appealReason)) {
     setError(errors, 'appealReason', t('feedback.errors.cannot_be_empty'))
   }
 
@@ -86,7 +85,7 @@ const isValid = ({ name, email, appealReason }: TFeedbackData) => {
   } else {
     return Promise.resolve({
       name: escape(name),
-      email: normalizeEmail(email),
+      email: validator.normalizeEmail(email),
       appealReason: escape(appealReason)
     })
   }
