@@ -4,6 +4,7 @@ import consultation from './consultation'
 import skills from './skills'
 import feedback from './feedback'
 import composables from './composables'
+import controls from './controls'
 
 export default {
   ...hero,
@@ -11,5 +12,6 @@ export default {
   ...consultation,
   ...skills,
   ...feedback,
-  ...composables
+  ...composables,
+  ...controls
 }

@@ -52,13 +52,14 @@ const handleButtonClick = () => {
 .button {
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: $base-border-radius;
   background: $primary-color;
   padding: 20px 50px;
   border: none;
   color: #ffffff;
   font-weight: 800;
   cursor: pointer;
+  position: relative;
   transition: background 0.3s ease;
 
   .spinner {

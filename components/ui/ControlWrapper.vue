@@ -46,6 +46,7 @@ const error = computed(() => {
 .error-wrapper {
   margin-top: 5px;
   margin-left: 13px;
+  margin-bottom: 10px;
   min-height: 17px;
 }
 

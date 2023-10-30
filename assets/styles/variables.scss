@@ -5,10 +5,16 @@ $primary-color: #9393d0;
 $accent-color: #3dafec;
 $primary-background: #f4f7f9;
 $error: #df4e4e;
+$primary-font: Roboto;
+$base-font-size: 18px;
+$placeholder-color: #757575;
 
 /* sizes */
 $view-size-index: calc(1vh + 1vw);
 $content-padding: 10vw;
+$base-border-radius: 10px;
+$control-padding: 20px;
+$base-line-height: 1.15;
 
 /* grid */
 $xl: 1920px;

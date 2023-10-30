@@ -5,34 +5,82 @@
     </h2>
 
     <form class="form">
-      <div class="inputs-wrapper section-wrapper">
+      <section class="form-section">
+        <h3>{{ $t('feedback.about_you') }}</h3>
+
+        <UiTextInput
+          v-model="form.name"
+          :placeholder="$t('feedback.fields.name')"
+          error-key="name"
+        />
+
+        <UiTextInput
+          v-model="form.age"
+          :placeholder="$t('feedback.fields.age')"
+          error-key="age"
+          mask="###"
+        />
+      </section>
+
+      <section class="form-section">
+        <h3>{{ $t('feedback.reason') }}</h3>
+
+        <UiMultiSelect
+          v-model="form.anxiety"
+          :options="getOptions(ANXIETY as unknown as string[], 'feedback.selects.anxiety')"
+          :placeholder="$t('feedback.fields.anxiety')"
+          error-key="anxiety"
+        />
+
+        <UiTextarea
+          v-model="form.anxietyDescription"
+          :placeholder="$t('feedback.fields.anxiety_description')"
+          error-key="anxietyDescription"
+        />
+      </section>
+
+      <section class="form-section">
+        <h3>{{ $t('feedback.how_to_contact_you') }}</h3>
+
+        <UiSelect
+          v-model="form.answerTarget"
+          :options="getOptions(FEEDBACK_TYPE as unknown as string[], 'feedback.selects.feedback_type')"
+          :placeholder="$t('feedback.fields.answer_target')"
+          error-key="answerTarget"
+        />
+
+        <UiTextInput
+          v-if="isFeedbackTypeEMail"
+          v-model="form.email"
+          :placeholder="$t('feedback.fields.mail')"
+          error-key="email"
+        />
+
+        <UiPhoneInput
+          v-else-if="form.answerTarget"
+          v-model="form.phone"
+          :placeholder="$t('feedback.fields.phone')"
+          error-key="phone"
+        />
+      </section>
+
+      <!-- <div class="inputs-wrapper section-wrapper">
         <div class="input-wrapper feedback__field">
-          <UiTextInput
-            v-model="form.name"
-            :placeholder="$t('feedback.fields.name')"
-            error-key="name"
-          />
         </div>
 
         <div class="input-wrapper feedback__field">
-          <UiTextInput
-            v-model="form.email"
-            :placeholder="$t('feedback.fields.mail')"
-            error-key="email"
-          />
-        </div>
-      </div>
+        </div> -->
 
-      <div class="section-wrapper textarea-wrapper feedback__field">
+      <!-- <div class="section-wrapper textarea-wrapper feedback__field">
         <UiTextarea
           v-model="form.appealReason"
           :placeholder="$t('feedback.fields.description')"
           error-key="appealReason"
         />
-      </div>
+      </div> -->
 
       <UiButton
-        :is-loading="(isLoading)"
+        :is-loading="isLoading"
         class="feedback__submit"
         @click="onSubmit"
       >
@@ -43,62 +91,96 @@
 </template>
 
 <script lang="ts" setup>
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useVuelidate } from '@vuelidate/core'
-import { required, email, helpers } from '@vuelidate/validators'
+import { required, requiredIf, email, helpers } from '@vuelidate/validators'
+import { ANXIETY, FEEDBACK_TYPE } from '@/shared/constants'
 
-const { $gsap } = useNuxtApp()
+// const { $gsap } = useNuxtApp()
 const { setErrors, afterRequest, isLoading } = useForm()
 const { t } = useI18n()
-let timeline: gsap.core.Timeline | null = null
+const { getOptions } = useOptions()
+// let timeline: gsap.core.Timeline | null = null
 
 onMounted(() => {
-  loadAnimation()
+  // loadAnimation()
 })
 
-const loadAnimation = () => {
-  timeline = $gsap.timeline()
+// const loadAnimation = () => {
+//   timeline = $gsap.timeline()
 
-  timeline
-    .from('.feedback__title', {
-      y: '-20px',
-      opacity: 0,
-      duration: 0.5
-    })
-    .from('.feedback__field', {
-      x: '-20px',
-      opacity: 0,
-      stagger: 0.4
-    })
-    .from('.feedback__submit', {
-      y: '-20px',
-      opacity: 0
-    })
+//   timeline
+//     .from('.feedback__title', {
+//       y: '-20px',
+//       opacity: 0,
+//       duration: 0.5
+//     })
+//     .from('.feedback__field', {
+//       x: '-20px',
+//       opacity: 0,
+//       stagger: 0.4
+//     })
+//     .from('.feedback__submit', {
+//       y: '-20px',
+//       opacity: 0
+//     })
 
-  ScrollTrigger.create({
-    trigger: '.feedback',
-    start: 'top 50%',
-    toggleActions: 'play none none none',
-    animation: timeline
-  })
-}
+//   ScrollTrigger.create({
+//     trigger: '.feedback',
+//     start: 'top 50%',
+//     toggleActions: 'play none none none',
+//     animation: timeline
+//   })
+// }
 
 const form = reactive({
   name: '',
-  email: '',
-  appealReason: ''
+  age: '',
+  anxiety: [],
+  anxietyDescription: '',
+  answerTarget: '',
+  phone: '',
+  email: ''
+})
+
+const isFeedbackTypeEMail = computed(() => {
+  return form.answerTarget === 'email'
 })
 
 const rules = {
   name: {
     required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
   },
-  email: {
-    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required),
-    email: helpers.withMessage(t('feedback.errors.invalid_email_format'), email)
-  },
-  appealReason: {
+  age: {
     required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
+  },
+  anxiety: {
+    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
+  },
+  answerTarget: {
+    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
+  },
+  email: {
+    requiredIfEmpty: helpers.withMessage(
+      t('feedback.errors.cannot_be_empty'),
+      requiredIf(() => isFeedbackTypeEMail.value)
+    ),
+    requiredIfWrongFormat: helpers.withMessage(
+      t('feedback.errors.invalid_email_format'),
+      requiredIf(() => !form.answerTarget && isFeedbackTypeEMail.value) && email
+    )
+  },
+  phone: {
+    requiredIfEmpty: helpers.withMessage(
+      t('feedback.errors.cannot_be_empty'),
+      requiredIf(() => !!form.answerTarget && !isFeedbackTypeEMail.value)
+    ),
+    requiredIfWrongFormat: helpers.withMessage(
+      t('feedback.errors.invalid_phone'),
+      (value: string) => !form.answerTarget || !!isFeedbackTypeEMail.value || phoneWithoutFormat(value).length === 11
+      // requiredIf(() => !!form.answerTarget && !isFeedbackTypeEMail.value) &&
+      //   value => phoneWithoutFormat(value).length === 11
+    )
   }
 }
 
@@ -107,7 +189,7 @@ const v$ = useVuelidate(rules, form)
 const onSubmit = async () => {
   await v$.value.$validate()
 
-  setErrors(v$, form)
+  setErrors(v$, rules)
 
   if (v$.value.$error) {
     return null
@@ -117,7 +199,11 @@ const onSubmit = async () => {
 
   const response = $fetch('/api/send_email', {
     method: 'POST',
-    body: { ...form }
+    body: {
+      ...form,
+      age: form.age === '' ? null : Number(form.age),
+      phone: phoneWithoutFormat(form.phone)
+    }
   })
     .then(() => {
       return Promise.resolve({
@@ -142,53 +228,67 @@ const onSubmit = async () => {
     }
   }
 
-  .input-wrapper {
+  .form-section {
     width: 100%;
-  }
 
-  .inputs-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .section-wrapper {
     @media screen and (min-width: $lg) {
-      width: calc( ( 100% - 20px ) / 2 );
+      text-align: left;
+      max-width: 700px;
+    }
+
+    @media screen and (min-width: $xl) {
+      width: calc(100% / 3 - 20px);
     }
   }
 
-  .textarea-wrapper {
-    align-self: stretch;
+  // .input-wrapper {
+  //   width: 100%;
+  // }
 
-    .control-wrapper {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-  }
+  // .inputs-wrapper {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   gap: 10px;
+  // }
 
-  :deep(.textarea) {
-    min-height: 100px;
-    height: 100%;
-  }
+  // .section-wrapper {
+  //   @media screen and (min-width: $lg) {
+  //     width: calc( ( 100% - 20px ) / 2 );
+  //   }
+  // }
+
+  // .textarea-wrapper {
+  //   align-self: stretch;
+
+  //   .control-wrapper {
+  //     height: 100%;
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  // }
+
+  // :deep(.textarea) {
+  //   min-height: 100px;
+  //   height: 100%;
+  // }
 
   .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    // gap: 10px;
 
     @media screen and (min-width: $md) {
       align-items: flex-start;
     }
 
-    @media screen and (min-width: $lg) {
+    @media screen and (min-width: $xl) {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: space-between;
+      column-gap: 20px;
     }
   }
 }

@@ -4,11 +4,11 @@
       {{ $t('hero.text') }}
     </h1>
 
-    <!-- <img
-      src="@/assets/images/photo.png"
+    <img
+      src="@/assets/images/photo.svg"
       alt="photo"
       class="photo"
-    > -->
+    >
   </div>
 </template>
 
@@ -79,11 +79,15 @@ const loadAnimation = () => {
 
   .photo {
     position: absolute;
-    width: calc(#{$view-size-index} * 25);
-    left: 47vw;
+    width: calc(#{$view-size-index} * 30);
+    left: 40vw;
     top: 11vh;
     visibility: hidden;
     z-index: -1;
+
+    // @media screen and (orientation: portrait) {
+    //   top: -500px;
+    // }
   }
 
   @media screen and (orientation: portrait) {
@@ -98,9 +102,8 @@ const loadAnimation = () => {
       bottom: 4.5vh;
     }
     .photo {
-      top: auto;
+      // top: auto;
       left: calc(50% - (#{$photo-width} / 2));
-      bottom: -10vh;
       width: $photo-width;
     }
   }

@@ -39,15 +39,20 @@ const handleTextInput = (event: Event) => {
 .textarea {
   width: 100%;
   border: none;
-  border-radius: 10px;
-  background: #f4f7f9;
-  padding: 20px;
+  border-radius: $base-border-radius;
+  background: $primary-background;
+  padding: $control-padding;
   box-sizing: border-box;
   resize: vertical;
   min-height: 200px;
+  line-height: $base-line-height;
 
   transition: outline .2s ease-in;
   outline: 2px solid transparent;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
 
   &:hover,
   &:active,

@@ -1,39 +1,24 @@
 <template>
-  <UiControlWrapper :error-key="errorKey">
-    <input
-      v-maska
-      type="text"
-      v-bind="$attrs"
-      class="text-input"
-      :value="modelValue"
-      :data-maska="mask"
-      @input="handleTextInput"
-    >
-  </UiControlWrapper>
+  <UiTextInput
+    v-bind="$attrs"
+    :model-value="modelValue"
+    mask="+7 (###) ### ##-##"
+    @update:model-value="$emit('update:model-value', $event)"
+  />
 </template>
 
 <script lang="ts" setup>
 export interface Props {
-  modelValue: string,
-  errorKey?: string,
-  mask?: string
+  modelValue: string
 }
 
 defineOptions({
   inheritAttrs: false
 })
 
-withDefaults(defineProps<Props>(), {
-  errorKey: '',
-  mask: ''
-})
+withDefaults(defineProps<Props>(), {})
 
-const emit = defineEmits(['update:model-value'])
-
-const handleTextInput = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  emit('update:model-value', target.value)
-}
+defineEmits(['update:model-value'])
 </script>
 
 <style lang="scss" scoped>
