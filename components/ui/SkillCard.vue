@@ -83,6 +83,10 @@ const setScreenType = () => {
     bottom: 0;
     top: auto;
     opacity: 1;
+    height: 100%;
+    background: #0000001d;
+    display: flex;
+    align-items: flex-end;
 
     .v-popper__inner {
       background: #ffffff;
