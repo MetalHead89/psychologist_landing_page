@@ -63,7 +63,7 @@ const loadAnimation = () => {
 .hero-section {
   width: 100%;
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;
   position: relative;
 
   .hero-text {
