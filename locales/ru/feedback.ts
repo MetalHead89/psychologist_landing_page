@@ -35,7 +35,8 @@ export default {
         loneliness: 'Чувство одиночества',
         plans: 'Карьера, финансы, планы на жизнь',
         loss_loved_one: 'Утрата близкого человека',
-        loss_relationship: 'Утрата отношений'
+        loss_relationship: 'Утрата отношений',
+        emotional_burnout: 'Эмоциональное выгорание'
       },
       feedback_type: {
         telegram: 'Telegram',

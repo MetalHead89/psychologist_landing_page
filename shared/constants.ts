@@ -6,7 +6,8 @@ export const ANXIETY = [
   'loneliness',
   'plans',
   'loss_loved_one',
-  'loss_relationship'
+  'loss_relationship',
+  'emotional_burnout'
 ] as const
 
 export const FEEDBACK_TYPE = [
