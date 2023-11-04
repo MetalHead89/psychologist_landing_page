@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?moqg2o');
-  src:  url('/assets/fonts/icons/icons.eot?moqg2o#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?moqg2o') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?moqg2o') format('woff'),
-    url('/assets/fonts/icons/icons.svg?moqg2o#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?gmqm9g');
+  src:  url('/assets/fonts/icons/icons.eot?gmqm9g#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?gmqm9g') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?gmqm9g') format('woff'),
+    url('/assets/fonts/icons/icons.svg?gmqm9g#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,4 +27,8 @@
 
 .ic-help-circle:before {
   content: "\e900";
+}
+
+.ic-chevron-down:before {
+  content: "\e901";
 }

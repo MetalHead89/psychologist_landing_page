@@ -1,112 +1,98 @@
 <template>
   <div class="hero-section">
-    <h1 class="hero-text">
-      {{ $t('hero.text') }}
+    <h1 class="title">
+      Екатерина Бакалова
     </h1>
 
-    <img
-      src="@/assets/images/photo.svg"
-      alt="photo"
-      class="photo"
-    >
+    <div class="subtitle">
+      Практикующий психолог
+    </div>
+
+    <div class="next-button-wrapper">
+      <button
+        type="button"
+        class="go-to-next-button"
+        @click="handleGoToNextClick"
+      >
+        <i class="ic-chevron-down" />
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { $gsap } = useNuxtApp()
-
-onMounted(() => {
-  loadAnimation()
-})
-
-const loadAnimation = () => {
-  $gsap.from('.hero-text', {
-    x: '-10vw',
-    opacity: 0,
-    duration: 1,
-    autoAlpha: 0
-  })
-
-  $gsap.from('.photo', {
-    x: '10vw',
-    opacity: 0,
-    duration: 1,
-    autoAlpha: 0
-  })
-
-  $gsap.to('.hero-text', {
-    scrollTrigger: {
-      trigger: '.hero-section',
-      start: 'top top',
-      scrub: true
-    },
-    yPercent: -30,
-    opacity: 0,
-    immediateRender: false
-  })
-
-  $gsap.to('.photo', {
-    scrollTrigger: {
-      trigger: '.hero-section',
-      start: 'top top',
-      end: 'bottom 33%',
-      scrub: true
-    },
-    yPercent: 20,
-    opacity: 0,
-    immediateRender: false
-  })
+const handleGoToNextClick = () => {
+  const aboutMeSection = document.querySelector('.about-me-section')
+  aboutMeSection?.scrollIntoView()
 }
 </script>
 
 <style lang="scss" scoped>
 .hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   height: 100svh;
+  background: url('/assets/images/noise_diagonal.webp') repeat, $primary-color;
+  background-blend-mode: color-burn;
+  color: #ffffff;
   position: relative;
 
-  .hero-text {
-    position: absolute;
-    bottom: 5vh;
-    padding-left: 10vw;
-    width: min-content;
-    font-size: calc(#{$view-size-index} * 6);
-    font-weight: 800;
+  .title {
+    text-transform: uppercase;
+    font-size: 7vw;
     margin: 0;
-    line-height: 1.2;
-    visibility: hidden;
+
+    @media screen and (min-width: $md) {
+      font-size: 4vw;
+    }
   }
 
-  .photo {
+  .subtitle {
+    font-size: 5vw;
+    margin: 3vh 0;
+
+    @media screen and (min-width: $md) {
+      font-size: 3vw;
+    }
+  }
+
+  .go-to-next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: myAnim 1s infinite alternate linear;
     position: absolute;
-    width: calc(#{$view-size-index} * 30);
-    left: 40vw;
-    top: 11vh;
-    visibility: hidden;
-    z-index: -1;
+    border: none;
+    padding: 0;
+    color: $primary-color;
+    font-size: 10vw;
+    left: 50%;
+    bottom: 10vh;
+    transform: translate(-50%, 0);
+    cursor: pointer;
 
-    // @media screen and (orientation: portrait) {
-    //   top: -500px;
-    // }
+    @media screen and (min-width: $md) {
+      width: 4vw;
+      height: 4vw;
+      font-size: 4vw;
+    }
   }
+}
 
-  @media screen and (orientation: portrait) {
-    $photo-width: calc(#{$view-size-index} * 35);
-
-    .hero-text {
-      padding:  5vw 5vw 5vw 10vw;
-      border-radius: 0 5vw 5vw 0;
-      font-size: 15vw;
-      background: #00000064;
-      color: #ffffff;
-      bottom: 4.5vh;
-    }
-    .photo {
-      // top: auto;
-      left: calc(50% - (#{$photo-width} / 2));
-      width: $photo-width;
-    }
+@keyframes myAnim {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, 20%);
   }
 }
 </style>

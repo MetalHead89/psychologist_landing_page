@@ -4,7 +4,7 @@
     <div class="background" />
 
     <h2 class="about-me__title">
-      Добро пожаловать на мой сайт!
+      <span class="accent-text">Добро пожаловать</span> на мой сайт!
     </h2>
 
     <p>
@@ -139,7 +139,6 @@ const loadAnimation = () => {
 
   .about-me__title {
       margin-top: 30px;
-      color: $accent-color;
 
       @media screen and (min-width: $md) {
         margin-top: 0;
