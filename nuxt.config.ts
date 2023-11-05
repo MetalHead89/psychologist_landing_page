@@ -2,6 +2,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  site: {
+    url: 'https://psycholog-bakalova.ru'
+  },
+
   app: {
     head: {
       htmlAttrs: {
@@ -18,7 +22,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/i18n',
     'floating-vue/nuxt',
-    'nuxt-snackbar'
+    'nuxt-snackbar',
+    'nuxt-simple-sitemap'
   ],
 
   snackbar: {
