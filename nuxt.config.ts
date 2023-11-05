@@ -2,10 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  site: {
-    url: 'https://psycholog-bakalova.ru'
-  },
-
   app: {
     head: {
       htmlAttrs: {
@@ -25,6 +21,14 @@ export default defineNuxtConfig({
     'nuxt-snackbar',
     'nuxt-simple-sitemap'
   ],
+
+  site: {
+    url: 'https://psycholog-bakalova.ru'
+  },
+
+  sitemap: {
+    autoI18n: false
+  },
 
   snackbar: {
     bottom: true,
