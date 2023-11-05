@@ -4,7 +4,7 @@
     <FeaturesAboutMeSection />
     <FeaturesConsultationSection />
     <FeaturesSkillsSection />
-    <!-- <FeaturesEducationSection /> -->
+    <FeaturesEducationSection />
     <FeaturesFeedbackSection />
     <NuxtSnackbar />
   </div>

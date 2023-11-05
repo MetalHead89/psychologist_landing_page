@@ -15,7 +15,7 @@
       <template #noResult>
         <slot name="noResult">
           <span>
-            {{ $t('controls.select.no_result') }}
+            {{ $t('ui.select.no_result') }}
           </span>
         </slot>
       </template>

@@ -2,16 +2,18 @@ import hero from './hero'
 import aboutMe from './about_me'
 import consultation from './consultation'
 import skills from './skills'
+import education from './education'
 import feedback from './feedback'
 import composables from './composables'
-import controls from './controls'
+import ui from './ui'
 
 export default {
   ...hero,
   ...aboutMe,
   ...consultation,
   ...skills,
+  ...education,
   ...feedback,
   ...composables,
-  ...controls
+  ...ui
 }

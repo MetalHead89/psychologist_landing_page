@@ -1,45 +1,26 @@
 <template>
   <div class="education-section">
-    <div class="background" />
-
     <h2 class="about-me__title accent-text">
-      Образование
+      {{ $t('education.title') }}
     </h2>
+
+    <div class="cards">
+      <UiEducationCard
+        v-for="(card, index) in cards"
+        :key="index"
+        :image="card"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-// const { $gsap } = useNuxtApp()
-// let timeline: gsap.core.Timeline | null = null
-
-// onMounted(() => {
-//   loadAnimation()
-// })
-
-// const loadAnimation = () => {
-//   timeline = $gsap.timeline()
-
-//   timeline
-//     .from('.about-me__text-section', {
-//       x: '-5vw',
-//       opacity: 0,
-//       stagger: 0.3
-//     })
-//     .from('.about-me__task-item', {
-//       x: '-5vw',
-//       opacity: 0,
-//       stagger: 0.3
-//     })
-
-//   ScrollTrigger.create({
-//     trigger: '.about-me-section',
-//     start: 'top 30%',
-//     toggleActions: 'play none none none',
-//     animation: timeline
-//   })
-// }
+const cards = [
+  'education_1',
+  'education_2',
+  'education_3',
+  'education_4'
+]
 </script>
 
 <style lang="scss" scoped>
@@ -47,49 +28,15 @@
   padding: 10vh $content-padding;
   position: relative;
 
-  // .background {
-  //   position: absolute;
-  //   left: 50%;
-  //   top: 50%;
-  //   transform: translate(-50%, -50%);
-  //   width: calc(100% - $content-padding);
-  //   height: calc(100% - 10vh);
-  //   background: $primary-background;
-  //   border-radius: 30px;
-  //   z-index: -1;
-  //   opacity: 0.9;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 3vh;
 
-  //   @media screen and (min-width: $md) {
-  //     opacity: 0.5;
-  //   }
-  // }
-
-  // .about-me__section-title {
-  //   margin-bottom: 1vh;
-  // }
-
-  // .list {
-  //   margin: 0;
-  // }
-
-  // .about-me__title {
-  //     margin-top: 30px;
-
-  //     @media screen and (min-width: $md) {
-  //       margin-top: 0;
-  //     }
-  //   }
-
-  // @media screen and (min-width: $md) {
-  //   .content {
-  //     flex-direction: row;
-  //     align-items: flex-start;
-  //     gap: 5vw;
-  //   }
-
-  //   .about-me__picture {
-  //     width: 30vw;
-  //   }
-  // }
+    @media screen and (min-width: $md) {
+      column-gap: 2%;
+    }
+  }
 }
 </style>
