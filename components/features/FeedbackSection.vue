@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="feedback-section"
-    class="feedback-section"
-  >
+  <div class="feedback-section">
     <h2 class="feedback__title">
       {{ $t('feedback.title') }}
     </h2>
@@ -221,7 +218,7 @@ const onSubmit = async () => {
 
 <style lang="scss" scoped>
 .feedback-section {
-  padding: 10vh $content-padding;
+  padding: 8vh $content-padding;
   scroll-margin-top: 79px;
 
   &__title {

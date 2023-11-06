@@ -1,9 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div
-    id="about-me-section"
-    class="about-me-section"
-  >
+  <div class="about-me-section">
     <h2 class="about-me__title">
       <span class="accent-text">Добро пожаловать</span> на мой сайт!
     </h2>
@@ -51,9 +48,10 @@
     <div class="price">
       <h3>Cтоимость консультации:</h3>
 
-      <p>
-        1700 рублей.
-      </p>
+      <ul>
+        <li>Первая - 1200 рублей</li>
+        <li>Последующие - 1700 рублей</li>
+      </ul>
     </div>
 
     <div class="duration">
@@ -103,7 +101,7 @@
 
 <style lang="scss" scoped>
 .about-me-section {
-  padding: 10vh $content-padding;
+  padding: 8vh $content-padding;
   position: relative;
   scroll-margin-top: 79px;
 

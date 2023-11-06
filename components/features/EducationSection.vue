@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="education-section"
-    class="education-section"
-  >
+  <div class="education-section">
     <h2 class="about-me__title accent-text">
       {{ $t('education.title') }}
     </h2>
@@ -29,7 +26,7 @@ const cards = [
 
 <style lang="scss" scoped>
 .education-section {
-  padding: 10vh $content-padding;
+  padding: 8vh $content-padding;
   position: relative;
   scroll-margin-top: 79px;
 

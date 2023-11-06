@@ -5,14 +5,9 @@
         v-for="({ section, title }, index) in links"
         :key="index"
         class="menu-item"
+        @click="handleMenuItemClick(section)"
       >
-        <a
-          :href="section"
-          class="menu-link"
-          @click="$emit('click')"
-        >
-          {{ title }}
-        </a>
+        {{ title }}
       </li>
     </ul>
   </nav>
@@ -23,12 +18,12 @@ const BASE_CLASS = 'navigation'
 const { t } = useI18n()
 
 const links = [
-  { section: '#hero-section', title: t('ui.navigation.main') },
-  { section: '#about-me-section', title: t('ui.navigation.about_me') },
-  { section: '#consultation-section', title: t('ui.navigation.consulting') },
-  { section: '#skills-section', title: t('ui.navigation.techniques') },
-  { section: '#education-section', title: t('ui.navigation.education') },
-  { section: '#feedback-section', title: t('ui.navigation.feedback') }
+  { section: '.hero-section', title: t('ui.navigation.main') },
+  { section: '.about-me-section', title: t('ui.navigation.about_me') },
+  { section: '.consultation-section', title: t('ui.navigation.consulting') },
+  { section: '.skills-section', title: t('ui.navigation.techniques') },
+  { section: '.education-section', title: t('ui.navigation.education') },
+  { section: '.feedback-section', title: t('ui.navigation.feedback') }
 ]
 
 export interface Props {
@@ -39,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: false
 })
 
-defineEmits(['click'])
+const emit = defineEmits(['click'])
 
 const classes = computed(() => {
   return [
@@ -47,6 +42,12 @@ const classes = computed(() => {
     props.isActive && `${BASE_CLASS}_is-active`
   ]
 })
+
+const handleMenuItemClick = (section: string) => {
+  const anchor = document.querySelector(section)
+  anchor?.scrollIntoView()
+  emit('click')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -91,12 +92,8 @@ const classes = computed(() => {
   .menu-item {
     list-style-type: none;
     text-align: center;
-  }
-
-  .menu-link {
+    cursor: pointer;
     font-size: 22px;
-    color: white;
-    text-decoration: none;
 
     @media screen and (min-width: $md) {
       font-size: 12px;

@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="hero-section"
-    class="hero-section"
-  >
+  <div class="hero-section">
     <UiHeader />
 
     <h1 class="title">
@@ -73,31 +70,31 @@ const handleGoToNextClick = () => {
     height: 10vw;
     border-radius: 50%;
     background: #ffffff;
-    animation: myAnim 1s infinite alternate linear;
+    animation: movementAnimation 0.7s infinite alternate ease-in;
     position: absolute;
     border: none;
     padding: 0;
     color: $primary-color;
-    font-size: 10vw;
+    font-size: 8vw;
     left: 50%;
     bottom: 10vh;
     transform: translate(-50%, 0);
     cursor: pointer;
 
     @media screen and (min-width: $md) {
-      width: 4vw;
-      height: 4vw;
-      font-size: 4vw;
+      width: 3.5vw;
+      height: 3.5vw;
+      font-size: 2.5vw;
     }
   }
 }
 
-@keyframes myAnim {
+@keyframes movementAnimation {
   0% {
     transform: translate(-50%, 0);
   }
   100% {
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 30%);
   }
 }
 </style>

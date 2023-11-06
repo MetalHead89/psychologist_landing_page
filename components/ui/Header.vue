@@ -66,6 +66,8 @@ if (process.browser) {
   }
 
   .burger {
+    position: static;
+
     @media screen and (min-width: $md) {
       display: none;
     }
