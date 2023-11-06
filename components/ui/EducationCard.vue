@@ -27,15 +27,13 @@ const path = computed(() => {
 
 <style lang="scss" scoped>
 .education-card {
-  @media screen and (min-width: $md) {
-    width: 80%;
-  }
+  width: 80%;
 
   @media screen and (min-width: $md) {
     width: 49%;
   }
 
-  @media screen and (min-width: $md) {
+  @media screen and (min-width: $lg) {
     width: 32%;
   }
 
