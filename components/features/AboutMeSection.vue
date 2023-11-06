@@ -4,8 +4,6 @@
     id="about-me-section"
     class="about-me-section"
   >
-    <div class="background" />
-
     <h2 class="about-me__title">
       <span class="accent-text">Добро пожаловать</span> на мой сайт!
     </h2>
@@ -17,6 +15,12 @@
     <p>
       Раньше я работала учителем начальных классов, но сейчас преподаю в педагогическом колледже, а с 2020 года я начала карьеру в области психологии.
     </p>
+
+    <img
+      src="@/assets/images/about_me_photo.jpg"
+      alt="Фотография"
+      class="photo"
+    >
 
     <h3>Вот мои достижения в области психологии:</h3>
 
@@ -30,97 +34,71 @@
       Если вы чувствуете, что вам нужна помощь психолога, я приглашаю вас на консультацию.
     </p>
 
-    <p>
+    <p class="clear">
       Оказываю психологические услуги онлайн или в формате личной встречи по адресу г.Канск, ул. Цимлянская, д.3
     </p>
 
-    <h3>Часы работы (формат личной встречи):</h3>
-    <ul>
-      <li>понедельник-пятница с 18:00 до 21:00</li>
-      <li>суббота с 14:00 до 18:00</li>
-      <li>воскресенье с 12:00 до 18:00</li>
-    </ul>
+    <div class="schedule">
+      <h3>Часы работы (формат личной встречи):</h3>
 
-    <h3>Cтоимость консультации:</h3>
-
-    <p>
-      1700 рублей.
-    </p>
-
-    <h3>Продолжительность консультации:</h3>
-
-    <p>
-      50 минут.
-    </p>
-
-    <!-- <h2 class="about-me__title">
-      {{ $t('about_me.title') }}
-    </h2>
-
-    <div class="about-me__text">
-      <p class="about-me__text-section">
-        {{ $t('about_me.name') }}
-      </p>
-
-      <i18n-t
-        keypath="about_me.education"
-        tag="p"
-        class="about-me__text-section"
-      >
-        <template #accent>
-          <b class="accent-text">{{ $t('about_me.education_accent') }}</b>
-        </template>
-      </i18n-t>
-
-      <h3 class="about-me__text-section about-me__section-title accent-text">
-        {{ $t('about_me.tasks_title') }}
-      </h3>
-
-      <ul class="list">
-        <li
-          v-for="(item, index) in $tm('about_me.tasks')"
-          :key="index"
-          class="about-me__task-item"
-        >
-          {{ item }}
-        </li>
+      <ul>
+        <li>понедельник-пятница с 18:00 до 21:00</li>
+        <li>суббота с 14:00 до 18:00</li>
+        <li>воскресенье с 12:00 до 18:00</li>
       </ul>
-    </div> -->
+    </div>
+
+    <div class="price">
+      <h3>Cтоимость консультации:</h3>
+
+      <p>
+        1700 рублей.
+      </p>
+    </div>
+
+    <div class="duration">
+      <h3>Продолжительность консультации:</h3>
+
+      <p>
+        50 минут.
+      </p>
+    </div>
+    <div class="clear-fix" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const { $gsap } = useNuxtApp()
-let timeline: gsap.core.Timeline | null = null
+// const { $gsap } = useNuxtApp()
+// let timeline: gsap.core.Timeline | null = null
 
-onMounted(() => {
-  loadAnimation()
-})
+// onMounted(() => {
+//   loadAnimation()
+// })
 
-const loadAnimation = () => {
-  timeline = $gsap.timeline()
+// const loadAnimation = () => {
+//   timeline = $gsap.timeline()
 
-  timeline
-    .from('.about-me__text-section', {
-      x: '-5vw',
-      opacity: 0,
-      stagger: 0.3
-    })
-    .from('.about-me__task-item', {
-      x: '-5vw',
-      opacity: 0,
-      stagger: 0.3
-    })
+//   timeline
+//     .from('.about-me__text-section', {
+//       x: '-5vw',
+//       opacity: 0,
+//       stagger: 0.3
+//     })
+//     .from('.about-me__task-item', {
+//       x: '-5vw',
+//       opacity: 0,
+//       stagger: 0.3
+//     })
 
-  ScrollTrigger.create({
-    trigger: '.about-me-section',
-    start: 'top 30%',
-    toggleActions: 'play none none none',
-    animation: timeline
-  })
-}
+//   ScrollTrigger.create({
+//     trigger: '.about-me-section',
+//     start: 'top 30%',
+//     toggleActions: 'play none none none',
+//     animation: timeline
+//   })
+// }
 </script>
 
 <style lang="scss" scoped>
@@ -129,48 +107,60 @@ const loadAnimation = () => {
   position: relative;
   scroll-margin-top: 79px;
 
-  .background {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - $content-padding);
-    height: calc(100% - 10vh);
-    background: $primary-background;
-    border-radius: 30px;
-    z-index: -1;
-    opacity: 0.9;
+  .photo {
+    width: 100%;
+    max-width: $sm;
+    margin: 18px auto;
+    display: block;
+    border-radius: $base-border-radius;
 
     @media screen and (min-width: $md) {
-      opacity: 0.5;
+      width: 43%;
+      float: left;
+      margin-right: 50px;
     }
+
+    @media screen and (min-width: $xl) {
+      margin-right: 2.6vw;
+    }
+  }
+  .schedule {
+    clear: left;
+
+    @media screen and (min-width: 1100px) {
+      clear: none;
+    }
+  }
+
+  .price {
+    clear: left;
+
+    @media screen and (min-width: 1225px) {
+      clear: none;
+    }
+  }
+
+  .duration {
+    clear: left;
+
+    @media screen and (min-width: 1360px) {
+      clear: none;
+    }
+  }
+
+  .clear-fix {
+    clear: both;
   }
 
   .about-me__section-title {
     margin-bottom: 1vh;
   }
 
-  .list {
-    margin: 0;
-  }
-
   .about-me__title {
-      margin-top: 30px;
+    margin-top: 30px;
 
-      @media screen and (min-width: $md) {
-        margin-top: 0;
-      }
-    }
-
-  @media screen and (min-width: $md) {
-    .content {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 5vw;
-    }
-
-    .about-me__picture {
-      width: 30vw;
+    @media screen and (min-width: $md) {
+      margin-top: 0;
     }
   }
 }

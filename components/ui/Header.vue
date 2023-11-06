@@ -56,7 +56,6 @@ if (process.browser) {
 
   @media screen and (min-width: $xl) {
     padding: 1.5vw;
-    min-height: 5vw;
   }
 
   &_is-fixed {
