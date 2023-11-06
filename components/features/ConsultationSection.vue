@@ -1,5 +1,8 @@
 <template>
-  <div class="consultation-section">
+  <div
+    id="consultation-section"
+    class="consultation-section"
+  >
     <i18n-t
       keypath="consultation.title"
       tag="h2"
@@ -26,6 +29,7 @@
 <style lang="scss" scoped>
 .consultation-section {
   padding: 10vh $content-padding;
+  scroll-margin-top: 79px;
 
   .questions {
     display: flex;

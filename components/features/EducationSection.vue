@@ -1,5 +1,8 @@
 <template>
-  <div class="education-section">
+  <div
+    id="education-section"
+    class="education-section"
+  >
     <h2 class="about-me__title accent-text">
       {{ $t('education.title') }}
     </h2>
@@ -27,6 +30,7 @@ const cards = [
 .education-section {
   padding: 10vh $content-padding;
   position: relative;
+  scroll-margin-top: 79px;
 
   .cards {
     display: flex;

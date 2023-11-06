@@ -1,5 +1,10 @@
 <template>
-  <div class="hero-section">
+  <div
+    id="hero-section"
+    class="hero-section"
+  >
+    <UiHeader />
+
     <h1 class="title">
       Екатерина Бакалова
     </h1>

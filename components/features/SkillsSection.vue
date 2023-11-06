@@ -1,5 +1,8 @@
 <template>
-  <div class="skills-section">
+  <div
+    id="skills-section"
+    class="skills-section"
+  >
     <i18n-t
       keypath="skills.title"
       tag="h2"
@@ -61,6 +64,7 @@ $cards-gap: 30px;
 .skills-section {
   background: $primary-background;
   padding: 10vh $content-padding;
+  scroll-margin-top: 79px;
 
   .skills {
     display: flex;
