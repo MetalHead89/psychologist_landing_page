@@ -4,6 +4,7 @@
     <FeaturesAboutMeSection />
     <FeaturesConsultationSection />
     <FeaturesSkillsSection />
+    <FeaturesMemoSection />
     <FeaturesEducationSection />
     <FeaturesFeedbackSection />
     <NuxtSnackbar />

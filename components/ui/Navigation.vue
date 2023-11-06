@@ -22,6 +22,7 @@ const links = [
   { section: '.about-me-section', title: t('ui.navigation.about_me') },
   { section: '.consultation-section', title: t('ui.navigation.consulting') },
   { section: '.skills-section', title: t('ui.navigation.techniques') },
+  { section: '.memo-section', title: t('ui.navigation.memo') },
   { section: '.education-section', title: t('ui.navigation.education') },
   { section: '.feedback-section', title: t('ui.navigation.feedback') }
 ]

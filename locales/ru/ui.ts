@@ -12,7 +12,8 @@ export default {
       main: 'Главная',
       about_me: 'Обо мне',
       consulting: 'Направления консультирования',
-      techniques: 'Используемые техники',
+      techniques: 'Техники',
+      memo: 'Памятка',
       education: 'Образование',
       feedback: 'Оставить заявку'
     }
