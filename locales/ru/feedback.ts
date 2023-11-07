@@ -28,15 +28,19 @@ export default {
     },
     selects: {
       anxiety: {
-        relationship: 'Сложности в отношениях',
-        relationship_with_yourself: 'Сложности в отношениях с собой',
-        uncertainty: 'Неуверенность в себе',
-        strange_emotions: 'Непонятные эмоции',
-        loneliness: 'Чувство одиночества',
-        plans: 'Карьера, финансы, планы на жизнь',
+        relationship: 'Трудности в отношениях с родителями, партнером',
+        public_speaking_fear: 'Страх публичных выступлений',
+        emotional_burnout: 'Эмоциональное выгорание',
+        losing_interest: 'Потеря интереса ко всему, что нравилось раньше',
         loss_loved_one: 'Утрата близкого человека',
-        loss_relationship: 'Утрата отношений',
-        emotional_burnout: 'Эмоциональное выгорание'
+        professional_problems: 'Профессиональные проблемы: поиск новой работы; проблемы с коллегами',
+        intrusive_thoughts: 'Навязчивые мысли о себе, страхи',
+        mood_swings: 'Постоянные скачки настроения',
+        underestimated: 'Заниженная оценка собственных возможностей, неверие в свои силы',
+        decline_performance: 'Хождение в школу через силу, общее снижение успеваемости',
+        socialization: 'Проблемы с социализацией, налаживанием дружеских контактов',
+        desire_harm_yourself: 'Стремление навредить своему телу',
+        despair: 'Отчаяние, разговоры о смерти, бессмысленности существования'
       },
       feedback_type: {
         telegram: 'Telegram',
