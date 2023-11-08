@@ -24,7 +24,8 @@ useHead({
   ],
   meta: [
     { name: 'yandex-verification', content: 'fc4adc4832084876' }
-  ]
+  ],
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
 })
 
 useSeoMeta({
