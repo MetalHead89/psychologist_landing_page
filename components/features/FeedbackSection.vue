@@ -95,11 +95,13 @@
 import { useVuelidate } from '@vuelidate/core'
 import { required, requiredIf, email, helpers } from '@vuelidate/validators'
 import { ANXIETY, FEEDBACK_TYPE } from '@/shared/constants'
+import { useMetrika } from '~/composables/metrika'
 
 // const { $gsap } = useNuxtApp()
 const { setErrors, afterRequest, isLoading } = useForm()
 const { t } = useI18n()
 const { getOptions } = useOptions()
+const { metrika } = useMetrika()
 // let timeline: gsap.core.Timeline | null = null
 
 onMounted(() => {
@@ -187,6 +189,7 @@ const rules = {
 const v$ = useVuelidate(rules, form)
 
 const onSubmit = async () => {
+  metrika('reachGoal', 'clickToSignUpForConsultation')
   await v$.value.$validate()
 
   setErrors(v$, rules)

@@ -40,7 +40,11 @@ export default defineNuxtConfig({
     mailPort: process.env.MAIL_PORT,
     mailUser: process.env.MAIL_USER,
     mailPassword: process.env.MAIL_PASSWORD,
-    contactMail: process.env.CONTACT_MAIL
+    contactMail: process.env.CONTACT_MAIL,
+
+    public: {
+      metrikaId: process.env.METRIKA_ID
+    }
   },
 
   css: ['@/assets/styles/global.scss'],

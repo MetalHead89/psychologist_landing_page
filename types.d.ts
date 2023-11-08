@@ -24,3 +24,4 @@ type TSelectSelectedSlotProps = {
   isOpen: boolean
 }
 
+declare function ym(metrikaId: string, method: string, ...args: any): void
