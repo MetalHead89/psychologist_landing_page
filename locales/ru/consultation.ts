@@ -1,6 +1,6 @@
 export default {
   consultation: {
-    title: '{accent}  по вопросам',
+    title: '{accent} по вопросам',
     title_accent: 'Консультирую',
     questions: [
       { icon: 'heart', title: 'Как преодолеть сложности в отношениях с партнером?' },

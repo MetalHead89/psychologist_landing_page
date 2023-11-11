@@ -3,6 +3,7 @@ import aboutMe from './about_me'
 import consultation from './consultation'
 import skills from './skills'
 import education from './education'
+import memo from './memo'
 import feedback from './feedback'
 import composables from './composables'
 import ui from './ui'
@@ -13,6 +14,7 @@ export default {
   ...consultation,
   ...skills,
   ...education,
+  ...memo,
   ...feedback,
   ...composables,
   ...ui
