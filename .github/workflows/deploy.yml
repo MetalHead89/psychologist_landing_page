@@ -43,6 +43,7 @@ jobs:
           echo MAIL_USER=${{ secrets.MAIL_USER }} >> .env
           echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
           echo CONTACT_MAIL=${{ secrets.CONTACT_MAIL }} >> .env
+          echo METRIKA_ID=${{ secrets.METRIKA_ID }} >> .env
       - name: Install deps
         run: npm ci
       - name: Build app
