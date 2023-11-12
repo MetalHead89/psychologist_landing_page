@@ -72,7 +72,7 @@ const getItemClasses = (isActive: Boolean) => {
 }
 
 if (process.browser) {
-  const observer = new IntersectionObserver(activatedNavbarItem, { threshold: 0.7 })
+  const observer = new IntersectionObserver(activatedNavbarItem, { threshold: 0.5 })
   document.querySelectorAll('.page-section')
     .forEach(section => observer.observe(section))
 }
@@ -135,7 +135,7 @@ if (process.browser) {
         border-bottom: 2px solid currentColor;
 
         @media screen and (min-width: $xl) {
-          border-bottom: 0.33vh solid currentColor;
+          border-bottom: 0.3vh solid currentColor;
           bottom: -0.4vh;
         }
       }

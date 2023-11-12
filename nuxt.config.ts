@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'floating-vue/nuxt',
     'nuxt-snackbar',
-    'nuxt-simple-sitemap'
+    'nuxt-simple-sitemap',
+    '@nuxtjs/robots'
   ],
 
   site: {

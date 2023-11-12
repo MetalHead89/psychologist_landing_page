@@ -97,17 +97,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-useHead({
-  meta: [
-    { name: 'robots', content: 'noindex' }
-  ]
-})
-</script>
-
 <styles lang="scss" scoped>
 .privacy {
-  padding: 50px;
+  padding: 20px;
 
   h1 {
     margin: 40px 0;
