@@ -61,7 +61,16 @@ type TValidationErrors = {
   [key in keyof TFeedbackData]?: Array<string>
 }
 
-const isValid = ({ name, age, anxiety, anxietyDescription, answerTarget, email, phone }: TFeedbackData) => {
+const isValid = ({
+  name,
+  age,
+  anxiety,
+  anxietyDescription,
+  answerTarget,
+  email,
+  phone,
+  consentProcessing
+}: TFeedbackData) => {
   const errors: TValidationErrors = {}
 
   if (validator.isEmpty(name)) {
@@ -96,6 +105,10 @@ const isValid = ({ name, age, anxiety, anxietyDescription, answerTarget, email, 
 
   if (answerTarget && answerTarget !== 'email' && (phone?.length !== 11 || !validator.isNumeric(phone.toString()))) {
     setError(errors, 'phone', t('feedback.errors.invalid_phone'))
+  }
+
+  if (!consentProcessing) {
+    setError(errors, 'consentProcessing', t('feedback.errors.consent_processing_cannot_be_false'))
   }
 
   if (Object.keys(errors).length > 0) {

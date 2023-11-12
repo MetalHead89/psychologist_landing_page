@@ -15,7 +15,8 @@ type TFeedbackData = {
   anxietyDescription?: string,
   answerTarget: string,
   phone?: string,
-  email?: string
+  email?: string,
+  consentProcessing: boolean
 }
 
 type TSelectSelectedSlotProps = {

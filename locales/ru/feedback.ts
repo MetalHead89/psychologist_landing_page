@@ -11,7 +11,8 @@ export default {
       anxiety_description: 'Краткое описание проблемы',
       answer_target: '* Куда удобнее вам написать?',
       mail: '* E-mail',
-      phone: '* Телефон'
+      phone: '* Телефон',
+      consent_processing: 'Согласие на обработку персональных данных'
     },
     submit: 'Отправить',
     errors: {
@@ -20,7 +21,8 @@ export default {
       invalid_email_format: 'Неверный формат электронной почты',
       invalid_phone: 'Неверный телефон',
       unknown_server_error: 'Неизвестная ошибка сервера',
-      problems_with_parameters: 'Проблемы с параметрами, проверьте правильность заполнения полей.'
+      problems_with_parameters: 'Проблемы с параметрами, проверьте правильность заполнения полей.',
+      consent_processing_cannot_be_false: 'Подтвердите согласие на обработку персональных данных'
     },
     snackbar: {
       success_title: 'Заявка отправлена',

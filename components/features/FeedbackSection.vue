@@ -64,6 +64,12 @@
         />
       </section>
 
+      <UiCheckbox
+        v-model="form.consentProcessing"
+        :label="$t('feedback.fields.consent_processing')"
+        error-key="consentProcessing"
+      />
+
       <!-- <div class="inputs-wrapper section-wrapper">
         <div class="input-wrapper feedback__field">
         </div>
@@ -93,7 +99,7 @@
 <script lang="ts" setup>
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useVuelidate } from '@vuelidate/core'
-import { required, requiredIf, email, helpers } from '@vuelidate/validators'
+import { required, requiredIf, email, helpers, sameAs } from '@vuelidate/validators'
 import { ANXIETY, FEEDBACK_TYPE } from '@/shared/constants'
 import { useMetrika } from '~/composables/metrika'
 
@@ -142,7 +148,8 @@ const form = reactive({
   anxietyDescription: '',
   answerTarget: '',
   phone: '',
-  email: ''
+  email: '',
+  consentProcessing: false
 })
 
 const isFeedbackTypeEMail = computed(() => {
@@ -182,6 +189,12 @@ const rules = {
       (value: string) => !form.answerTarget || !!isFeedbackTypeEMail.value || phoneWithoutFormat(value).length === 11
       // requiredIf(() => !!form.answerTarget && !isFeedbackTypeEMail.value) &&
       //   value => phoneWithoutFormat(value).length === 11
+    )
+  },
+  consentProcessing: {
+    sameAs: helpers.withMessage(
+      t('feedback.errors.consent_processing_cannot_be_false'),
+      sameAs(!form.consentProcessing)
     )
   }
 }
