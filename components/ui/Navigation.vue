@@ -2,9 +2,9 @@
   <nav :class="classes">
     <ul class="top-menu">
       <li
-        v-for="({ section, title }, index) in links"
+        v-for="({ section, title, isActive: isActivated }, index) in links"
         :key="index"
-        class="menu-item"
+        :class="getItemClasses(isActivated)"
         @click="handleMenuItemClick(section)"
       >
         {{ title }}
@@ -15,17 +15,18 @@
 
 <script lang="ts" setup>
 const BASE_CLASS = 'navigation'
+const BASE_ITEM_CLASS = 'menu-item'
 const { t } = useI18n()
 
-const links = [
-  { section: '.hero-section', title: t('ui.navigation.main') },
-  { section: '.about-me-section', title: t('ui.navigation.about_me') },
-  { section: '.consultation-section', title: t('ui.navigation.consulting') },
-  { section: '.skills-section', title: t('ui.navigation.techniques') },
-  { section: '.memo-section', title: t('ui.navigation.memo') },
-  { section: '.education-section', title: t('ui.navigation.education') },
-  { section: '.feedback-section', title: t('ui.navigation.feedback') }
-]
+const links = ref([
+  { section: '.hero-section', isActive: false, title: t('ui.navigation.main') },
+  { section: '.about-me-section', isActive: false, title: t('ui.navigation.about_me') },
+  { section: '.consultation-section', isActive: false, title: t('ui.navigation.consulting') },
+  { section: '.skills-section', isActive: false, title: t('ui.navigation.techniques') },
+  { section: '.memo-section', isActive: false, title: t('ui.navigation.memo') },
+  { section: '.education-section', isActive: false, title: t('ui.navigation.education') },
+  { section: '.feedback-section', isActive: false, title: t('ui.navigation.feedback') }
+])
 
 export interface Props {
   isActive?: boolean
@@ -48,6 +49,32 @@ const handleMenuItemClick = (section: string) => {
   const anchor = document.querySelector(section)
   anchor?.scrollIntoView()
   emit('click')
+}
+
+const activatedNavbarItem: IntersectionObserverCallback = entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.value = links.value.map(link => {
+        return {
+          ...link,
+          isActive: entry.target.classList.contains(link.section.slice(1))
+        }
+      })
+    }
+  })
+}
+
+const getItemClasses = (isActive: Boolean) => {
+  return [
+    BASE_ITEM_CLASS,
+    isActive && `${BASE_ITEM_CLASS}_is-active`
+  ]
+}
+
+if (process.browser) {
+  const observer = new IntersectionObserver(activatedNavbarItem, { threshold: 0.7 })
+  document.querySelectorAll('.page-section')
+    .forEach(section => observer.observe(section))
 }
 </script>
 
@@ -91,10 +118,28 @@ const handleMenuItemClick = (section: string) => {
   }
 
   .menu-item {
+    position: relative;
     list-style-type: none;
     text-align: center;
     cursor: pointer;
     font-size: 22px;
+
+    &_is-active {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: -3px;
+        border-bottom: 2px solid currentColor;
+
+        @media screen and (min-width: $xl) {
+          border-bottom: 0.33vh solid currentColor;
+          bottom: -0.4vh;
+        }
+      }
+    }
 
     @media screen and (min-width: $md) {
       font-size: 12px;

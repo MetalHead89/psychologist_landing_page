@@ -1,5 +1,5 @@
 <template>
-  <div class="consultation-section">
+  <div class="page-section consultation-section">
     <i18n-t
       keypath="consultation.title"
       tag="h2"

@@ -1,5 +1,5 @@
 <template>
-  <div class="education-section">
+  <div class="page-section education-section">
     <h2 class="about-me__title accent-text">
       {{ $t('education.title') }}
     </h2>

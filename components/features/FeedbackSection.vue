@@ -1,5 +1,5 @@
 <template>
-  <div class="feedback-section">
+  <div class="page-section feedback-section">
     <h2 class="feedback__title">
       {{ $t('feedback.title') }}
     </h2>

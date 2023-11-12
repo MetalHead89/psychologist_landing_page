@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div class="memo-section">
+  <div class="page-section memo-section">
     <i18n-t
       keypath="memo.title"
       tag="h2"

@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div class="about-me-section">
+  <div class="page-section about-me-section">
     <h2 class="about-me__title">
       <span class="accent-text">Добро пожаловать</span> на мой сайт!
     </h2>

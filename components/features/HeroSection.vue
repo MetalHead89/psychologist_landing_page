@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-section">
+  <div class="page-section hero-section">
     <UiHeader />
 
     <h1 class="title">

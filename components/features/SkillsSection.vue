@@ -1,5 +1,5 @@
 <template>
-  <div class="skills-section">
+  <div class="page-section skills-section">
     <i18n-t
       keypath="skills.title"
       tag="h2"
