@@ -12,7 +12,8 @@ export default {
       answer_target: '* Куда удобнее вам написать?',
       mail: '* E-mail',
       phone: '* Телефон',
-      consent_processing: 'Согласие на обработку персональных данных'
+      consent_processing: 'Я ознакомлен(-на) с {privacy} и согласен(-на) на обработку персональных данных.',
+      privacy: 'Политикой конфиденциальности'
     },
     submit: 'Отправить',
     errors: {

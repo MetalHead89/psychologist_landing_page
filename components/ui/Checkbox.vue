@@ -10,7 +10,9 @@
       <div class="box">
         <div class="check" />
       </div>
-      <span class="label">{{ label }}</span>
+      <slot>
+        <span class="label">{{ label }}</span>
+      </slot>
     </label>
   </UiControlWrapper>
 </template>
@@ -122,14 +124,6 @@ const classes = computed(() => {
         opacity: 1;
         transform: rotate(45deg) scale(1);
       }
-    }
-  }
-
-  &:hover {
-    color: $primary-color;
-
-    .box {
-      border-color: $primary-color;
     }
   }
 }

@@ -68,7 +68,22 @@
         v-model="form.consentProcessing"
         :label="$t('feedback.fields.consent_processing')"
         error-key="consentProcessing"
-      />
+      >
+        <i18n-t
+          keypath="feedback.fields.consent_processing"
+          tag="span"
+        >
+          <template #privacy>
+            <NuxtLink
+              :to="{ name: 'privacy' }"
+              target="_blank"
+              class="link-global"
+            >
+              {{ $t('feedback.fields.privacy') }}
+            </NuxtLink>
+          </template>
+        </i18n-t>
+      </UiCheckbox>
 
       <!-- <div class="inputs-wrapper section-wrapper">
         <div class="input-wrapper feedback__field">
