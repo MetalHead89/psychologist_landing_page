@@ -44,7 +44,9 @@ export default defineNuxtConfig({
     contactMail: process.env.CONTACT_MAIL,
 
     public: {
-      metrikaId: process.env.METRIKA_ID
+      metrikaId: process.env.METRIKA_ID,
+      gTagId: process.env.G_TAG_ID,
+      yandexVerificationId: process.env.YANDEX_VERIFICATION_ID
     }
   },
 

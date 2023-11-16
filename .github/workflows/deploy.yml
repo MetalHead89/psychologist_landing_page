@@ -44,6 +44,8 @@ jobs:
           echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
           echo CONTACT_MAIL=${{ secrets.CONTACT_MAIL }} >> .env
           echo METRIKA_ID=${{ secrets.METRIKA_ID }} >> .env
+          echo G_TAG_ID=${{ secrets.G_TAG_ID }} >> .env
+          echo YANDEX_VERIFICATION_ID=${{ secrets.YANDEX_VERIFICATION_ID }} >> .env
       - name: Install deps
         run: npm ci
       - name: Build app

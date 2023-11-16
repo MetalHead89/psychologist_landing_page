@@ -24,12 +24,25 @@ if (process.env.NODE_ENV === 'production') {
       'webvisor:true' +
       '});'
   })
+
+  script.push({
+    src: `https://www.googletagmanager.com/gtag/js?id=${config.gTagId}`,
+    async: true
+  })
+
+  script.push({
+    type: 'text/javascript',
+    innerHTML: 'window.dataLayer = window.dataLayer || [];' +
+      'function gtag(){dataLayer.push(arguments);}' +
+      'gtag("js", new Date());' +
+      `gtag("config", ${config.gTagId});`
+  })
 }
 
 useHead({
   script,
   meta: [
-    { name: 'yandex-verification', content: 'fc4adc4832084876' }
+    { name: 'yandex-verification', content: config.yandexVerificationId as string }
   ],
   link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }]
 })
