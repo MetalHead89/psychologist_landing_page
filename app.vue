@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 
   script.push({
-    src: `https://www.googletagmanager.com/gtag/js?id=${config.gTagId}`,
+    src: `https://www.googletagmanager.com/gtag/js?id=${config.public.gTagId}`,
     async: true
   })
 
@@ -35,14 +35,14 @@ if (process.env.NODE_ENV === 'production') {
     innerHTML: 'window.dataLayer = window.dataLayer || [];' +
       'function gtag(){dataLayer.push(arguments);}' +
       'gtag("js", new Date());' +
-      `gtag("config", ${config.gTagId});`
+      `gtag("config", ${config.public.gTagId});`
   })
 }
 
 useHead({
   script,
   meta: [
-    { name: 'yandex-verification', content: config.yandexVerificationId as string }
+    { name: 'yandex-verification', content: config.public.yandexVerificationId as string }
   ],
   link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }]
 })
