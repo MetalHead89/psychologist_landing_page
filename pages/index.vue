@@ -7,6 +7,7 @@
     <FeaturesMemoSection />
     <FeaturesEducationSection />
     <FeaturesFeedbackSection />
+    <FeaturesFooter />
     <NuxtSnackbar />
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <nav :class="classes">
-    <ul class="top-menu">
+    <ul class="navigation-list">
       <li
         v-for="({ section, title, isActive: isActivated }, index) in links"
         :key="index"
@@ -94,7 +94,7 @@ if (process.browser) {
     background: transparent;
   }
 
-  .top-menu {
+  .navigation-list {
     display: flex;
     flex-direction: column;
     align-items: center;

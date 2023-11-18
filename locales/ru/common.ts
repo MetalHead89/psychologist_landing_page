@@ -5,6 +5,7 @@ import skills from './skills'
 import education from './education'
 import memo from './memo'
 import feedback from './feedback'
+import footer from './footer'
 import composables from './composables'
 import ui from './ui'
 
@@ -16,6 +17,7 @@ export default {
   ...education,
   ...memo,
   ...feedback,
+  ...footer,
   ...composables,
   ...ui
 }
