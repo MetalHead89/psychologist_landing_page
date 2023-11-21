@@ -42,6 +42,8 @@ export default defineNuxtConfig({
     mailUser: process.env.MAIL_USER,
     mailPassword: process.env.MAIL_PASSWORD,
     contactMail: process.env.CONTACT_MAIL,
+    notifierBotToken: process.env.NOTIFIER_BOT_TOKEN,
+    psychologyTelegramChatId: process.env.PSYCHOLOGY_TELEGRAM_CHAT_ID,
 
     public: {
       metrikaId: process.env.METRIKA_ID,

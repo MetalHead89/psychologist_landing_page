@@ -61,7 +61,8 @@ export default {
       anxiety_description: 'Описание проблемы',
       answer_target: 'Связь через',
       appeal_reason: 'Причина обращения',
-      phone: 'Телефон'
+      phone: 'Телефон',
+      new_appointment: 'Новая запись на консультацию!'
     }
   }
 }

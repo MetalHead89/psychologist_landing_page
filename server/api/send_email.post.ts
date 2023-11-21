@@ -1,19 +1,7 @@
 /* eslint-disable import/no-named-as-default-member */
-
-import { createTransport } from 'nodemailer'
-import SMTPTransport from 'nodemailer/lib/smtp-transport'
 import validator from 'validator'
 
 const config = useRuntimeConfig()
-
-const transporter = createTransport({
-  host: config.mailHost,
-  port: config.mailPort,
-  auth: {
-    user: config.mailUser,
-    pass: config.mailPassword
-  }
-} as unknown as SMTPTransport.Options)
 
 export default defineEventHandler(async event => {
   try {
@@ -21,19 +9,24 @@ export default defineEventHandler(async event => {
 
     await isValid(body)
       .then(async ({ name, age, anxiety, anxietyDescription, answerTarget, email, phone }) => {
-        await transporter.sendMail({
-          from: `${name} <${config.contactMail}>`,
-          to: config.contactMail,
-          subject: t('feedback.mail.subject'),
-          html: `<b>${t('feedback.mail.client')}:</b> ${name}<br />` +
-            `<b>${t('feedback.mail.age')}:</b> ${age}<br />` +
-            // eslint-disable-next-line max-len
-            `<b>${t('feedback.mail.anxiety')}:</b> ${anxiety.map(item => t(`feedback.selects.anxiety.${item}`)).join(', ')}<br />` +
-            // eslint-disable-next-line max-len
-            (anxietyDescription ? `<b>${t('feedback.mail.anxiety_description')}:</b> ${anxietyDescription}<br />` : '') +
-            `<b>${t('feedback.mail.answer_target')}:</b> ${t(`feedback.selects.feedback_type.${answerTarget}`)}<br />` +
-            (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}<br />` : '') +
-            (phone ? `<b>${t('feedback.mail.phone')}:</b> ${phone}<br />` : '')
+        const message = `<b>${t('feedback.mail.new_appointment')}</b>\n` +
+        `<b>${t('feedback.mail.client')}:</b> ${name}\n` +
+        `<b>${t('feedback.mail.age')}:</b> ${age}\n` +
+        // eslint-disable-next-line max-len
+        `<b>${t('feedback.mail.anxiety')}:</b> ${anxiety.map(item => t(`feedback.selects.anxiety.${item}`)).join(', ')}\n` +
+        // eslint-disable-next-line max-len
+        (anxietyDescription ? `<b>${t('feedback.mail.anxiety_description')}:</b> ${anxietyDescription}\n` : '') +
+        `<b>${t('feedback.mail.answer_target')}:</b> ${t(`feedback.selects.feedback_type.${answerTarget}`)}\n` +
+        (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}\n` : '') +
+        (phone ? `<b>${t('feedback.mail.phone')}:</b> ${phone}\n` : '')
+
+        await $fetch(`https://api.telegram.org/bot${config.notifierBotToken}/sendMessage`, {
+          method: 'POST',
+          body: {
+            chat_id: config.psychologyTelegramChatId,
+            parse_mode: 'html',
+            text: message
+          }
         })
       })
       .catch(error => {
