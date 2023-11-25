@@ -1,13 +1,10 @@
 <template>
   <div class="education-card">
-    <NuxtImg
+    <img
       :src="path"
       :alt="$t('ui.education_card.alt')"
       class="image"
-      format="avif"
-      loading="lazy"
-      sizes="800px 2xl:1000px"
-    />
+    >
   </div>
 </template>
 
@@ -19,7 +16,12 @@ export interface Props {
 const props = defineProps<Props>()
 
 const path = computed(() => {
-  return `/images/education/${props.image}.jpg`
+  const assets = import.meta.glob('@/assets/images/education/*', {
+    eager: true,
+    import: 'default'
+  })
+
+  return assets[`/assets/images/education/${props.image}.jpg`] as string
 })
 </script>
 

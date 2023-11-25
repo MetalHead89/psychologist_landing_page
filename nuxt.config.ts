@@ -16,19 +16,12 @@ export default defineNuxtConfig({
   ],
 
   modules: [
-    '@nuxt/image',
     '@nuxtjs/i18n',
     'floating-vue/nuxt',
     'nuxt-snackbar',
     'nuxt-simple-sitemap',
     '@nuxtjs/robots'
   ],
-
-  image: {
-    quality: 50,
-    format: ['avif', 'webp', 'jpg', 'svg'],
-    domains: ['psycholog-bakalova.ru']
-  },
 
   site: {
     url: 'https://psycholog-bakalova.ru'
