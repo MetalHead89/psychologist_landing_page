@@ -4,6 +4,7 @@
       keypath="skills.title"
       tag="h2"
       class="skills__title"
+      scope="global"
     >
       <template #accent>
         <span class="accent-text">{{ $t('skills.title_accent') }}</span>

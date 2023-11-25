@@ -72,6 +72,7 @@
         <i18n-t
           keypath="feedback.fields.consent_processing"
           tag="span"
+          scope="global"
         >
           <template #privacy>
             <NuxtLink

@@ -3,6 +3,7 @@
     <i18n-t
       keypath="consultation.title"
       tag="h2"
+      scope="global"
     >
       <template #accent>
         <span class="accent-text">{{ $t('consultation.title_accent') }}</span>

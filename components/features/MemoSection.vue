@@ -4,6 +4,7 @@
     <i18n-t
       keypath="memo.title"
       tag="h2"
+      scope="global"
     >
       <template #accent>
         <span class="accent-text">{{ $t('memo.title_accent') }}</span>
