@@ -15,10 +15,9 @@
 
     <NuxtImg
       src="/images/about_me_photo.jpg"
+      sizes="500px 2xl:800px"
       alt="Фотография"
       class="photo"
-      format="avif"
-      sizes="800px"
     />
 
     <p>
