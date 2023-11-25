@@ -2,7 +2,7 @@
   <div class="education-card">
     <NuxtImg
       :src="path"
-      width="500px"
+      sizes="400px sm:500"
       format="webp"
       :alt="$t('ui.education_card.alt')"
       class="image"
