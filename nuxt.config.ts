@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     'floating-vue/nuxt',
     'nuxt-snackbar',
     'nuxt-simple-sitemap',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    '@nuxt/image'
   ],
 
   site: {
