@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
     innerHTML: 'window.dataLayer = window.dataLayer || [];' +
       'function gtag(){dataLayer.push(arguments);}' +
       'gtag("js", new Date());' +
-      `gtag("config", ${config.public.gTagId});`
+      `gtag("config", "${config.public.gTagId}");`
   })
 }
 
