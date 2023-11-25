@@ -14,7 +14,7 @@
     </p>
 
     <NuxtImg
-      src="/images/about_me_photo.jpg"
+      src="/about_me_photo.jpg"
       alt="Фотография"
       class="photo"
       format="avif"
