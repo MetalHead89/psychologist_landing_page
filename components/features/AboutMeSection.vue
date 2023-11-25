@@ -18,7 +18,7 @@
       alt="Фотография"
       class="photo"
       format="avif"
-      sizes="800px"
+      sizes="500px 2xl:800px"
     />
 
     <p>
