@@ -15,7 +15,8 @@
 
     <NuxtImg
       src="/images/about_me_photo.jpg"
-      sizes="500px 2xl:800px"
+      width="500px"
+      format="webp"
       alt="Фотография"
       class="photo"
     />
