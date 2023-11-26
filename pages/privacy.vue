@@ -2,9 +2,9 @@
 <template>
   <div class="privacy">
     <div class="button-wrapper">
-      <UiButton @click="$router.push({ name: 'index' })">
-        Вернуться назад
-      </UiButton>
+      <NuxtLink :to="{ name: 'index' }">
+        Вернуться на главную страницу
+      </NuxtLink>
     </div>
 
     <h1>Политика в отношении обработки персональных данных</h1>
@@ -90,9 +90,9 @@
     </ul>
 
     <div class="button-wrapper">
-      <UiButton @click="$router.push({ name: 'index' })">
-        Вернуться назад
-      </UiButton>
+      <NuxtLink :to="{ name: 'index' }">
+        Вернуться на главную страницу
+      </NuxtLink>
     </div>
   </div>
 </template>

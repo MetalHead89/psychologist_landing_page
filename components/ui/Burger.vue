@@ -39,7 +39,7 @@ if (process.browser) {
 }
 </script>
 
-<style lang="scss" setup>
+<style lang="scss" scoped>
 .burger {
   position: fixed;
   display: flex;
