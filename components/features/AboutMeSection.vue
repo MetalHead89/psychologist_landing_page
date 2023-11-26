@@ -15,7 +15,7 @@
 
     <NuxtImg
       src="/images/about_me_photo.jpg"
-      width="500px"
+      sizes="480px"
       format="webp"
       alt="Фотография"
       class="photo"
@@ -83,37 +83,6 @@
 </template>
 
 <script lang="ts" setup>
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-// const { $gsap } = useNuxtApp()
-// let timeline: gsap.core.Timeline | null = null
-
-// onMounted(() => {
-//   loadAnimation()
-// })
-
-// const loadAnimation = () => {
-//   timeline = $gsap.timeline()
-
-//   timeline
-//     .from('.about-me__text-section', {
-//       x: '-5vw',
-//       opacity: 0,
-//       stagger: 0.3
-//     })
-//     .from('.about-me__task-item', {
-//       x: '-5vw',
-//       opacity: 0,
-//       stagger: 0.3
-//     })
-
-//   ScrollTrigger.create({
-//     trigger: '.about-me-section',
-//     start: 'top 30%',
-//     toggleActions: 'play none none none',
-//     animation: timeline
-//   })
-// }
 </script>
 
 <style lang="scss" scoped>

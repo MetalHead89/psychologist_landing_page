@@ -2,7 +2,7 @@
   <div class="education-card">
     <NuxtImg
       :src="path"
-      sizes="400px sm:500"
+      sizes="350px 2xl:800px"
       format="webp"
       :alt="$t('ui.education_card.alt')"
       class="image"
@@ -24,7 +24,12 @@ const path = computed(() => {
 
 <style lang="scss" scoped>
 .education-card {
-  width: 80%;
+  width: 100%;
+  max-width: 350px;
+
+  @media screen and (min-width: $sm) {
+    width: 80%;
+  }
 
   @media screen and (min-width: $md) {
     width: 49%;
@@ -32,6 +37,7 @@ const path = computed(() => {
 
   @media screen and (min-width: $lg) {
     width: 32%;
+    max-width: unset;
   }
 
   .image {
