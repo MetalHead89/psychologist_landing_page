@@ -1,6 +1,7 @@
 export default {
   feedback: {
-    title: 'Оставить заявку',
+    title: 'Оставьте заявку и я свяжусь с вами',
+    phone_title: 'Или запишитесь по телефону: {phone}',
     about_you: 'О себе',
     how_to_contact_you: 'Как с вами связаться?',
     reason: 'Причина обращения',

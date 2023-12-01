@@ -109,6 +109,22 @@
         {{ $t('feedback.submit') }}
       </UiButton>
     </form>
+
+    <i18n-t
+      keypath="feedback.phone_title"
+      tag="h2"
+      scope="global"
+      class="phone-title"
+    >
+      <template #phone>
+        <a
+          href="tel:+79029745983"
+          class="link-global phone"
+        >
+          +7 (902) 974 59-83
+        </a>
+      </template>
+    </i18n-t>
   </div>
 </template>
 
@@ -272,6 +288,20 @@ const onSubmit = async () => {
     @media screen and (min-width: $xl) {
       width: calc(100% / 3 - 20px);
     }
+  }
+
+  .phone-title {
+    font-size: 20px;
+    margin-top: 5vh;
+    text-align: center;
+
+    @media screen and (min-width: $md) {
+      text-align: left;
+    }
+  }
+
+  .phone {
+    white-space: nowrap;
   }
 
   // .input-wrapper {
