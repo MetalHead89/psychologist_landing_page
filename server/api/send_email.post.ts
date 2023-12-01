@@ -20,19 +20,14 @@ export default defineEventHandler(async event => {
         (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}\n` : '') +
         (phone ? `<b>${t('feedback.mail.phone')}:</b> ${phone}\n` : '')
 
-        await $fetch(`https://api.telegram.org/bot${config.notifierBotToken}/sendMessage`, {
-          method: 'POST',
-          body: {
-            chat_id: config.psychologyTelegramChatId,
-            parse_mode: 'html',
-            text: message
-          }
-        })
+        await sandMessage(message)
       })
       .catch(error => {
         return Promise.reject(error)
       })
   } catch (error: any) {
+    await sandMessage(error)
+
     const { statusCode, errors, message } = error?.cause || {}
     const data = errors
       ? {
@@ -52,6 +47,17 @@ export default defineEventHandler(async event => {
 
 type TValidationErrors = {
   [key in keyof TFeedbackData]?: Array<string>
+}
+
+const sandMessage = (message: string) => {
+  return $fetch(`https://api.telegram.org/bot${config.notifierBotToken}/sendMessage`, {
+    method: 'POST',
+    body: {
+      chat_id: config.psychologyTelegramChatId,
+      parse_mode: 'html',
+      text: message
+    }
+  })
 }
 
 const isValid = ({
