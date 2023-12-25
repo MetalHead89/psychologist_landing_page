@@ -20,7 +20,9 @@ const cards = [
   'education_2',
   'education_3',
   'education_4',
-  'education_5'
+  'education_5',
+  'education_6',
+  'education_7'
 ]
 </script>
 
