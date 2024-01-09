@@ -8,13 +8,10 @@ export default defineEventHandler(async event => {
     const body = await readBody(event)
 
     await isValid(body)
-      .then(async ({ name, age, anxiety, anxietyDescription, answerTarget, email, phone }) => {
+      .then(async ({ name, age, anxietyDescription, answerTarget, email, phone }) => {
         const message = `<b>${t('feedback.mail.new_appointment')}</b>\n` +
         `<b>${t('feedback.mail.client')}:</b> ${name}\n` +
         `<b>${t('feedback.mail.age')}:</b> ${age}\n` +
-        // eslint-disable-next-line max-len
-        `<b>${t('feedback.mail.anxiety')}:</b> ${anxiety.map(item => t(`feedback.selects.anxiety.${item}`)).join(', ')}\n` +
-        // eslint-disable-next-line max-len
         (anxietyDescription ? `<b>${t('feedback.mail.anxiety_description')}:</b> ${anxietyDescription}\n` : '') +
         `<b>${t('feedback.mail.answer_target')}:</b> ${t(`feedback.selects.feedback_type.${answerTarget}`)}\n` +
         (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}\n` : '') +
@@ -63,7 +60,6 @@ const sandMessage = (message: string) => {
 const isValid = ({
   name,
   age,
-  anxiety,
   anxietyDescription,
   answerTarget,
   email,
@@ -80,10 +76,6 @@ const isValid = ({
     setError(errors, 'age', t('feedback.errors.cannot_be_empty'))
   } else if (!validator.isNumeric(age.toString())) {
     setError(errors, 'age', t('feedback.errors.invalid_number_format'))
-  }
-
-  if (!anxiety.length) {
-    setError(errors, 'anxiety', t('feedback.errors.cannot_be_empty'))
   }
 
   if (validator.isEmpty(answerTarget)) {
@@ -122,7 +114,6 @@ const isValid = ({
     return Promise.resolve({
       name,
       age,
-      anxiety,
       anxietyDescription,
       answerTarget,
       email: email && validator.normalizeEmail(email),

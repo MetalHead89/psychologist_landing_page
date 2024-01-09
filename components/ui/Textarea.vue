@@ -44,7 +44,7 @@ const handleTextInput = (event: Event) => {
   padding: $control-padding;
   box-sizing: border-box;
   resize: vertical;
-  min-height: 200px;
+  min-height: 155px;
   line-height: $base-line-height;
 
   transition: outline .2s ease-in;

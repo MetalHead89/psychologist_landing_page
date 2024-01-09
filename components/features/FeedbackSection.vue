@@ -25,12 +25,12 @@
       <section class="form-section">
         <h3>{{ $t('feedback.reason') }}</h3>
 
-        <UiMultiSelect
+        <!-- <UiMultiSelect
           v-model="form.anxiety"
           :options="getOptions(ANXIETY as unknown as string[], 'feedback.selects.anxiety')"
           :placeholder="$t('feedback.fields.anxiety')"
           error-key="anxiety"
-        />
+        /> -->
 
         <UiTextarea
           v-model="form.anxietyDescription"
@@ -110,7 +110,7 @@
       </UiButton>
     </form>
 
-    <i18n-t
+    <!-- <i18n-t
       keypath="feedback.phone_title"
       tag="h2"
       scope="global"
@@ -124,7 +124,7 @@
           +7 (902) 974 59-83
         </a>
       </template>
-    </i18n-t>
+    </i18n-t> -->
   </div>
 </template>
 
@@ -132,7 +132,7 @@
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useVuelidate } from '@vuelidate/core'
 import { required, requiredIf, email, helpers, sameAs } from '@vuelidate/validators'
-import { ANXIETY, FEEDBACK_TYPE } from '@/shared/constants'
+import { FEEDBACK_TYPE } from '@/shared/constants'
 import { useMetrika } from '~/composables/metrika'
 
 // const { $gsap } = useNuxtApp()
@@ -176,7 +176,6 @@ onMounted(() => {
 const form = reactive({
   name: '',
   age: '',
-  anxiety: [],
   anxietyDescription: '',
   answerTarget: '',
   phone: '',
@@ -193,9 +192,6 @@ const rules = {
     required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
   },
   age: {
-    required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
-  },
-  anxiety: {
     required: helpers.withMessage(t('feedback.errors.cannot_be_empty'), required)
   },
   answerTarget: {
