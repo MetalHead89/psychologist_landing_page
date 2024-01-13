@@ -16,13 +16,13 @@
 
 <script lang="ts" setup>
 const cards = [
-  'education_1',
-  'education_2',
-  'education_3',
-  'education_4',
-  'education_5',
-  'education_6',
-  'education_7'
+  'education_image_1',
+  'education_image_2',
+  'education_image_3',
+  'education_image_4',
+  'education_image_5',
+  'education_image_6',
+  'education_image_7'
 ]
 </script>
 
