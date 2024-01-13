@@ -12,7 +12,7 @@
     <NuxtImg
       src="/images/about_me_photo.jpg"
       sizes="480px"
-      format="avif"
+      format="webp"
       alt="Фотография"
       class="photo"
     />

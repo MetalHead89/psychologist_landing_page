@@ -3,7 +3,7 @@
     <NuxtImg
       :src="path"
       sizes="350px 2xl:800px"
-      format="avif"
+      format="webp"
       :alt="$t('ui.education_card.alt')"
       class="image"
     />
