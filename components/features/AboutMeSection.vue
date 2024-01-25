@@ -10,7 +10,7 @@
     </p>
 
     <NuxtImg
-      src="/images/main_photo.jpg"
+      src="/images/photo_v1.jpg"
       sizes="480px"
       format="webp"
       alt="Фотография"
