@@ -4,6 +4,7 @@
     <FeaturesAboutMeSection />
     <FeaturesConsultationSection />
     <FeaturesSkillsSection />
+    <FeaturesTechniquesInfo />
     <FeaturesMemoSection />
     <FeaturesEducationSection />
     <FeaturesFeedbackSection />

@@ -34,6 +34,7 @@
     "nodemailer": "^6.9.6",
     "normalize.css": "^8.0.1",
     "nuxt-snackbar": "^1.0.3",
+    "swiper": "^11.0.5",
     "validator": "^13.11.0",
     "vue-kinesis": "^2.0.5",
     "vue-multiselect": "^3.0.0-beta.3"
