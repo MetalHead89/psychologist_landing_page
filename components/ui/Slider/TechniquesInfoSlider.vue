@@ -3,13 +3,13 @@
     :slides="slides"
     class="techniques-slider"
   >
-    <template #slide="{ imageUrl, title, moreDetailsUrl }: TSlide">
+    <template #slide="{ title, moreDetailsUrl }: TSlide">
       <div class="swiper-slide">
-        <img
+        <!-- <img
           :src="imageUrl"
           alt=""
           class="slide-image"
-        >
+        > -->
 
         <div class="content">
           <div class="title">
@@ -54,6 +54,8 @@ const handleMoreDetailsClick = (url: string) => {
 .techniques-slider {
   width: 100%;
   height: 500px;
+  background: url('/assets/images/noise_diagonal.webp') repeat, $primary-color;
+  background-blend-mode: color-burn;
 
   @media screen and (min-width: $md) {
     height: 600px;
@@ -99,7 +101,8 @@ const handleMoreDetailsClick = (url: string) => {
     align-items: center;
     gap: 20px;
     user-select: none;
-    background: #00000086;
+    // background: #00000086;
+    border: 1px solid #ffffff;
     padding: 30px;
     border-radius: 25px;
     margin: 0 30px;

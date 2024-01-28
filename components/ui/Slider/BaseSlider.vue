@@ -39,7 +39,7 @@ const isShowNavigation = computed(() => !isMobileScreen.value && props.slides.le
 if (process.browser) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   swiper = new Swiper('.swiper', {
-    spaceBetween: 100,
+    // spaceBetween: 100,
     speed: 500,
     autoplay: {
       delay: 5000
@@ -76,13 +76,16 @@ const setScreenType = () => {
 
 <style lang="scss" scoped>
 .swiper {
+  :deep(.swiper-pagination-bullet) {
+    background: #ffffff;
+  }
   :deep(.swiper-pagination-bullet-active) {
-    background: $primary-color;
+    background: #ffffff;
   }
 
   :deep(.swiper-button-prev),
   :deep(.swiper-button-next) {
-    color: $primary-color
+    color: #ffffff
   }
 }
 </style>
