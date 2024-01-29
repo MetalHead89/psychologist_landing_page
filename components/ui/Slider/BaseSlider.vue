@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+// eslint-disable-next-line import/no-named-as-default
 import Swiper from 'swiper'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -32,12 +33,12 @@ const props = withDefaults(defineProps<Props>(), {
   slides: () => []
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let swiper = null
 const isMobileScreen = ref(false)
 const isShowNavigation = computed(() => !isMobileScreen.value && props.slides.length > 1)
 
-if (process.browser) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+onMounted(() => {
   swiper = new Swiper('.swiper', {
     // spaceBetween: 100,
     speed: 500,
@@ -58,7 +59,7 @@ if (process.browser) {
         clickable: true
       }
   })
-}
+})
 
 onMounted(() => {
   setScreenType()

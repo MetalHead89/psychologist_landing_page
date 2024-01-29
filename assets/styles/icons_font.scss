@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?85jsrg');
-  src:  url('/assets/fonts/icons/icons.eot?85jsrg#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?85jsrg') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?85jsrg') format('woff'),
-    url('/assets/fonts/icons/icons.svg?85jsrg#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?qaxcsh');
+  src:  url('/assets/fonts/icons/icons.eot?qaxcsh#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?qaxcsh') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?qaxcsh') format('woff'),
+    url('/assets/fonts/icons/icons.svg?qaxcsh#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,27 +25,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ic-blank-chat:before {
-  content: "\e901";
-}
-.ic-cloud-storm:before {
-  content: "\e903";
-}
-.ic-alarm-turn-off:before {
+.ic-arrow-left:before {
   content: "\e900";
 }
-.ic-confounded:before {
-  content: "\e902";
-}
-.ic-help-circle:before {
-  content: "\e904";
-}
-.ic-chevron-down:before {
+.ic-alarm-turn-off:before {
   content: "\e905";
 }
-.ic-crown:before {
+.ic-blank-chat:before {
   content: "\e906";
 }
-.ic-drop:before {
+.ic-confounded:before {
   content: "\e907";
+}
+.ic-cloud-storm:before {
+  content: "\e908";
+}
+.ic-help-circle:before {
+  content: "\e909";
+}
+.ic-chevron-down:before {
+  content: "\e90a";
+}
+.ic-crown:before {
+  content: "\e90b";
+}
+.ic-drop:before {
+  content: "\e90c";
 }

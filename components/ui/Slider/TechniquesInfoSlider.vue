@@ -3,7 +3,7 @@
     :slides="slides"
     class="techniques-slider"
   >
-    <template #slide="{ title, moreDetailsUrl }: TSlide">
+    <template #slide="{ title, moreDetailsName }: TSlide">
       <div class="swiper-slide">
         <!-- <img
           :src="imageUrl"
@@ -17,7 +17,7 @@
           </div>
 
           <div class="button-wrapper">
-            <UiButton @click="handleMoreDetailsClick(moreDetailsUrl)">
+            <UiButton @click="handleMoreDetailsClick(moreDetailsName)">
               Подробнее
             </UiButton>
           </div>
@@ -30,23 +30,25 @@
 <script setup lang="ts">
 import UiBaseSlider from './BaseSlider.vue'
 
-type TSlide = { imageUrl: string, title: string, moreDetailsUrl: string }
+type TSlide = { imageUrl: string, title: string, moreDetailsName: string }
+
+const router = useRouter()
 
 const slides = [
   {
-    imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
+    // imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
     title: 'Проработка межличностного конфликта: мой опыт и техники',
-    moreDetailsUrl: 'https://vk.com/@psycholog.bakalova-kak-zavershit-mezhlichnostnyi-konflikt-i-izbavitsya-ot-negat'
+    moreDetailsName: 'blog-kak_zavershit_mezhlichnostnyj_konflikt'
   },
   {
-    imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
+    // imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
     title: 'Работа над самооценкой. Из частной практики',
-    moreDetailsUrl: 'https://vk.com/@psycholog.bakalova-rabota-nad-samoocenkoi-iz-chastnoi-praktiki'
+    moreDetailsName: 'blog-rabota_nad_samoocenkoj'
   }
 ]
 
-const handleMoreDetailsClick = (url: string) => {
-  window.open(url, '_blank')
+const handleMoreDetailsClick = (routeName: string) => {
+  router.push({ name: routeName })
 }
 </script>
 
