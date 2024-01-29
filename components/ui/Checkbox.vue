@@ -6,7 +6,7 @@
         type="checkbox"
         v-bind="$attrs"
         class="check-input"
-      >
+      />
       <div class="box">
         <div class="check" />
       </div>

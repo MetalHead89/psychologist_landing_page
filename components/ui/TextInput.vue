@@ -8,7 +8,7 @@
       :value="modelValue"
       :data-maska="mask"
       @input="handleTextInput"
-    >
+    />
   </UiControlWrapper>
 </template>
 
