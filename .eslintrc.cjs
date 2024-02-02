@@ -5,7 +5,11 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     semi: ['error', 'never'],
     quotes: ['error', 'single'],
-    'max-len': ['warn', { code: 120 }],
+    'vue/max-len': ['error', {
+      code: 120,
+      ignoreHTMLTextContents: true,
+      ignoreStrings: true
+    }],
     'comma-dangle': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
     'arrow-parens': ['error', 'as-needed'],
@@ -20,6 +24,5 @@ module.exports = {
         void: 'always'
       }
     }]
-
   }
 }

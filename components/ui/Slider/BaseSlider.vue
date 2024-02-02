@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper">
+  <div :class="classes">
     <div class="swiper-wrapper">
       <slot name="slides">
         <slot
@@ -26,11 +26,23 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 export interface Props {
-  slides?: Array<any>
+  slides?: Array<any>,
+  options?: Object,
+  swiperClass: string
 }
 
+const BASE_CLASS = 'swiper'
+
 const props = withDefaults(defineProps<Props>(), {
-  slides: () => []
+  slides: () => [],
+  options: () => ({})
+})
+
+const classes = computed(() => {
+  return [
+    BASE_CLASS,
+    props.swiperClass
+  ]
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,8 +51,7 @@ const isMobileScreen = ref(false)
 const isShowNavigation = computed(() => !isMobileScreen.value && props.slides.length > 1)
 
 onMounted(() => {
-  swiper = new Swiper('.swiper', {
-    // spaceBetween: 100,
+  swiper = new Swiper(`.${props.swiperClass}`, {
     speed: 500,
     autoplay: {
       delay: 5000
@@ -57,7 +68,8 @@ onMounted(() => {
       : {
         el: '.swiper-pagination',
         clickable: true
-      }
+      },
+    ...props.options
   })
 })
 

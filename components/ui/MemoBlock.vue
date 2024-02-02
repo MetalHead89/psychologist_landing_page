@@ -37,7 +37,7 @@ withDefaults(defineProps<Props>(), {
     margin-bottom: 30px;
 
     @media screen and (min-width: $md) {
-      margin-bottom: 4vh;
+      margin-bottom: 60px;
     }
 
     @media screen and (min-width: $xl) {

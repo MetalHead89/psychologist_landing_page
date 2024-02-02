@@ -1,16 +1,10 @@
 <template>
   <UiBaseSlider
     :slides="slides"
-    class="techniques-slider"
+    swiper-class="techniques-slider"
   >
     <template #slide="{ title, moreDetailsName }: TSlide">
       <div class="swiper-slide">
-        <!-- <img
-          :src="imageUrl"
-          alt=""
-          class="slide-image"
-        > -->
-
         <div class="content">
           <div class="title">
             {{ title }}
@@ -30,18 +24,16 @@
 <script setup lang="ts">
 import UiBaseSlider from './BaseSlider.vue'
 
-type TSlide = { imageUrl: string, title: string, moreDetailsName: string }
+type TSlide = { title: string, moreDetailsName: string }
 
 const router = useRouter()
 
 const slides = [
   {
-    // imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
     title: 'Проработка межличностного конфликта: мой опыт и техники',
     moreDetailsName: 'blog-kak_zavershit_mezhlichnostnyj_konflikt'
   },
   {
-    // imageUrl: useAssetImage('/images/jpg/wallpaper.jpg') as string,
     title: 'Работа над самооценкой. Из частной практики',
     moreDetailsName: 'blog-rabota_nad_samoocenkoj'
   }
@@ -103,7 +95,6 @@ const handleMoreDetailsClick = (routeName: string) => {
     align-items: center;
     gap: 20px;
     user-select: none;
-    // background: #00000086;
     border: 1px solid #ffffff;
     padding: 30px;
     border-radius: 25px;
