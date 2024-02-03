@@ -1,45 +1,41 @@
 <template>
   <div class="page-section education-section">
-    <h2 class="about-me__title accent-text">
+    <h2 class="title accent-text">
       {{ $t('education.title') }}
     </h2>
 
-    <div class="cards">
-      <UiEducationCard
-        v-for="(card, index) in cards"
-        :key="index"
-        :image="card"
-      />
-    </div>
+    <EducationSlider @click-to-slide="handleSlideClick" />
+    <EnlargedEducationSlider
+      ref="enlargedEducationSliderRef"
+      v-model:is-show="isShowEnlargedImage"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-const cards = [
-  'education_image_1',
-  'education_image_2',
-  'education_image_3',
-  'education_image_4',
-  'education_image_5',
-  'education_image_6',
-  'education_image_7'
-]
+import EnlargedEducationSlider from '@/components/ui/Slider/EnlargedEducationSlider.vue'
+import EducationSlider from '@/components/ui/Slider/EducationSlider.vue'
+
+const isShowEnlargedImage = ref(false)
+const enlargedEducationSliderRef = ref<InstanceType<typeof EnlargedEducationSlider> | null>(null)
+
+const handleSlideClick = (index: number) => {
+  isShowEnlargedImage.value = true
+  if (enlargedEducationSliderRef.value) {
+    enlargedEducationSliderRef.value.goToSlide(index)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .education-section {
-  padding: 8vh $content-padding;
-  position: relative;
-  scroll-margin-top: 79px;
+  padding: 0 $content-padding;
 
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 3vh;
+  .title {
+    text-align: center;
 
     @media screen and (min-width: $md) {
-      column-gap: 2%;
+      text-align: left;
     }
   }
 }

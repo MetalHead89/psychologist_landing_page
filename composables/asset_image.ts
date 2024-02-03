@@ -4,5 +4,5 @@ export function useAssetImage(path: string) {
     import: 'default'
   })
 
-  return assets['/assets' + path] || ''
+  return (assets['/assets' + path] || '') as string
 }
