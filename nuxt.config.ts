@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 
   components: [
     { path: '~/components/features', prefix: 'Features' },
+    { path: '~/components/ui/modals', prefix: 'Ui' },
     '~/components'
   ],
 

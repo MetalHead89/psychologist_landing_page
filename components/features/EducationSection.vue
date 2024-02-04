@@ -5,24 +5,26 @@
     </h2>
 
     <EducationSlider @click-to-slide="handleSlideClick" />
-    <EnlargedEducationSlider
-      ref="enlargedEducationSliderRef"
-      v-model:is-show="isShowEnlargedImage"
+
+    <UiModalEducationSlider
+      ref="ModalEducationSliderRef"
+      v-model:is-show="isShowModalEducationSlider"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
-import EnlargedEducationSlider from '@/components/ui/Slider/EnlargedEducationSlider.vue'
+import ModalEducationSlider from '@/components/ui/modals/ModalEducationSlider.vue'
 import EducationSlider from '@/components/ui/Slider/EducationSlider.vue'
 
-const isShowEnlargedImage = ref(false)
-const enlargedEducationSliderRef = ref<InstanceType<typeof EnlargedEducationSlider> | null>(null)
+const isShowModalEducationSlider = ref(false)
+const ModalEducationSliderRef = ref<InstanceType<typeof ModalEducationSlider> | null>(null)
 
 const handleSlideClick = (index: number) => {
-  isShowEnlargedImage.value = true
-  if (enlargedEducationSliderRef.value) {
-    enlargedEducationSliderRef.value.goToSlide(index)
+  isShowModalEducationSlider.value = true
+
+  if (ModalEducationSliderRef.value) {
+    ModalEducationSliderRef.value.goToSlide(index)
   }
 }
 </script>
