@@ -4,7 +4,7 @@
       <video controls playsinline class="video-player">
         <source
           src="@/assets/video/webm/location.webm"
-          type="video/mp4"
+          type="video/webm"
         />
 
         <source
