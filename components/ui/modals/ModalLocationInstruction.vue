@@ -2,10 +2,10 @@
   <UiBaseModal v-bind="$attrs" class="modal-location-instruction">
     <template #window>
       <video controls playsinline class="video-player">
-        <source
+        <!-- <source
           src="@/assets/video/webm/location.webm"
           type="video/webm"
-        />
+        /> -->
 
         <source
           src="@/assets/video/mp4/location.mp4"
