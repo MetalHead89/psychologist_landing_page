@@ -1,11 +1,18 @@
 <template>
   <UiBaseModal v-bind="$attrs" class="modal-location-instruction">
     <template #window>
-      <video controls playsinline class="video-player">
-        <!-- <source
+      <video
+        src="@/assets/video/mp4/location.mp4"
+        type="video/mp4"
+        controls
+        playsinline
+        class="video-player"
+      />
+      <!-- <video controls playsinline class="video-player">
+        <source
           src="@/assets/video/webm/location.webm"
           type="video/webm"
-        /> -->
+        />
 
         <source
           src="@/assets/video/mp4/location.mp4"
@@ -13,7 +20,7 @@
         />
 
         Видео не может быть воспроизведено в вашем браузере
-      </video>
+      </video> -->
     </template>
   </UiBaseModal>
 </template>
