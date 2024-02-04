@@ -1,7 +1,7 @@
 <template>
   <UiBaseModal v-bind="$attrs" class="modal-location-instruction">
     <template #window>
-      <video controls class="video-player">
+      <video controls playsinline class="video-player">
         <source
           src="@/assets/video/webm/location.webm"
           type="video/mp4"
