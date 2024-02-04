@@ -28,3 +28,4 @@ type TSelectSelectedSlotProps = {
 declare function ym(metrikaId: string, method: string, ...args: any): void
 declare module 'swiper'
 declare module 'swiper/modules'
+declare module 'body-scroll-lock'

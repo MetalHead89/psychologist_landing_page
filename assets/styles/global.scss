@@ -2,6 +2,12 @@
 @import './fonts.scss';
 @import './variables.scss';
 
+html,
+body {
+  height: 100vh;
+  height: 100svh;
+}
+
 html {
   overflow-x: hidden;
   font-size: $base-font-size;

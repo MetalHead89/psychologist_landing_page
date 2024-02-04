@@ -24,6 +24,8 @@
 
 <script lang="ts" setup>
 import { Autoplay, Navigation, Pagination, Zoom } from 'swiper/modules'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+
 import EducationSlider from '@/components/ui/Slider/EducationSlider.vue'
 
 const educationSliderRef = ref<InstanceType<typeof EducationSlider> | null>(null)
@@ -32,11 +34,23 @@ export interface Props {
   isShow?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   isShow: false
 })
 
 const emit = defineEmits(['update:is-show'])
+
+watch(() => props.isShow, async value => {
+  if (educationSliderRef.value) {
+    enableBodyScroll(educationSliderRef.value)
+  }
+
+  await nextTick()
+
+  if (value && educationSliderRef.value) {
+    disableBodyScroll(educationSliderRef.value)
+  }
+})
 
 const sliderOptions = {
   modules: [Navigation, Pagination, Autoplay, Zoom],
