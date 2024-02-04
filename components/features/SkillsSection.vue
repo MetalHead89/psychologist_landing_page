@@ -24,32 +24,32 @@
 </template>
 
 <script lang="ts" setup>
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const { $gsap } = useNuxtApp()
-let timeline: gsap.core.Timeline | null = null
+// const { $gsap } = useNuxtApp()
+// let timeline: gsap.core.Timeline | null = null
 
-onMounted(() => {
-  loadAnimation()
-})
+// onMounted(() => {
+//   loadAnimation()
+// })
 
-const loadAnimation = () => {
-  timeline = $gsap.timeline()
+// const loadAnimation = () => {
+//   timeline = $gsap.timeline()
 
-  timeline
-    .from('.skills__card', {
-      y: '-20px',
-      opacity: 0,
-      stagger: 0.3
-    })
+//   timeline
+//     .from('.skills__card', {
+//       y: '-20px',
+//       opacity: 0,
+//       stagger: 0.3
+//     })
 
-  ScrollTrigger.create({
-    trigger: '.skills-section',
-    start: 'top 50%',
-    toggleActions: 'play none none none',
-    animation: timeline
-  })
-}
+//   ScrollTrigger.create({
+//     trigger: '.skills-section',
+//     start: 'top 50%',
+//     toggleActions: 'play none none none',
+//     animation: timeline
+//   })
+// }
 </script>
 
 <style lang="scss" scoped>

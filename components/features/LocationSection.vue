@@ -3,7 +3,7 @@
     <h2 class="title">
       Где меня найти? Подробнее в видеоинструкции
 
-      <button class="showInstructionButton" @click="handleShowInstructionButtonClick">
+      <button type="button" class="showInstructionButton" @click="handleShowInstructionButtonClick">
         здесь
       </button>
     </h2>
