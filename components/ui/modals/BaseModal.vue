@@ -1,11 +1,13 @@
 <template>
   <div class="modal-wrapper">
     <Transition name="overlay-fade">
-      <div v-if="isShow" class="overlay" @click="handleCloseClick">
-        <button class="close" @click="handleCloseClick">
-          <div class="ic-close" />
-        </button>
-      </div>
+      <div v-if="isShow" class="overlay" @click="handleCloseClick" />
+    </Transition>
+
+    <Transition name="close-fade">
+      <button v-if="isShow" class="close" @click="handleCloseClick">
+        <div class="ic-close" />
+      </button>
     </Transition>
 
     <Transition name="window-fade">
@@ -17,33 +19,17 @@
 </template>
 
 <script lang="ts" setup>
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-
 export interface Props {
   isShow?: boolean
 }
 
-const options = { reserveScrollBarGap: true }
-
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   isShow: false
 })
 
 const modalWindowRef = ref<HTMLDivElement | null>(null)
 
 const emit = defineEmits(['update:is-show'])
-
-watch(() => props.isShow, async value => {
-  if (modalWindowRef.value) {
-    enableBodyScroll(modalWindowRef.value)
-  }
-
-  await nextTick()
-
-  if (value && modalWindowRef.value) {
-    disableBodyScroll(modalWindowRef.value, options)
-  }
-})
 
 const handleCloseClick = () => {
   emit('update:is-show', false)
@@ -63,8 +49,9 @@ const handleCloseClick = () => {
     right: 0;
     background: #000000b9;
     cursor: pointer;
+  }
 
-    .close {
+  .close {
       padding: 0;
       margin: 0;
       display: flex;
@@ -76,8 +63,8 @@ const handleCloseClick = () => {
       top: 20px;
       right: 20px;
       font-size: 30px;
+      z-index: 1;
     }
-  }
 
   .window {
     position: fixed;
@@ -91,12 +78,16 @@ const handleCloseClick = () => {
   }
 
   .overlay-fade-enter-active,
-  .overlay-fade-leave-active {
+  .overlay-fade-leave-active,
+  .close-fade-enter-active,
+  .close-fade-leave-active {
     transition: opacity 0.5s ease;
   }
 
   .overlay-fade-enter-from,
-  .overlay-fade-leave-to {
+  .overlay-fade-leave-to,
+  .close-fade-enter-from,
+  .close-fade-leave-to {
     opacity: 0;
   }
 

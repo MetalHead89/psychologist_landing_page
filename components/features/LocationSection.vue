@@ -1,12 +1,12 @@
 <template>
   <div class="page-section location-section">
-    <h2 class="title">
+    <h3 class="title">
       Где меня найти? Подробнее в видеоинструкции
 
       <button type="button" class="showInstructionButton" @click="handleShowInstructionButtonClick">
         здесь
       </button>
-    </h2>
+    </h3>
 
     <iframe
       src="https://yandex.ru/map-widget/v1/?&whatshere%5Bpoint%5D=95.711457%2C56.202441&z=17.6"
@@ -28,7 +28,7 @@ const handleShowInstructionButtonClick = () => {
 
 <style lang="scss" scoped>
 .location-section {
-  padding: 8vh $content-padding;
+  padding: 0 $content-padding 8vh $content-padding;
 
   .title {
     text-align: center;
