@@ -90,13 +90,18 @@ defineExpose({
 <style lang="scss" scoped>
 .swiper {
   .education-image {
-    // width: 100%;
-    max-height: 263px;
+    max-width: 100%;
+    // height: 263px;
     cursor: pointer;
+    // flex: none;
+    object-fit: contain;
   }
 
   .picture {
     display: block;
+    display: flex;
+    justify-content: center;
+    max-height: 263px;
   }
 
   :deep(.swiper-button-prev),

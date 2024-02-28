@@ -55,5 +55,9 @@ defineExpose({
     cursor: default;
     object-fit: contain;
   }
+
+  :deep(.picture) {
+    max-height: 100vh;
+  }
 }
 </style>
