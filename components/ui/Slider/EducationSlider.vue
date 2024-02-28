@@ -66,6 +66,7 @@ const options = {
 }
 
 const slides = [
+  { image: '/education/education_image_8' },
   { image: '/education/education_image_1' },
   { image: '/education/education_image_2' },
   { image: '/education/education_image_3' },
@@ -89,7 +90,8 @@ defineExpose({
 <style lang="scss" scoped>
 .swiper {
   .education-image {
-    width: 100%;
+    // width: 100%;
+    max-height: 263px;
     cursor: pointer;
   }
 
