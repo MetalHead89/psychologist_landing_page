@@ -3,7 +3,7 @@
     <FeaturesHeroSection />
     <FeaturesAboutMeSection />
     <FeaturesLocationSection />
-    <FeaturesConsultationSection />
+    <!-- <FeaturesConsultationSection /> -->
     <FeaturesSkillsSection />
     <FeaturesTechniquesInfo />
     <FeaturesMemoSection />
