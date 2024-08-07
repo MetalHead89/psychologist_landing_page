@@ -38,10 +38,6 @@
     </ul>
 
     <p>
-      Обращайтесь, буду рада вам помочь!
-    </p>
-
-    <p>
       Еще одна особенность - это совместная работа. Психолог и клиент работают вместе как команда, чтобы определить цели, разработать план действий и отслеживать прогресс.
     </p>
 
@@ -113,10 +109,16 @@
       Я в социальных сетях
     </h3>
 
-    <ul class="social-media-links">
-      <li><a href="https://vk.com/ekaterina.bakalova" class="link-global">Профиль в VK</a></li>
-      <li><a href="https://vk.com/psycholog.bakalova" class="link-global">Сообщество «Психология на каждый день»</a></li>
-    </ul>
+    <div class="social-media-links">
+      <p><a href="https://vk.com/ekaterina.bakalova" class="link-global">Профиль в VK</a></p>
+      <p>
+        Присоединяйтесь к замечательному сообществу и откройте для себя мир психологии!
+      </p>
+      <p>
+        Здесь вы найдете ответы на самые важные вопросы о себе и других.
+      </p>
+      <p><a href="https://vk.com/psycholog.bakalova" class="link-global">Сообщество «Психология на каждый день»</a></p>
+    </div>
 
     <div class="clear-fix" />
   </div>
