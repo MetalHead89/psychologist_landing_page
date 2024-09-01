@@ -64,14 +64,14 @@ const activatedNavbarItem: IntersectionObserverCallback = entries => {
   })
 }
 
-const getItemClasses = (isActive: Boolean) => {
+const getItemClasses = (isActive: boolean) => {
   return [
     BASE_ITEM_CLASS,
     isActive && `${BASE_ITEM_CLASS}_is-active`
   ]
 }
 
-if (process.browser) {
+if (import.meta.browser) {
   const observer = new IntersectionObserver(activatedNavbarItem, { threshold: 0.5 })
   document.querySelectorAll('.page-section')
     .forEach(section => observer.observe(section))

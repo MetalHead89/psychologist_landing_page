@@ -6,6 +6,7 @@
 //   appealReason: string
 // }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAnyObject = { [prop: string]: any }
 
 type TFeedbackData = {
@@ -25,6 +26,7 @@ type TSelectSelectedSlotProps = {
   isOpen: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare function ym(metrikaId: string, method: string, ...args: any): void
 declare module 'swiper'
 declare module 'swiper/modules'

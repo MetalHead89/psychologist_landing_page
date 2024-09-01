@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
 import validator from 'validator'
 
 const config = useRuntimeConfig()
@@ -22,6 +21,7 @@ export default defineEventHandler(async event => {
       .catch(error => {
         return Promise.reject(error)
       })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     await sandMessage(error)
 

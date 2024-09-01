@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export default {
   about_me: {
     title: 'Обо мне',

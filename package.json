@@ -8,17 +8,16 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
-    "lint": "npm run lint:js"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/eslint": "^0.5.5",
     "@nuxt/image": "^1.8.0",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "^8.5.1",
     "@nuxtjs/sitemap": "^6.0.0-beta.5",
-    "eslint": "^8.51.0",
+    "eslint": "^9.9.1",
     "nuxt": "^3.13.0",
     "sass": "^1.77.8"
   },

@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-// eslint-disable-next-line import/no-named-as-default
 import Swiper from 'swiper'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -26,8 +25,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 export interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   slides?: Array<any>,
-  options?: Object,
+  options?: object,
   swiperClass: string
 }
 
@@ -57,7 +57,7 @@ onMounted(() => {
       delay: 5000
     },
     modules: [Navigation, Pagination, Autoplay],
-    navigation: isShowNavigation
+    navigation: isShowNavigation.value
       ? {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'

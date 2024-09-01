@@ -22,7 +22,8 @@ export default defineNuxtConfig({
     'nuxt-snackbar',
     '@nuxtjs/robots',
     '@nuxt/image',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxt/eslint'
   ],
 
   i18n: {

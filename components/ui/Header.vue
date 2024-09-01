@@ -36,7 +36,7 @@ const handleBurgerClick = () => {
   isActiveBurger.value = !isActiveBurger.value
 }
 
-if (process.browser) {
+if (import.meta.browser) {
   document.addEventListener('scroll', getScrollPosition)
 }
 </script>

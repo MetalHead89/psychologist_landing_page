@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import ModalEducationSlider from '@/components/ui/modals/ModalEducationSlider.vue'
+import type ModalEducationSlider from '@/components/ui/modals/ModalEducationSlider.vue'
 import EducationSlider from '@/components/ui/Slider/EducationSlider.vue'
 
 const isShowModalEducationSlider = ref(false)

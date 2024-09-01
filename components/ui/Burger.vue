@@ -34,7 +34,7 @@ const getScrollPosition = () => {
   scrollPosition.value = window.scrollY
 }
 
-if (process.browser) {
+if (import.meta.browser) {
   document.addEventListener('scroll', getScrollPosition)
 }
 </script>

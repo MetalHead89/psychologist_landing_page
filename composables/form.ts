@@ -1,4 +1,4 @@
-import { Validation } from '@vuelidate/core'
+import type { Validation } from '@vuelidate/core'
 import { provide } from 'vue'
 
 export function useForm() {
@@ -23,6 +23,7 @@ export function useForm() {
     errors.value = localErrors
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const afterRequest = (response: Promise<any>) => {
     response
       .then(({ title, text }) => {

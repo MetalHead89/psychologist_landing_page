@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 export default {
   memo: {
     title: '{accent} для клиента',
