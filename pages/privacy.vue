@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <div class="privacy">
     <div class="button-wrapper">
@@ -97,7 +96,14 @@
   </div>
 </template>
 
-<styles lang="scss" scoped>
+<script lang="ts" setup>
+
+definePageMeta({
+  layout: 'empty'
+})
+</script>
+
+<style lang="scss" scoped>
 .privacy {
   padding: 20px;
 
@@ -119,4 +125,4 @@
     margin: 10px 0;
   }
 }
-</styles>
+</style>
