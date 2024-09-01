@@ -20,13 +20,22 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'floating-vue/nuxt',
     'nuxt-snackbar',
-    'nuxt-simple-sitemap',
     '@nuxtjs/robots',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxtjs/sitemap'
   ],
+
+  i18n: {
+    vueI18n: './i18n.config.ts'
+  },
 
   site: {
     url: 'https://psycholog-bakalova.ru'
+  },
+
+  robots: {
+    autoI18n: false,
+    disallow: ['/privacy']
   },
 
   sitemap: {
@@ -65,5 +74,7 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+
+  compatibilityDate: '2024-09-01'
 })
