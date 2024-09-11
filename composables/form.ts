@@ -1,63 +1,72 @@
-import type { Validation } from '@vuelidate/core'
-import { provide } from 'vue'
+type TSubmit = (requestFunction: () => Promise<unknown>) => void
+type TSubmitSuccessHandler = () => void
+type TSubmitFailHandler = (error: TRequestError) => void
 
-export function useForm() {
-  const snackbar = useSnackbar()
-  const { t } = useI18n()
-  const errors: Ref<TAnyObject> = ref({})
-  const isLoading : Ref<boolean> = ref(false)
-
-  provide('errors', errors)
-
-  const setErrors = (v$: Ref<Validation>, keys: TAnyObject) => {
-    const localErrors: TAnyObject = {}
-
-    Object.keys(keys).forEach(key => {
-      const prop = v$.value[key].$errors[0]
-
-      if (prop) {
-        localErrors[key] = v$.value[key].$errors[0].$message
-      }
-    })
-
-    errors.value = localErrors
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const afterRequest = (response: Promise<any>) => {
-    response
-      .then(({ title, text }) => {
-        errors.value = {}
-
-        snackbar.add({
-          type: 'success',
-          title,
-          text
-        })
-      })
-      .catch(({ data }) => {
-        if (data.statusCode === 500) {
-          snackbar.add({
-            type: 'error',
-            title: t('composables.form.snackbar.server_error_title'),
-            text: t('composables.form.snackbar.server_error_text')
-          })
-
-          return null
-        }
-
-        const { statusMessage, data: errorData } = data
-
-        snackbar.add({
-          type: 'error',
-          title: t('composables.form.snackbar.server_error_title'),
-          text: statusMessage
-        })
-
-        errors.value = errorData?.errors || {}
-      })
-      .finally(() => { isLoading.value = false })
-  }
-
-  return { setErrors, afterRequest, isLoading }
+interface IUseForm {
+  submit: TSubmit,
+  handleSubmitSuccess: TSubmitSuccessHandler,
+  handleSubmitFail: TSubmitFailHandler,
+  setRequestProgressStatus: (status: boolean) => void,
+  isRequestInProgress: Ref<boolean>
 }
+
+export function useForm(): IUseForm {
+  const snackbar = useSnackbar()
+  const isRequestInProgress = ref(false)
+
+  const submit: TSubmit = requestFunction => {
+    setRequestProgressStatus(true)
+
+    requestFunction()
+      .then(handleSubmitSuccess)
+      .catch(handleSubmitFail)
+      .finally(() => setRequestProgressStatus(false))
+  }
+
+  const handleSubmitSuccess: TSubmitSuccessHandler = () => {
+    console.log('Submit success')
+  }
+
+  const handleSubmitFail: TSubmitFailHandler = ({ data }) => {
+    if (!data) {
+      return
+    }
+
+    const { snackbarError } = data
+
+    if (snackbarError) {
+      snackbar.add({
+        type: 'error',
+        title: 'Ошибка',
+        text: snackbarError
+      })
+    }
+  }
+
+  const setRequestProgressStatus = (status: boolean) => {
+    isRequestInProgress.value = status
+  }
+
+  return {
+    submit,
+    handleSubmitSuccess,
+    handleSubmitFail,
+    setRequestProgressStatus,
+    isRequestInProgress
+  }
+}
+
+
+// type TSubmitHandler = ({ promise }: { promise: Promise<unknown> }) => void
+
+// interface IUseForm {
+//   submitHandler: TSubmitHandler
+// }
+
+// export function useForm(): IUseForm {
+//   const submitHandler: TSubmitHandler = promise => {
+//     console.dir(promise)
+//   }
+
+//   return { submitHandler }
+// }

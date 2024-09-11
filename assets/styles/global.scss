@@ -3,7 +3,9 @@
 @import './variables.scss';
 
 html,
-body {
+body,
+#__nuxt,
+.app {
   height: 100vh;
   height: 100svh;
 }

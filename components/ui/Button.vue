@@ -68,11 +68,11 @@ const handleButtonClick = () => {
     top: 10%;
   }
 
-  &:not(.button_is-loading):hover {
+  &:not(.button_is-loading, :disabled):hover {
     background: darken($primary-color, $amount: 5%);
   }
 
-  &:not(.button_is-loading):active {
+  &:not(.button_is-loading, :disabled):active {
     background: darken($primary-color, $amount: 10%);
   }
 
@@ -85,6 +85,7 @@ const handleButtonClick = () => {
 
   &:disabled {
     cursor: default;
+    background: rgba($primary-color, 0.5);
   }
 }
 </style>

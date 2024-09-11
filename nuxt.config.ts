@@ -13,6 +13,8 @@ export default defineNuxtConfig({
   components: [
     { path: '~/components/features', prefix: 'Features' },
     { path: '~/components/ui/modals', prefix: 'Ui' },
+    { path: '~/components/features/cms', prefix: 'CmsFeatures' },
+    { path: '~/components/ui/cms', prefix: 'CmsUi' },
     '~/components'
   ],
 
@@ -23,8 +25,16 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    'nuxt-mongoose'
   ],
+
+  mongoose: {
+    uri: process.env.MONGODB_URI,
+    options: { dbName: process.env.MONGODB_DB_NAME },
+    modelsDir: 'models',
+    devtools: true
+  },
 
   i18n: {
     vueI18n: './i18n.config.ts'
@@ -56,6 +66,8 @@ export default defineNuxtConfig({
     contactMail: process.env.CONTACT_MAIL,
     notifierBotToken: process.env.NOTIFIER_BOT_TOKEN,
     psychologyTelegramChatId: process.env.PSYCHOLOGY_TELEGRAM_CHAT_ID,
+    accessTokenSalt: process.env.ACCESS_TOKEN_SALT,
+    refreshTokenSalt: process.env.REFRESH_TOKEN_SALT,
 
     public: {
       metrikaId: process.env.METRIKA_ID,

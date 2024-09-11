@@ -17,8 +17,11 @@
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/i18n": "^8.5.1",
     "@nuxtjs/sitemap": "^6.0.0-beta.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "eslint": "^9.9.1",
     "nuxt": "^3.13.0",
+    "nuxt-mongoose": "^1.0.6",
     "sass": "^1.77.8"
   },
   "dependencies": {
@@ -28,9 +31,11 @@
     "@types/validator": "^13.12.1",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "bcrypt": "^5.1.1",
     "body-scroll-lock": "^4.0.0-beta.0",
     "floating-vue": "^5.2.2",
     "gsap": "^3.12.5",
+    "jsonwebtoken": "^9.0.2",
     "maska": "^3.0.2",
     "nodemailer": "^6.9.14",
     "normalize.css": "^8.0.1",
