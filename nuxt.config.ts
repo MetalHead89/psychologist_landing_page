@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     { path: '~/components/ui/modals', prefix: 'Ui' },
     { path: '~/components/features/cms', prefix: 'CmsFeatures' },
     { path: '~/components/ui/cms', prefix: 'CmsUi' },
+    { path: '~/components/ui/cms/buttons', prefix: 'CmsUi' },
+    { path: '~/components/ui/cms/inputs', prefix: 'CmsUi' },
     '~/components'
   ],
 
@@ -26,7 +28,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/sitemap',
     '@nuxt/eslint',
-    'nuxt-mongoose'
+    'nuxt-mongoose',
+    '@pinia/nuxt'
   ],
 
   mongoose: {

@@ -17,9 +17,7 @@ export default defineEventHandler(event => {
     !CMS_ROUTES_WITHOUT_AUTHORIZATION.includes(requestPath)
 
   if (isProtectedCmsRequest) {
-    const authHeader = getRequestHeader(event, 'Authorization')
-    const accessToken = authHeader?.split(' ')[1] || ''
-
+    const accessToken = getAccessToken(event)
     if (!accessToken) {
       createNotAuthorizedError()
     }

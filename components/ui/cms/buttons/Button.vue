@@ -52,15 +52,17 @@ const handleButtonClick = () => {
 .button {
   display: flex;
   justify-content: center;
-  border-radius: $base-border-radius;
+  border-radius: $cms-border-radius;
   background: $primary-color;
-  padding: 20px 50px;
+  padding: 10px 25px;
   border: none;
+  border: 1px solid $primary-color;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 400;
+  font-size: 16px;
   cursor: pointer;
   position: relative;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, border 0.3s ease;
 
   .spinner {
     position: absolute;
@@ -70,10 +72,12 @@ const handleButtonClick = () => {
 
   &:not(.button_is-loading, :disabled):hover {
     background: darken($primary-color, $amount: 5%);
+    border-color: darken($primary-color, $amount: 5%);
   }
 
   &:not(.button_is-loading, :disabled):active {
     background: darken($primary-color, $amount: 10%);
+    border-color: darken($primary-color, $amount: 10%);
   }
 
   .text {

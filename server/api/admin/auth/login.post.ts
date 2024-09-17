@@ -13,7 +13,7 @@ export default defineEventHandler(async event => {
         statusCode: 400,
         statusMessage: 'Required fields are not filled in',
         data: {
-          snackbarError: 'Не заполнены обязательные поля'
+          snackbarErrors: ['Не заполнены обязательные поля']
         }
       })
     }
@@ -25,7 +25,7 @@ export default defineEventHandler(async event => {
         statusCode: 400,
         statusMessage: 'Email or password is wrong! please try again later',
         data: {
-          snackbarError: 'Не верный логин или пароль'
+          snackbarErrors: ['Не верный логин или пароль']
         }
       })
     }
@@ -37,7 +37,7 @@ export default defineEventHandler(async event => {
         statusCode: 400,
         statusMessage: 'Email or password is wrong! please try again later',
         data: {
-          snackbarError: 'Не верный логин или пароль'
+          snackbarErrors: ['Не верный логин или пароль']
         }
       })
     }

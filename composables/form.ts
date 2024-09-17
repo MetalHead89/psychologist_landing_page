@@ -1,4 +1,7 @@
-type TSubmit = (requestFunction: () => Promise<unknown>) => void
+type TSubmit = (
+  requestFunction: () => Promise<unknown>,
+  successCallback?: (data: unknown) => unknown,
+) => void
 type TSubmitSuccessHandler = () => void
 type TSubmitFailHandler = (error: TRequestError) => void
 
@@ -13,18 +16,33 @@ interface IUseForm {
 export function useForm(): IUseForm {
   const snackbar = useSnackbar()
   const isRequestInProgress = ref(false)
+  const errors = ref<{ [prop: string]: string[] }>({})
 
-  const submit: TSubmit = requestFunction => {
+  provide('controlErrors', errors)
+
+  const submit: TSubmit = (requestFunction, successCallback) => {
     setRequestProgressStatus(true)
 
     requestFunction()
-      .then(handleSubmitSuccess)
+      .then(data => {
+        if (successCallback) {
+          successCallback(data)
+          return
+        }
+
+        handleSubmitSuccess()
+      })
       .catch(handleSubmitFail)
       .finally(() => setRequestProgressStatus(false))
   }
 
   const handleSubmitSuccess: TSubmitSuccessHandler = () => {
-    console.log('Submit success')
+    errors.value = {}
+    snackbar.add({
+      type: 'success',
+      title: 'Успех',
+      text: 'Успешно сохранено'
+    })
   }
 
   const handleSubmitFail: TSubmitFailHandler = ({ data }) => {
@@ -32,15 +50,19 @@ export function useForm(): IUseForm {
       return
     }
 
-    const { snackbarError } = data
+    const { snackbarErrors = [], fieldErrors } = data
 
-    if (snackbarError) {
-      snackbar.add({
-        type: 'error',
-        title: 'Ошибка',
-        text: snackbarError
+    if (snackbarErrors.length > 0) {
+      snackbarErrors.forEach(snackbarError => {
+        snackbar.add({
+          type: 'error',
+          title: 'Ошибка',
+          text: snackbarError
+        })
       })
     }
+
+    errors.value = fieldErrors || {}
   }
 
   const setRequestProgressStatus = (status: boolean) => {
@@ -55,18 +77,3 @@ export function useForm(): IUseForm {
     isRequestInProgress
   }
 }
-
-
-// type TSubmitHandler = ({ promise }: { promise: Promise<unknown> }) => void
-
-// interface IUseForm {
-//   submitHandler: TSubmitHandler
-// }
-
-// export function useForm(): IUseForm {
-//   const submitHandler: TSubmitHandler = promise => {
-//     console.dir(promise)
-//   }
-
-//   return { submitHandler }
-// }

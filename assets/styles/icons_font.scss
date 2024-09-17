@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?16bgww');
-  src:  url('/assets/fonts/icons/icons.eot?16bgww#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?16bgww') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?16bgww') format('woff'),
-    url('/assets/fonts/icons/icons.svg?16bgww#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?41mrnv');
+  src:  url('/assets/fonts/icons/icons.eot?41mrnv#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?41mrnv') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?41mrnv') format('woff'),
+    url('/assets/fonts/icons/icons.svg?41mrnv#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ic-close:before {
+.ic-account-circle:before {
+  content: "\e900";
+}
+.ic-account-outline:before {
   content: "\e901";
 }
+.ic-logout:before {
+  content: "\e902";
+}
 .ic-arrow-left:before {
-  content: "\e900";
+  content: "\e903";
+}
+.ic-close:before {
+  content: "\e904";
 }
 .ic-alarm-turn-off:before {
   content: "\e905";

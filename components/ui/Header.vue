@@ -41,7 +41,7 @@ if (import.meta.browser) {
 }
 </script>
 
-<style lang="scss" setup>
+<style lang="scss" setup scoped>
 .header {
   position: absolute;
   display: flex;

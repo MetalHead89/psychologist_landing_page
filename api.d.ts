@@ -1,11 +1,13 @@
+type TUserData = {
+  id: string,
+  name: string,
+  role: string
+}
+
 // Auth
 type TAuthLoginResponse = {
   accessToken: string,
-  user: {
-    id: string,
-    name: string,
-    role: string
-  }
+  userData: TUserData
 }
 
 type TAuthLogin = (payload: { login: string; password: string }) => Promise<TAuthLoginResponse>
@@ -25,8 +27,8 @@ type TProfile = {
 }
 
 type TProfileRequest = TProfile & {  password: string }
-type TProfileGet = () => Promise<TProfile>
-type TProfileUpdate = (payload: TProfileRequest) => Promise<void>
+type TProfileGet = () => Promise<TUser>
+type TProfileUpdate = (payload: { name?: string; password?: string, retryPassword?: string }) => Promise<TUserData>
 
 interface IProfileApi {
   get: TProfileGet,
@@ -40,7 +42,7 @@ interface IApi {
 
 type TRequestError = {
   data?: {
-    snackbarError: string,
+    snackbarErrors: string[],
     fieldErrors?: { [prop: string]: string[] }
   },
   message: string,

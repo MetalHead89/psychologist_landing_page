@@ -1,7 +1,4 @@
-import {
-  CMS_LS_USER,
-  CMS_LS_ACCESS_TOKEN
-} from '@/shared/constants.js'
+import { CMS_LS_ACCESS_TOKEN } from '@/shared/constants.js'
 
 interface IUseAuth {
   setAuthData: (data: TAuthLoginResponse) => void,
@@ -11,8 +8,10 @@ interface IUseAuth {
 }
 
 export function useAuth(): IUseAuth {
-  const setAuthData = ({ user, accessToken }: TAuthLoginResponse) => {
-    localStorage.setItem(CMS_LS_USER, JSON.stringify(user))
+  const userStore = useUserStore()
+
+  const setAuthData = ({ userData, accessToken }: TAuthLoginResponse) => {
+    userStore.setUser(userData)
     localStorage.setItem(CMS_LS_ACCESS_TOKEN, accessToken)
   }
 
@@ -21,7 +20,6 @@ export function useAuth(): IUseAuth {
   })
 
   const clearAuthData = () => {
-    localStorage.removeItem(CMS_LS_USER)
     localStorage.removeItem(CMS_LS_ACCESS_TOKEN)
   }
 

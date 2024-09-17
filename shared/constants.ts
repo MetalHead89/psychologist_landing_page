@@ -1,9 +1,10 @@
+const STORAGE_KEY_PREFIX = 'cms_psychology_'
+
 // Cookie names
-export const CMS_COOKIE_REFRESH = 'refresh_token'
+export const CMS_COOKIE_REFRESH = `${STORAGE_KEY_PREFIX}refresh_token`
 
 // Local storage keys
-export const CMS_LS_USER = 'user'
-export const CMS_LS_ACCESS_TOKEN = 'access_token'
+export const CMS_LS_ACCESS_TOKEN = `${STORAGE_KEY_PREFIX}access_token`
 
 // Routes
 export const CMS_ROUTE_DEFAULT = 'admin-profile'
@@ -17,6 +18,16 @@ export const API_ROUTE_REFRESH = '/api/admin/auth/refresh'
 export const API_REALMS = {
   api: 'api',
   cmsApi: 'cmsApi'
+}
+
+// Roles
+
+export const ROLES = {
+  admin: 'admin'
+}
+
+export const ROLES_NAMES = {
+  [ROLES.admin]: 'Администратор'
 }
 
 export const ANXIETY = [

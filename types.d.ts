@@ -6,6 +6,11 @@ type TUserModel = {
   role: string,
   password: string
 }
+type TUser = {
+  id: string,
+  name: string,
+  role: string
+}
 
 type TFeedbackData = {
   name: string,
