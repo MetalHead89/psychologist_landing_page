@@ -48,8 +48,10 @@
     "pinia": "^2.2.2",
     "swiper": "^11.1.11",
     "validator": "^13.12.0",
+    "vue-final-modal": "^4.5.5",
     "vue-kinesis": "^2.0.5",
-    "vue-multiselect": "^3.0.0"
+    "vue-multiselect": "^3.0.0",
+    "vue3-perfect-scrollbar": "^2.0.0"
   },
   "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

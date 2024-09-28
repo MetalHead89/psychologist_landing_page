@@ -4,10 +4,15 @@
       <li
         v-for="(item, index) in items"
         :key="index"
-        class="item"
       >
-        <i :class="['icon', item.icon]" />
-        <div class="truncated">{{ item.title }}</div>
+        <NuxtLink
+          :to="{ name: item.routeName }"
+          class="item"
+          @click="handleItemClick"
+        >
+          <i :class="['icon', item.icon]" />
+          <div class="truncated">{{ item.title }}</div>
+        </NuxtLink>
       </li>
     </ul>
   </nav>
@@ -15,8 +20,14 @@
 
 <script lang="ts" setup>
 const items = [
-  { icon: 'ic-account-outline', title: 'Профиль' }
+  { icon: 'ic-account-outline', title: 'Профиль', routeName: 'admin-profile' }
 ]
+
+const emit = defineEmits(['click-to-item'])
+
+const handleItemClick = () => {
+  emit('click-to-item')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +50,7 @@ const items = [
       line-height: 1;
       cursor: pointer;
       transition: $cms-base-hover-transition;
+      text-decoration: none;
 
       &:hover {
         background: $cms-hover-bg-color;

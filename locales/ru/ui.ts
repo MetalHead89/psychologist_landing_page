@@ -11,7 +11,6 @@ export default {
     navigation: {
       main: 'Главная',
       about_me: 'Обо мне',
-      consulting: 'Направления консультирования',
       techniques: 'Техники',
       memo: 'Памятка',
       education: 'Образование',

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?41mrnv');
-  src:  url('/assets/fonts/icons/icons.eot?41mrnv#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?41mrnv') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?41mrnv') format('woff'),
-    url('/assets/fonts/icons/icons.svg?41mrnv#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?qpexnj');
+  src:  url('/assets/fonts/icons/icons.eot?qpexnj#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?qpexnj') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?qpexnj') format('woff'),
+    url('/assets/fonts/icons/icons.svg?qpexnj#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-eye-off-outline:before {
+  content: "\e90f";
+}
+.ic-eye-outline:before {
+  content: "\e910";
+}
+.ic-message-star-outline:before {
+  content: "\e911";
+}
+.ic-star-outline:before {
+  content: "\e90d";
+}
+.ic-star:before {
+  content: "\e90e";
+}
 .ic-account-circle:before {
   content: "\e900";
 }

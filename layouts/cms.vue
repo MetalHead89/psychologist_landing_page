@@ -1,10 +1,11 @@
 <template>
   <div class="cms">
     <CmsFeaturesHeader />
+    <CmsFeaturesSidebar />
     <div
       v-if="isInitialized"
       ref="main"
-      class="main"
+      :class="mainClasses"
     >
       <slot />
     </div>
@@ -18,8 +19,16 @@ const main = ref<HTMLElement | null>(null)
 const headerStore = useHeaderStore()
 const { headerHeight } = storeToRefs(headerStore)
 const userStore = useUserStore()
+const sidebarStore = useSidebarStore()
 const { $api } = useNuxtApp()
 const isInitialized = ref(false)
+
+const mainClasses = computed(() => {
+  return [
+    'main',
+    !sidebarStore.isFullShow && 'main_is-full'
+  ]
+})
 
 onBeforeMount(() => {
   getInitData()
@@ -66,7 +75,21 @@ const getInitData = async () => {
     flex-direction: column;
     flex-grow: 1;
     padding-top: 72px;
+    padding-left: 0;
     height: 100%;
+    transition: padding 0.3s ease;
+
+    @media screen and (min-width: $lg) {
+      padding-left: $cms-sidebar-max-width;
+    }
+
+    &_is-full {
+      padding-left: 0;
+
+      @media screen and (min-width: $lg) {
+        padding-left: $cms-sidebar-min-width;
+      }
+    }
   }
 }
 </style>

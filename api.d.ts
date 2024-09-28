@@ -35,9 +35,52 @@ interface IProfileApi {
   update: TProfileUpdate
 }
 
+// Feedback
+
+type TAddFeedbackRequestData = {
+  name: string,
+  rating: number,
+  feedback: string
+}
+
+type TFeedbackModel = {
+  id: string,
+  name: string,
+  rating: number,
+  feedback: string,
+  isForModeration?: boolean,
+  isShowed?: boolean
+}
+
+type TAddFeedback = (payload: {
+  name: string,
+  rating: number,
+  feedback: string
+}) => Promise<void>
+
+type TGetFeedbacks = () => Promise<TFeedbackModel[]>
+type TUpdateFeedback = (
+  id: string,
+  payload: {
+    name?: string,
+    rating?: number,
+    feedback?: string,
+    isForModeration?: boolean,
+    isShowed?: boolean
+  }) => Promise<TFeedbackModel>
+  type TGetAllowedReviews = () => Promise<TFeedbackModel[]>
+
+interface IFeedbackApi {
+  add: TAddFeedback,
+  get: TGetFeedbacks,
+  update: TUpdateFeedback,
+  getAllowedReviews: TGetAllowedReviews
+}
+
 interface IApi {
   auth: IAuthApi,
-  profile: IProfileApi
+  profile: IProfileApi,
+  feedback: IFeedbackApi
 }
 
 type TRequestError = {

@@ -7,8 +7,9 @@ export const CMS_COOKIE_REFRESH = `${STORAGE_KEY_PREFIX}refresh_token`
 export const CMS_LS_ACCESS_TOKEN = `${STORAGE_KEY_PREFIX}access_token`
 
 // Routes
-export const CMS_ROUTE_DEFAULT = 'admin-profile'
 export const CMS_ROUTE_LOGIN = 'admin-login'
+export const CMS_ROUTE_FEEDBACKS = 'admin-feedbacks'
+export const CMS_ROUTE_DEFAULT = CMS_ROUTE_FEEDBACKS
 
 // API Routes
 export const API_ROUTE_LOGIN = '/api/admin/auth/login'
@@ -21,7 +22,6 @@ export const API_REALMS = {
 }
 
 // Roles
-
 export const ROLES = {
   admin: 'admin'
 }

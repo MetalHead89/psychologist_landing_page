@@ -34,9 +34,11 @@ $cms-control-padding: 10px;
 $cms-font-size: 16px;
 $cms-line-height: 18px;
 $cms-form-gap: 20px;
+$cms-sidebar-min-width: 70px;
+$cms-sidebar-max-width: 250px;
 
 /* colors */
-$cms-base-shadow: 0px 0px 8px 1px rgba(34, 60, 80, 0.15);
+$cms-base-shadow: 0px 0px 8px 1px #223c5026;
 $cms-text-color: #605c5c;
 $cms-muted-color: #b8b8b8;
 $cms-success-color: #84c563;

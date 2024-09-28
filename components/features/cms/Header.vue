@@ -1,6 +1,6 @@
 <template>
-  <div ref="headerWrapper" class="header-wrapper">
-    <header :class="classes">
+  <div ref="headerWrapper" :class="classes">
+    <header class="header">
       <CmsUiBurger />
       <CmsUiProfile class="profile"/>
     </header>
@@ -10,22 +10,14 @@
 <script lang="ts" setup>
 const headerStore = useHeaderStore()
 const headerWrapper = ref<HTMLElement | null>(null)
-// const sidebarStore = useSidebarStore()
-// const screen = useScreen()
-
-const BASE_CLASS = 'header'
+const sidebarStore = useSidebarStore()
 
 const classes = computed(() => {
   return [
-    BASE_CLASS
-    // !screen.isMobileScreen.value && sidebarStore.isMinimized && `${BASE_CLASS}_is-long`,
-    // !screen.isMobileScreen.value && sidebarStore.isOpened && `${BASE_CLASS}_is-short`
+    'header-wrapper',
+    !sidebarStore.isFullShow && 'header-wrapper_is-full'
   ]
 })
-
-// defineOptions({
-//   inheritAttrs: false
-// })
 
 const handleHeaderResize = () => {
   if (!headerWrapper.value) {
@@ -64,6 +56,19 @@ onDeactivated(() => {
   background: linear-gradient(180deg, rgba(248, 247, 250, 0.7) 44%, rgba(248, 247, 250, 0.43) 73%, rgba(248, 247, 250, 0));
   backdrop-filter: saturate(200%) blur(10px);
   z-index: 100;
+  transition: left 0.3s ease;
+
+  @media screen and (min-width: $lg) {
+    left: $cms-sidebar-max-width;
+  }
+
+  &_is-full {
+    left: 0;
+
+    @media screen and (min-width: $lg) {
+      left: $cms-sidebar-min-width;
+    }
+  }
 
   .header {
     position: relative;
@@ -73,21 +78,6 @@ onDeactivated(() => {
     box-shadow: $cms-base-shadow;
     border-radius: $cms-border-radius;
     background: #ffffff;
-    // grid-column: 1 / span 2;
-    // padding: 20px $base-content-padding;
-    // display: flex;
-    // align-items: center;
-    // background: rgba($main-bg-color, 0.7);
-    // transition: margin 0.3s;
-    // gap: 30px;
-
-    // &_is-long {
-    //   margin-left: $sidebar-minimized-width;
-    // }
-
-    // &_is-short {
-    //   margin-left: $sidebar-max-width;
-    // }
   }
 
   .profile {

@@ -8,6 +8,7 @@
     <FeaturesTechniquesInfo />
     <FeaturesMemoSection />
     <FeaturesEducationSection />
+    <FeaturesReviewsSection />
     <FeaturesFeedbackSection />
     <FeaturesFooter />
     <NuxtSnackbar />

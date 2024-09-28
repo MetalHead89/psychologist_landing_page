@@ -79,7 +79,10 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['@/assets/styles/global.scss'],
+  css: [
+    '@/assets/styles/global.scss',
+    'vue-final-modal/style.css'
+  ],
 
   vite: {
     css: {

@@ -1,6 +1,6 @@
 <template>
   <div ref="formFooter" class="form-footer">
-    <div class="footer-wrapper">
+    <div :class="footerWrapperClasses">
       <footer ref="footer" class="footer">
         <slot name="left-section">
           <div class="footer-section" />
@@ -47,14 +47,23 @@ export interface Props {
   isLoading?: boolean
 }
 
-// const props = defineProps<Props>()
 withDefaults(defineProps<Props>(), {
-  isLoading: false
+  isLoading: false,
+  submit: undefined,
+  cancel: undefined
 })
 
+const sidebarStore = useSidebarStore()
 
 const formFooter = ref<HTMLElement | null>(null)
 const footer = ref<HTMLElement | null>(null)
+
+const footerWrapperClasses = computed(() => {
+  return [
+    'footer-wrapper',
+    !sidebarStore.isFullShow && 'footer-wrapper_is-full'
+  ]
+})
 
 const handleFooterResize = () => {
   if (!footer.value || !formFooter.value) {
@@ -89,6 +98,19 @@ onMounted(() => {
     left: 0;
     right: 0;
     padding: 0 $cms-horizontal-padding 20px $cms-horizontal-padding;
+    transition: left 0.3s ease;
+
+    @media screen and (min-width: $lg) {
+      left: $cms-sidebar-max-width;
+    }
+
+    &_is-full {
+      left: 0;
+
+      @media screen and (min-width: $lg) {
+        left: $cms-sidebar-min-width;
+      }
+    }
 
     .footer {
       border-radius: $cms-border-radius;

@@ -14,7 +14,7 @@
   </div>
 
   <div class="section navigation-section">
-    <CmsUiProfileNavigation />
+    <CmsUiProfileNavigation @click-to-item="handleItemClick" />
   </div>
 
   <div class="section actions-section">
@@ -69,6 +69,9 @@ onClickOutside(profileMenu, (event: Event) => {
   }
 })
 
+const handleItemClick = () => {
+  isShow.value = false
+}
 </script>
 
 <style lang="scss" scoped>

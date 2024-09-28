@@ -17,10 +17,13 @@ definePageMeta({
       }
 
       const { isAuthenticated } = useAuth()
-      const router = useRouter()
+      // const router = useRouter()
 
       if (isAuthenticated.value) {
-        router.push({ name: CMS_ROUTE_DEFAULT })
+        onNuxtReady(() => {
+          return navigateTo({ name: CMS_ROUTE_DEFAULT })
+        })
+        // router.push({ name: CMS_ROUTE_DEFAULT })
       }
     }
   ]

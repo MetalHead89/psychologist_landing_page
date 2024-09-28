@@ -11,12 +11,10 @@
 </template>
 
 <script lang="ts" setup>
-// import { useSidebarStore } from '@/stores/sidebar'
-
-// const sidebarStore = useSidebarStore()
+const sidebarStore = useSidebarStore()
 
 const handleBurgerClick = () => {
-  // sidebarStore.toggleState()
+  sidebarStore.toggleSidebarShowState()
 }
 </script>
 
@@ -42,22 +40,6 @@ $line-width: 23px;
     background-color: $cms-text-color;
     border-radius: 5px;
   }
-
-  // &_is-active {
-  //   position: fixed;
-  //   z-index: 102;
-  //   transform: rotate(180deg);
-
-  //   .line {
-  //     &:nth-child(1) {
-  //       transform: rotateZ(45deg) scaleX(0.78) translate(7px, -3px);
-  //     }
-
-  //     &:nth-child(3) {
-  //       transform: rotateZ(-45deg) scaleX(0.78) translate(7px, 3px);
-  //     }
-  //   }
-  // }
 
   &:hover {
     cursor: pointer;

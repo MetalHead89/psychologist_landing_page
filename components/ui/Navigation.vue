@@ -1,27 +1,39 @@
 <template>
   <nav :class="classes">
-    <ul class="navigation-list">
-      <li
-        v-for="({ section, title, isActive: isActivated }, index) in links"
-        :key="index"
-        :class="getItemClasses(isActivated)"
-        @click="handleMenuItemClick(section)"
-      >
-        {{ title }}
-      </li>
-    </ul>
+    <div class="list-wrapper">
+      <ul class="navigation-list">
+        <li
+          v-for="({ section, title, isActive: isActivated }, index) in links"
+          :key="index"
+          :class="getItemClasses(isActivated)"
+          @click="handleMenuItemClick(section)"
+        >
+          {{ title }}
+        </li>
+
+        <li :class="BASE_ITEM_CLASS" @click="handleFeedbackClick">
+          Оставить отзыв
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
 <script lang="ts" setup>
+import { useModal } from 'vue-final-modal'
+import FeaturesFeedbackModal from '@/components/features/FeedbackModal.vue'
+
 const BASE_CLASS = 'navigation'
 const BASE_ITEM_CLASS = 'menu-item'
 const { t } = useI18n()
 
+const { open } = useModal({
+  component: FeaturesFeedbackModal
+})
+
 const links = ref([
   { section: '.hero-section', isActive: false, title: t('ui.navigation.main') },
   { section: '.about-me-section', isActive: false, title: t('ui.navigation.about_me') },
-  { section: '.consultation-section', isActive: false, title: t('ui.navigation.consulting') },
   { section: '.skills-section', isActive: false, title: t('ui.navigation.techniques') },
   { section: '.memo-section', isActive: false, title: t('ui.navigation.memo') },
   { section: '.education-section', isActive: false, title: t('ui.navigation.education') },
@@ -76,6 +88,10 @@ if (import.meta.browser) {
   document.querySelectorAll('.page-section')
     .forEach(section => observer.observe(section))
 }
+
+const handleFeedbackClick = () => {
+  open()
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,15 +110,25 @@ if (import.meta.browser) {
     background: transparent;
   }
 
+  .list-wrapper {
+    padding: 100px 10px 30px 10px;
+    height: 100%;
+
+    @media screen and (min-width: $md) {
+      padding: 0;
+    }
+  }
+
   .navigation-list {
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    padding: 100px 10px;
     height: 100%;
     box-sizing: border-box;
+    overflow-y: auto;
 
     @media screen and (min-width: $md) {
       flex-direction: row;
@@ -110,6 +136,7 @@ if (import.meta.browser) {
       gap: 20px;
       padding: 0;
       height: auto;
+      overflow: initial;
     }
 
     @media screen and (min-width: $xl) {
