@@ -22,3 +22,26 @@ $lg: 1024px;
 $md: 768px;
 $sm: 480px;
 $xs: 320px;
+
+$card-shadow: 0px -8px 40px -17px #00000035;
+
+/* cms */
+
+/* sizes */
+$cms-horizontal-padding: 20px;
+$cms-border-radius: 8px;
+$cms-control-padding: 10px;
+$cms-font-size: 16px;
+$cms-line-height: 18px;
+$cms-form-gap: 20px;
+$cms-sidebar-min-width: 70px;
+$cms-sidebar-max-width: 250px;
+
+/* colors */
+$cms-base-shadow: 0px 0px 8px 1px #223c5026;
+$cms-text-color: #605c5c;
+$cms-muted-color: #b8b8b8;
+$cms-success-color: #84c563;
+$cms-hover-bg-color: #f1f1f1;
+
+$cms-base-hover-transition: 0.2s ease-in-out;

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?16bgww');
-  src:  url('/assets/fonts/icons/icons.eot?16bgww#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?16bgww') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?16bgww') format('woff'),
-    url('/assets/fonts/icons/icons.svg?16bgww#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?qpexnj');
+  src:  url('/assets/fonts/icons/icons.eot?qpexnj#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?qpexnj') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?qpexnj') format('woff'),
+    url('/assets/fonts/icons/icons.svg?qpexnj#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ic-close:before {
+.ic-eye-off-outline:before {
+  content: "\e90f";
+}
+.ic-eye-outline:before {
+  content: "\e910";
+}
+.ic-message-star-outline:before {
+  content: "\e911";
+}
+.ic-star-outline:before {
+  content: "\e90d";
+}
+.ic-star:before {
+  content: "\e90e";
+}
+.ic-account-circle:before {
+  content: "\e900";
+}
+.ic-account-outline:before {
   content: "\e901";
 }
+.ic-logout:before {
+  content: "\e902";
+}
 .ic-arrow-left:before {
-  content: "\e900";
+  content: "\e903";
+}
+.ic-close:before {
+  content: "\e904";
 }
 .ic-alarm-turn-off:before {
   content: "\e905";

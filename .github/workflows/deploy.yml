@@ -48,6 +48,13 @@ jobs:
           echo YANDEX_VERIFICATION_ID=${{ secrets.YANDEX_VERIFICATION_ID }} >> .env
           echo NOTIFIER_BOT_TOKEN=${{ secrets.NOTIFIER_BOT_TOKEN }} >> .env
           echo PSYCHOLOGY_TELEGRAM_CHAT_ID=${{ secrets.PSYCHOLOGY_TELEGRAM_CHAT_ID }} >> .env
+
+          echo MONGO_USERNAME=${{ secrets.MONGO_USERNAME }} >> .env
+          echo MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} >> .env
+          echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
+          echo MONGODB_DB_NAME=${{ secrets.MONGODB_DB_NAME }} >> .env
+          echo ACCESS_TOKEN_SALT=${{ secrets.ACCESS_TOKEN_SALT }} >> .env
+          echo REFRESH_TOKEN_SALT=${{ secrets.REFRESH_TOKEN_SALT }} >> .env
       - name: Install deps
         run: npm ci
       - name: Build app

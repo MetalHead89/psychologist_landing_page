@@ -1,13 +1,16 @@
-// type TAnyObject = { [prop: string]: string }
-
-// type TFeedbackData = {
-//   name: string,
-//   email: string,
-//   appealReason: string
-// }
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAnyObject = { [prop: string]: any }
+type TUserModel = {
+  id: string,
+  name: string,
+  role: string,
+  password: string
+}
+type TUser = {
+  id: string,
+  name: string,
+  role: string
+}
 
 type TFeedbackData = {
   name: string,

@@ -1,63 +1,79 @@
-import type { Validation } from '@vuelidate/core'
-import { provide } from 'vue'
+type TSubmit = (
+  requestFunction: () => Promise<unknown>,
+  successCallback?: (data: unknown) => unknown,
+) => void
+type TSubmitSuccessHandler = () => void
+type TSubmitFailHandler = (error: TRequestError) => void
 
-export function useForm() {
+interface IUseForm {
+  submit: TSubmit,
+  handleSubmitSuccess: TSubmitSuccessHandler,
+  handleSubmitFail: TSubmitFailHandler,
+  setRequestProgressStatus: (status: boolean) => void,
+  isRequestInProgress: Ref<boolean>
+}
+
+export function useForm(): IUseForm {
   const snackbar = useSnackbar()
-  const { t } = useI18n()
-  const errors: Ref<TAnyObject> = ref({})
-  const isLoading : Ref<boolean> = ref(false)
+  const isRequestInProgress = ref(false)
+  const errors = ref<{ [prop: string]: string[] }>({})
 
-  provide('errors', errors)
+  provide('controlErrors', errors)
 
-  const setErrors = (v$: Ref<Validation>, keys: TAnyObject) => {
-    const localErrors: TAnyObject = {}
+  const submit: TSubmit = (requestFunction, successCallback) => {
+    setRequestProgressStatus(true)
 
-    Object.keys(keys).forEach(key => {
-      const prop = v$.value[key].$errors[0]
-
-      if (prop) {
-        localErrors[key] = v$.value[key].$errors[0].$message
-      }
-    })
-
-    errors.value = localErrors
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const afterRequest = (response: Promise<any>) => {
-    response
-      .then(({ title, text }) => {
-        errors.value = {}
-
-        snackbar.add({
-          type: 'success',
-          title,
-          text
-        })
-      })
-      .catch(({ data }) => {
-        if (data.statusCode === 500) {
-          snackbar.add({
-            type: 'error',
-            title: t('composables.form.snackbar.server_error_title'),
-            text: t('composables.form.snackbar.server_error_text')
-          })
-
-          return null
+    requestFunction()
+      .then(data => {
+        if (successCallback) {
+          successCallback(data)
+          return
         }
 
-        const { statusMessage, data: errorData } = data
-
-        snackbar.add({
-          type: 'error',
-          title: t('composables.form.snackbar.server_error_title'),
-          text: statusMessage
-        })
-
-        errors.value = errorData?.errors || {}
+        handleSubmitSuccess()
       })
-      .finally(() => { isLoading.value = false })
+      .catch(handleSubmitFail)
+      .finally(() => setRequestProgressStatus(false))
   }
 
-  return { setErrors, afterRequest, isLoading }
+  const handleSubmitSuccess: TSubmitSuccessHandler = () => {
+    errors.value = {}
+    snackbar.add({
+      type: 'success',
+      title: 'Успех',
+      text: 'Успешно сохранено'
+    })
+  }
+
+  const handleSubmitFail: TSubmitFailHandler = ({ data }) => {
+    if (!data) {
+      return
+    }
+
+    const { snackbarErrors = [], fieldErrors } = data
+
+    if (snackbarErrors.length > 0) {
+      snackbarErrors.forEach(snackbarError => {
+        snackbar.add({
+          type: 'error',
+          title: 'Ошибка',
+          text: snackbarError
+        })
+      })
+    }
+
+    errors.value = fieldErrors || {}
+  }
+
+  const setRequestProgressStatus = (status: boolean) => {
+    isRequestInProgress.value = status
+  }
+
+  return {
+    submit,
+    handleSubmitSuccess,
+    handleSubmitFail,
+    setRequestProgressStatus,
+    isRequestInProgress
+  }
 }

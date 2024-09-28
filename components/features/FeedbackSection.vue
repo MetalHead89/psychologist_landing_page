@@ -136,7 +136,7 @@ import { FEEDBACK_TYPE } from '@/shared/constants'
 import { useMetrika } from '~/composables/metrika'
 
 // const { $gsap } = useNuxtApp()
-const { setErrors, afterRequest, isLoading } = useForm()
+const { setErrors, afterRequest, isLoading } = useOldForm()
 const { t } = useI18n()
 const { getOptions } = useOptions()
 const { metrika } = useMetrika()

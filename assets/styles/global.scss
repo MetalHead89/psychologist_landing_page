@@ -3,21 +3,20 @@
 @import './variables.scss';
 
 html,
-body {
+body,
+#__nuxt,
+.app {
   height: 100vh;
   height: 100svh;
 }
 
 html {
-  overflow-x: hidden;
+  overflow: hidden;
+  overflow-y: auto;
   font-size: $base-font-size;
   scroll-behavior: smooth;
   font-family: $primary-font;
   color: $font-color;
-}
-
-body {
-  overflow-x: hidden;
 }
 
 div {
@@ -42,4 +41,10 @@ ul {
 
 .link-global {
   color: $primary-color;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
