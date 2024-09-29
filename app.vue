@@ -5,6 +5,7 @@
     </NuxtLayout>
 
     <NuxtSnackbar />
+    <UiLoadingOverlay />
   </div>
 </template>
 

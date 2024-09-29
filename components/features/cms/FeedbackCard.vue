@@ -46,6 +46,7 @@ interface IProps {
 const props = defineProps<IProps>()
 
 const { $api } = useNuxtApp()
+const loadingOverlay = useLoadingOverlayStore()
 const emit = defineEmits(['updated'])
 
 const StatueButtonIcon = computed(() => {
@@ -63,9 +64,14 @@ const classes = computed(() => {
 })
 
 const handleStatueButtonClick = () => {
+  loadingOverlay.setIsShow(true)
+
   $api.feedback.update(props.id, { isShowed: !props.isShowed })
     .then(feedback => {
       emit('updated', feedback)
+    })
+    .finally(() => {
+      loadingOverlay.setIsShow(false)
     })
 }
 </script>

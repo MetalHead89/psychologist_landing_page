@@ -17,13 +17,19 @@ definePageMeta({
 })
 
 const { $api } = useNuxtApp()
+const loadingOverlay = useLoadingOverlayStore()
 
 const feedbacks = ref<TFeedbackModel[]>([])
 
 onMounted(() => {
+  loadingOverlay.setIsShow(true)
+
   $api.feedback.get()
     .then(data => {
       feedbacks.value = data
+    })
+    .finally(() => {
+      loadingOverlay.setIsShow(false)
     })
 })
 
