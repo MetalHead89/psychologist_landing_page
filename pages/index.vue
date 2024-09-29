@@ -11,6 +11,5 @@
     <FeaturesReviewsSection />
     <FeaturesFeedbackSection />
     <FeaturesFooter />
-    <NuxtSnackbar />
   </div>
 </template>

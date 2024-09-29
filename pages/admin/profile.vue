@@ -22,6 +22,7 @@
             v-model="form.password"
             placeholder="Новый пароль"
             type="password"
+            autocomplete="off"
           />
         </CmsUiControlWrapper>
 
@@ -30,6 +31,7 @@
             v-model="form.retryPassword"
             placeholder="Повтор пароля"
             type="password"
+            autocomplete="off"
           />
         </CmsUiControlWrapper>
       </div>
