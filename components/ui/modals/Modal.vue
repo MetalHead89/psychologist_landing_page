@@ -43,6 +43,7 @@ defineExpose({
   width: 100%;
 
   @media screen and (min-width: $sm) {
+    height: initial;
     max-height: 90vh;
     max-height: 90svh;
     width: clamp(0px, 90%, 700px);
