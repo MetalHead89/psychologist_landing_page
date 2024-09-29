@@ -12,8 +12,8 @@ export default ({ $fetchService }: NuxtApp) => ({
     return $fetchService.get({ realm: API_REALMS.api, path: '/feedback/allowed_reviews' })
   },
 
-  get: () => {
-    return $fetchService.get({ realm: API_REALMS.cmsApi, path: '/feedback' })
+  get: params => {
+    return $fetchService.get({ realm: API_REALMS.cmsApi, path: '/feedback' }, params)
       .catch(({ data }: { data: TRequestError }) => Promise.reject(data))
   },
 

@@ -16,6 +16,10 @@ export const FeedbackSchema = defineMongooseModel<TFeedbackModel>({
       type: String,
       required: true
     },
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
     isForModeration: {
       type: Schema.Types.Boolean,
       default: true

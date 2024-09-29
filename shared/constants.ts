@@ -30,6 +30,13 @@ export const ROLES_NAMES = {
   [ROLES.admin]: 'Администратор'
 }
 
+export const FEEDBACK_FILTERS = {
+  all: 'all',
+  forModeration: 'forModeration',
+  approved: 'approved',
+  rejected: 'rejected'
+}
+
 export const ANXIETY = [
   'relationship',
   'public_speaking_fear',
