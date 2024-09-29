@@ -1,7 +1,6 @@
 <template>
   <div class="page-wrapper">
     <slot />
-    <NuxtSnackbar />
   </div>
 </template>
 

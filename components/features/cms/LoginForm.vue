@@ -1,11 +1,15 @@
 <template>
-  <div class="login-form">
+  <form class="login-form">
     <h1 class="title">
       Вход
     </h1>
 
     <UiTextInput v-model="form.login" />
-    <UiTextInput v-model="form.password" type="password" />
+    <UiTextInput
+      v-model="form.password"
+      type="password"
+      autocomplete="on"
+    />
 
     <UiButton
       :is-loading="isRequestInProgress"
@@ -15,7 +19,7 @@
     >
       Войти
     </UiButton>
-  </div>
+  </form>
 </template>
 
 <script lang="ts" setup>

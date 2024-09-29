@@ -9,7 +9,6 @@
     >
       <slot />
     </div>
-    <NuxtSnackbar />
   </div>
 </template>
 
