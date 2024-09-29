@@ -1,3 +1,10 @@
+const generateMessage = (name: string, rating: number, feedback: string) => {
+  return '<b>Новый отзыв на модерации!</b> 💬\n' +
+    `<b>От:</b> ${name}\n` +
+    `<b>Оценка:</b> ${'⭐'.repeat(rating)}\n` +
+    `<b>Отзыв:</b> ${feedback}`
+}
+
 export default defineEventHandler(async event => {
   try {
     const { name, rating, feedback } = await readBody(event)
@@ -31,6 +38,8 @@ export default defineEventHandler(async event => {
     }
 
     await FeedbackSchema.create({ name, rating, feedback })
+
+    sendTelegramNotification(generateMessage(name, rating, feedback))
 
     return { success: true }
   }

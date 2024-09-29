@@ -1,7 +1,4 @@
 import validator from 'validator'
-
-const config = useRuntimeConfig()
-
 export default defineEventHandler(async event => {
   try {
     const body = await readBody(event)
@@ -16,14 +13,14 @@ export default defineEventHandler(async event => {
         (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}\n` : '') +
         (phone ? `<b>${t('feedback.mail.phone')}:</b> ${phone}\n` : '')
 
-        await sandMessage(message)
+        await sendTelegramNotification(message)
       })
       .catch(error => {
         return Promise.reject(error)
       })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    await sandMessage(error)
+    await await sendTelegramNotification(error)
 
     const { statusCode, errors, message } = error?.cause || {}
     const data = errors
@@ -44,17 +41,6 @@ export default defineEventHandler(async event => {
 
 type TValidationErrors = {
   [key in keyof TFeedbackData]?: Array<string>
-}
-
-const sandMessage = (message: string) => {
-  return $fetch(`https://api.telegram.org/bot${config.notifierBotToken}/sendMessage`, {
-    method: 'POST',
-    body: {
-      chat_id: config.psychologyTelegramChatId,
-      parse_mode: 'html',
-      text: message
-    }
-  })
 }
 
 const isValid = ({
