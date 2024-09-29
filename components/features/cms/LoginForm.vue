@@ -4,11 +4,15 @@
       Вход
     </h1>
 
-    <UiTextInput v-model="form.login" />
+    <UiTextInput
+      v-model="form.login"
+      autocomplete="username"
+    />
+
     <UiTextInput
       v-model="form.password"
       type="password"
-      autocomplete="on"
+      autocomplete="current-password"
     />
 
     <UiButton
