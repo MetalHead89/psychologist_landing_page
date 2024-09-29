@@ -17,11 +17,13 @@ export function useForm(): IUseForm {
   const snackbar = useSnackbar()
   const isRequestInProgress = ref(false)
   const errors = ref<{ [prop: string]: string[] }>({})
+  const loadingOverlay = useLoadingOverlayStore()
 
   provide('controlErrors', errors)
 
   const submit: TSubmit = (requestFunction, successCallback) => {
     setRequestProgressStatus(true)
+    loadingOverlay.setIsShow(true)
 
     requestFunction()
       .then(data => {
@@ -33,7 +35,10 @@ export function useForm(): IUseForm {
         handleSubmitSuccess()
       })
       .catch(handleSubmitFail)
-      .finally(() => setRequestProgressStatus(false))
+      .finally(() => {
+        setRequestProgressStatus(false)
+        loadingOverlay.setIsShow(false)
+      })
   }
 
   const handleSubmitSuccess: TSubmitSuccessHandler = () => {
