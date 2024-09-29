@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 
   robots: {
     autoI18n: false,
-    disallow: ['/privacy']
+    disallow: ['/privacy', '/admin']
   },
 
   sitemap: {
