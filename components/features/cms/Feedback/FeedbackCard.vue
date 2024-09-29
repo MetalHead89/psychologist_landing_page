@@ -45,6 +45,7 @@ interface IProps {
 
 const props = defineProps<IProps>()
 
+
 const { $api } = useNuxtApp()
 const loadingOverlay = useLoadingOverlayStore()
 const emit = defineEmits(['updated'])
@@ -84,16 +85,21 @@ const handleStatueButtonClick = () => {
   height: 155px;
   background: #66a33d12;
   border: 1px solid #66a33d;
+  flex-grow: 1;
+  flex-basis: 0;
 
   @media screen and (min-width: $sm) {
-    width: calc(100% / 2 - 10px);
+    flex-basis: calc((100% / 2) - 10px);
   }
 
   @media screen and (min-width: $md) {
-    width: initial;
-    max-width: 450px;
-    flex-grow: 1;
+    flex-basis: calc((100% / 3) - 20px);
+  }
+
+  @media screen and (min-width: $lg) {
     flex-basis: 0;
+    min-width: 250px;
+    max-width: 500px;
   }
 
   .status-section {
@@ -111,6 +117,8 @@ const handleStatueButtonClick = () => {
     background: #ffd760;
     padding: 1px 7px;
     border-radius: $cms-border-radius;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .name {

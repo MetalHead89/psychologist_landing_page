@@ -46,6 +46,7 @@ type TAddFeedbackRequestData = {
 type TFeedbackModel = {
   id: string,
   name: string,
+  createdAt: Date,
   rating: number,
   feedback: string,
   isForModeration?: boolean,
@@ -58,7 +59,7 @@ type TAddFeedback = (payload: {
   feedback: string
 }) => Promise<void>
 
-type TGetFeedbacks = () => Promise<TFeedbackModel[]>
+type TGetFeedbacks = (params?: { status: string} ) => Promise<TFeedbackModel[]>
 type TUpdateFeedback = (
   id: string,
   payload: {

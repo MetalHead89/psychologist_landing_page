@@ -20,7 +20,7 @@ export default defineNuxtPlugin(nuxtApp => {
   }
 
   interface IFetchService {
-    get: (path: TFetchPath) => Promise<unknown>,
+    get: (path: TFetchPath, params?: Record<string, unknown>) => Promise<unknown>,
     post: (path: TFetchPath, body: BodyInit | Record<string, unknown> | null | undefined) => Promise<unknown>
     patch: (path: TFetchPath, body: BodyInit | Record<string, unknown> | null | undefined) => Promise<unknown>
   }
@@ -64,7 +64,7 @@ export default defineNuxtPlugin(nuxtApp => {
   const fetch = $fetch.create({ onRequest, onResponseError })
 
   const fetchService: IFetchService = {
-    get: path => fetch(createFullPath(path), { method: 'get', realm: path.realm }),
+    get: (path, params) => fetch(createFullPath(path), { method: 'get', realm: path.realm, params }),
     post: (path, body) => fetch(createFullPath(path), { method: 'post', body, realm: path.realm }),
     patch: (path, body) => fetch(createFullPath(path), { method: 'patch', body, realm: path.realm })
   }
