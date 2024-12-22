@@ -1,5 +1,6 @@
 <template>
   <VueFinalModal
+    :lock-scroll="false"
     :modal-id="modalId"
     overlay-transition="vfm-fade"
     content-transition="vfm-fade"

@@ -41,6 +41,8 @@ ul {
 
 .link-global {
   color: $primary-color;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .truncated {
