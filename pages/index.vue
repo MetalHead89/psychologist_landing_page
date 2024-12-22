@@ -4,8 +4,8 @@
     <FeaturesAboutMeSection />
     <FeaturesLocationSection />
     <!-- <FeaturesConsultationSection /> -->
-    <FeaturesSkillsSection />
-    <!-- <FeaturesTechniquesInfo /> -->
+    <!-- <FeaturesSkillsSection /> -->
+    <FeaturesTechniquesInfo />
     <FeaturesMemoSection />
     <FeaturesEducationSection />
     <FeaturesReviewsSection />
