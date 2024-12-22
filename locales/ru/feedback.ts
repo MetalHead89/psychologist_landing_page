@@ -48,7 +48,7 @@ export default {
       },
       feedback_type: {
         telegram: 'Telegram',
-        viber: 'Viber',
+        // viber: 'Viber',
         whats_app: 'WhatsApp',
         email: 'E-mail'
       }

@@ -5,7 +5,7 @@
     <FeaturesLocationSection />
     <!-- <FeaturesConsultationSection /> -->
     <FeaturesSkillsSection />
-    <FeaturesTechniquesInfo />
+    <!-- <FeaturesTechniquesInfo /> -->
     <FeaturesMemoSection />
     <FeaturesEducationSection />
     <FeaturesReviewsSection />

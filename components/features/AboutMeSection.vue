@@ -5,7 +5,7 @@
     </h2> -->
 
     <NuxtImg
-      src="/images/photo_v2.jpg"
+      src="/images/photo_v3.jpg"
       sizes="480px"
       format="webp"
       alt="Фотография"
@@ -143,7 +143,7 @@
     border-radius: $base-border-radius;
 
     @media screen and (min-width: $md) {
-      width: 43%;
+      width: 320px;
       float: left;
       margin-right: 50px;
     }

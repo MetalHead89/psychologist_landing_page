@@ -11,7 +11,7 @@ export default {
     navigation: {
       main: 'Главная',
       about_me: 'Обо мне',
-      techniques: 'Техники',
+      // techniques: 'Техники',
       memo: 'Памятка',
       education: 'Образование',
       feedback: 'Оставить заявку'
