@@ -21,6 +21,8 @@
         </NuxtLink>
       </div>
 
+      <UiSocials />
+
       <!-- <div class="psychological-help">
         <UiPsychologicalHelpPhone />
       </div> -->
