@@ -25,7 +25,7 @@ export default async (base64Image: string, maxWidth: number = 2000) => {
   const extension = mimeType === 'image/svg+xml' ? 'svg' : 'jpg'
   const fileName = `article-image-${Date.now()}.${extension}`
   const filePath = path.join(imagesDir, fileName)
-  const imageUrl = `/public/uploads/images/articles/${fileName}`
+  const imageUrl = `/uploads/images/articles/${fileName}`
 
   fs.writeFileSync(filePath, base64Data, { encoding: 'base64' })
 
