@@ -2,6 +2,9 @@
   <div class="articles-list">
     <div v-if="articles && articles.length === 0" class="stub-wrapper">
       <UiEmptyListStub class="list-stub"/>
+      <UiButton @click="router.push({ name: 'index'})">
+        Вернуться на главную
+      </UiButton>
     </div>
 
     <template v-else>
@@ -30,6 +33,7 @@ definePageMeta({
 })
 
 const { $api } = useNuxtApp()
+const router = useRouter()
 const page = ref(1)
 const perPage = ref(25)
 const breadcrumbs = [
@@ -92,7 +96,10 @@ const loadArticles = async () => {
     height: 100%;
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 40px;
   }
 
   .list {
