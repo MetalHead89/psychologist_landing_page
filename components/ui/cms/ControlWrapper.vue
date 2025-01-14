@@ -1,5 +1,12 @@
 <template>
-  <div class="control-wrapper">
+  <div :class="wrapperClasses">
+    <label
+      v-if="label"
+      class="label"
+    >
+      {{ label }}
+    </label>
+
     <slot />
 
     <div class="error-wrapper">
@@ -15,18 +22,24 @@
   </div>
 </template>
 
-<script setup>
-const errors = inject('controlErrors', {})
+<script setup lang="ts">
+interface Props {
+  errorKey?: string
+  isFullScreen?: boolean,
+  label?: null | string
+}
 
-const props = defineProps({
-  errorKey: {
-    type: String,
-    default: ''
-  }
+const errors = inject<Record<string, string | string[]>>('controlErrors', {})
+
+const props = withDefaults(defineProps<Props>(), {
+  errorKey: '',
+  isFullScreen: false,
+  label: null
 })
 
 const error = computed(() => {
-  const error = props.errorKey && errors.value && errors.value[props.errorKey]
+  const errorsValue = errors.value as unknown as Record<string, string | string[]>
+  const error = props.errorKey && errorsValue && errorsValue[props.errorKey]
 
   if (!error) {
     return false
@@ -34,14 +47,34 @@ const error = computed(() => {
 
   return typeof error === 'object' ? error[0] : error
 })
+
+const wrapperClasses = computed(() => {
+  return [
+    'control-wrapper',
+    props.isFullScreen && 'control-wrapper_is-full-screen'
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
 .control-wrapper {
   width: 100%;
 
+  .label {
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
   @media screen and (min-width: $sm) {
     width: 400px;
+  }
+
+  &_is-full-screen {
+    @media screen and (min-width: $sm) {
+      width: 100%;
+    }
   }
 }
 

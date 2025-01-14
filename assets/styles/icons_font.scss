@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('/assets/fonts/icons/icons.eot?qpexnj');
-  src:  url('/assets/fonts/icons/icons.eot?qpexnj#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/icons.ttf?qpexnj') format('truetype'),
-    url('/assets/fonts/icons/icons.woff?qpexnj') format('woff'),
-    url('/assets/fonts/icons/icons.svg?qpexnj#icons') format('svg');
+  src:  url('/assets/fonts/icons/icons.eot?pvrtjp');
+  src:  url('/assets/fonts/icons/icons.eot?pvrtjp#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/icons.ttf?pvrtjp') format('truetype'),
+    url('/assets/fonts/icons/icons.woff?pvrtjp') format('woff'),
+    url('/assets/fonts/icons/icons.svg?pvrtjp#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-quotes-right:before {
+  content: "\e907";
+}
+.ic-pencil:before {
+  content: "\e906";
+}
+.ic-image:before {
+  content: "\e905";
+}
+.ic-post-outline:before {
+  content: "\e91a";
+}
 .ic-eye-off-outline:before {
   content: "\e90f";
 }
@@ -55,27 +67,9 @@
 .ic-close:before {
   content: "\e904";
 }
-.ic-alarm-turn-off:before {
-  content: "\e905";
-}
-.ic-blank-chat:before {
-  content: "\e906";
-}
-.ic-confounded:before {
-  content: "\e907";
-}
-.ic-cloud-storm:before {
-  content: "\e908";
-}
 .ic-help-circle:before {
   content: "\e909";
 }
 .ic-chevron-down:before {
   content: "\e90a";
-}
-.ic-crown:before {
-  content: "\e90b";
-}
-.ic-drop:before {
-  content: "\e90c";
 }

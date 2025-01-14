@@ -9,10 +9,13 @@
     >
       <slot />
     </div>
+    <ModalsContainer />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ModalsContainer } from 'vue-final-modal'
+
 const main = ref<HTMLElement | null>(null)
 
 const headerStore = useHeaderStore()

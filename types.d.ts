@@ -29,6 +29,13 @@ type TSelectSelectedSlotProps = {
   isOpen: boolean
 }
 
+type TPaginationData = {
+  page: number,
+  totalItems: number,
+  totalPages: number,
+  perPage: number
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare function ym(metrikaId: string, method: string, ...args: any): void
 declare module 'swiper'

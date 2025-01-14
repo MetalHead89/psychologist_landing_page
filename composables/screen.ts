@@ -13,5 +13,9 @@ export function useScreen() {
     return breakpoints.greater('lg').value
   })
 
-  return { breakpoints, isLgScreenSize }
+  const isRetina = computed(() => {
+    return window?.devicePixelRatio > 1 || false
+  })
+
+  return { breakpoints, isLgScreenSize, isRetina }
 }

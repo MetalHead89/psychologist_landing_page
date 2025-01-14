@@ -16,18 +16,10 @@
 </template>
 
 <script lang="ts" setup>
-import { VueFinalModal, useVfm } from 'vue-final-modal'
+import { VueFinalModal } from 'vue-final-modal'
+import { useBaseModal } from '@/composables/base_modal'
 
-const modalId = 'feedbackModal'
-const vfm = useVfm()
-
-const handleCloseClick = () => {
-  close()
-}
-
-const close = () => {
-  vfm.close(modalId)
-}
+const { handleCloseClick, modalId, close } = useBaseModal({ modalId: 'feedbackModal' })
 
 defineExpose({
   close

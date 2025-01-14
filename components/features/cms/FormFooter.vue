@@ -3,8 +3,27 @@
     <div :class="footerWrapperClasses">
       <footer ref="footer" class="footer">
         <slot name="left-section">
-          <div class="footer-section" />
+          <div class="footer-section">
+            <CmsUiRemoveButton
+              v-if="$props.remove"
+              :type="$props.cancel?.type || 'button'"
+              :is-loading="$props.isLoading"
+              v-bind="$props.remove"
+              @click="handleButtonClick('remove')"
+            >
+              {{  $props.remove.text || 'Удалить' }}
+            </CmsUiRemoveButton>
+          </div>
         </slot>
+
+        <CmsUiPagination
+          v-if="isShowPagination"
+          :current-page="pagination.value.page"
+          :total-pages="pagination.value.totalPages"
+          :items-per-page="pagination.value.perPage"
+          :total-items="pagination.value.totalItems"
+          @page-change="$emit('page-change', $event)"
+        />
 
         <slot name="right-section">
           <div class="footer-section">
@@ -13,6 +32,7 @@
               :type="$props.cancel?.type || 'button'"
               :is-loading="$props.isLoading"
               v-bind="$props.cancel"
+              @click="handleButtonClick('cancel')"
             >
               {{  $props.cancel.text || 'Отменить' }}
             </CmsUiBorderedButton>
@@ -22,6 +42,7 @@
               :type="$props.submit?.type || 'submit'"
               :is-loading="$props.isLoading"
               v-bind="$props.submit"
+              @click="handleButtonClick('submit')"
             >
               {{  $props.submit.text || 'Сохранить' }}
             </CmsUiButton>
@@ -38,25 +59,36 @@ export type TFooterButton = {
   isLoading?: boolean,
   text?: string,
   disabled?: boolean,
-  clickHandler: (data: unknown) => unknown
+  clickHandler: (data?: unknown) => unknown
 }
 
 export interface Props {
   submit?: TFooterButton,
   cancel?: TFooterButton,
-  isLoading?: boolean
+  remove?: TFooterButton,
+  isLoading?: boolean,
+  pagination?: Ref<TPaginationData>
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   isLoading: false,
   submit: undefined,
-  cancel: undefined
+  cancel: undefined,
+  remove: undefined,
+  pagination: undefined
 })
+
+defineEmits(['page-change'])
 
 const sidebarStore = useSidebarStore()
 
 const formFooter = ref<HTMLElement | null>(null)
 const footer = ref<HTMLElement | null>(null)
+
+const isShowPagination = computed(() => {
+  const totalPages = props.pagination?.value?.totalPages
+  return totalPages && (totalPages > 1)
+})
 
 const footerWrapperClasses = computed(() => {
   return [
@@ -84,6 +116,12 @@ onMounted(() => {
     footerResizeObserver.observe(footer.value)
   }
 })
+
+const handleButtonClick = (type: 'submit' | 'cancel' | 'remove') => {
+  if (props[type]?.clickHandler) {
+    props[type].clickHandler()
+  }
+}
 </script>
 
 <style lang="scss">
@@ -99,6 +137,7 @@ onMounted(() => {
     right: 0;
     padding: 0 $cms-horizontal-padding 20px $cms-horizontal-padding;
     transition: left 0.3s ease;
+    z-index: 100;
 
     @media screen and (min-width: $lg) {
       left: $cms-sidebar-max-width;
