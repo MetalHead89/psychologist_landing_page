@@ -11,6 +11,15 @@
           {{ title }}
         </li>
 
+        <li :class="BASE_ITEM_CLASS">
+          <NuxtLink
+            :to="{ name: 'articles' }"
+            class="link"
+          >
+            Cтатьи
+          </NuxtLink>
+        </li>
+
         <li :class="BASE_ITEM_CLASS" @click="handleFeedbackClick">
           Оставить отзыв
         </li>
@@ -150,6 +159,7 @@ const handleFeedbackClick = () => {
     text-align: center;
     cursor: pointer;
     font-size: 22px;
+    text-decoration: none;
 
     &_is-active {
       &::after {
@@ -179,6 +189,11 @@ const handleFeedbackClick = () => {
     @media screen and (min-width: $xl) {
       font-size: 0.84vw;
     }
+  }
+
+  .link {
+    text-decoration: none;
+    color: #ffffff;
   }
 
   &_is-active {

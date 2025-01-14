@@ -31,7 +31,8 @@ const { isLgScreenSize } = useScreen()
 const sidebarStore = useSidebarStore()
 
 const navigationItems = [
-  { icon: 'ic-message-star-outline', title: 'Отзывы', routeName: 'admin-feedbacks' }
+  { icon: 'ic-message-star-outline', title: 'Отзывы', routeName: 'admin-feedbacks' },
+  { icon: 'ic-post-outline', title: 'Статьи', routeName: 'admin-articles' }
 ]
 </script>
 

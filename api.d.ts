@@ -71,6 +71,60 @@ type TUpdateFeedback = (
   }) => Promise<TFeedbackModel>
   type TGetAllowedReviews = () => Promise<TFeedbackModel[]>
 
+// Articles
+type TArticleModel = {
+  id: string,
+  name: string,
+  slug: string,
+  content: string,
+  createdAt: Date,
+  description: string,
+  keywords: string,
+  title: string,
+  isActive: boolean,
+  previewImage: string
+  previewImageUrl: string
+}
+
+type TArticlePayload = {
+  id?: string,
+  name?: string,
+  content?: string,
+  description?: string,
+  keywords?: string,
+  isActive?: boolean,
+  previewImage?: string,
+  slug?: string
+}
+
+type TArticlesListResponse = {
+  articles: TArticleModel[],
+} & TPaginationData
+
+type TPublicListArticleModel = {
+  id: string,
+  name: string,
+  slug: string,
+  previewText: string,
+  createdAt: string,
+  previewImageUrl: string
+}
+
+type TPublicArticlesListResponse = {
+  articles: TPublicListArticleModel[],
+} & TPaginationData
+
+interface IArticlesApi {
+  getList: (params?: { page: number, perPage: number }) => Promise<TArticlesListResponse>,
+  newImage: ({ base64Image: string }) => Promise<{ imageUrl: string }>,
+  create: (payload: TArticlePayload) => Promise<TArticleModel>,
+  update: (payload: TArticlePayload) => Promise<TArticleModel>,
+  get: (id: string) => Promise<TArticleModel>
+  delete: (id: string) => Promise<void>
+  getPublicList: (params?: { page: number, perPage: number }) => Promise<TPublicArticlesListResponse>,
+  getPublicArticle: (slug: string) => Promise<TArticleModel>
+}
+
 interface IFeedbackApi {
   add: TAddFeedback,
   get: TGetFeedbacks,
@@ -81,7 +135,8 @@ interface IFeedbackApi {
 interface IApi {
   auth: IAuthApi,
   profile: IProfileApi,
-  feedback: IFeedbackApi
+  feedback: IFeedbackApi,
+  articles: IArticlesApi
 }
 
 type TRequestError = {

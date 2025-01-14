@@ -23,6 +23,7 @@ export default defineNuxtPlugin(nuxtApp => {
     get: (path: TFetchPath, params?: Record<string, unknown>) => Promise<unknown>,
     post: (path: TFetchPath, body: BodyInit | Record<string, unknown> | null | undefined) => Promise<unknown>
     patch: (path: TFetchPath, body: BodyInit | Record<string, unknown> | null | undefined) => Promise<unknown>
+    delete: (path: TFetchPath, body: BodyInit | Record<string, unknown> | null | undefined) => Promise<unknown>
   }
 
   const onRequest = (context: FetchContext<unknown, ResponseType> & { options: { realm: string } }) => {
@@ -66,7 +67,8 @@ export default defineNuxtPlugin(nuxtApp => {
   const fetchService: IFetchService = {
     get: (path, params) => fetch(createFullPath(path), { method: 'get', realm: path.realm, params }),
     post: (path, body) => fetch(createFullPath(path), { method: 'post', body, realm: path.realm }),
-    patch: (path, body) => fetch(createFullPath(path), { method: 'patch', body, realm: path.realm })
+    patch: (path, body) => fetch(createFullPath(path), { method: 'patch', body, realm: path.realm }),
+    delete: (path, body) => fetch(createFullPath(path), { method: 'delete', body, realm: path.realm })
   }
 
   nuxtApp.provide('fetchService', fetchService)

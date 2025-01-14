@@ -4,7 +4,9 @@
       <NuxtPage />
     </NuxtLayout>
 
-    <NuxtSnackbar />
+    <ClientOnly>
+      <NuxtSnackbar />
+    </ClientOnly>
     <UiLoadingOverlay />
   </div>
 </template>

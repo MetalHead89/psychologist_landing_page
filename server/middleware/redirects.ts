@@ -1,0 +1,10 @@
+export default defineEventHandler(event => {
+  const redirects: Record<string, string> = {}
+
+  const path = event.path
+  console.dir(event.path)
+
+  if (redirects[path]) {
+    sendRedirect(event, redirects[path], 301)
+  }
+})

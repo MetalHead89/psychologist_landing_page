@@ -32,6 +32,21 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
 
+  image: {
+    provider: 'ipx',
+    dir: 'public',
+    format: ['avif', 'webp', 'jpg'],
+    screens: {
+      'xs': 320,
+      'sm': 480,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      'xxl': 1536,
+      '2xl': 1920
+    }
+  },
+
   mongoose: {
     uri: process.env.MONGODB_URI,
     options: { dbName: process.env.MONGODB_DB_NAME },
@@ -49,7 +64,8 @@ export default defineNuxtConfig({
 
   robots: {
     autoI18n: false,
-    disallow: ['/privacy', '/admin']
+    disallow: ['/privacy', '/admin', '/articles$'],
+    allow: ['/articles/*']
   },
 
   sitemap: {

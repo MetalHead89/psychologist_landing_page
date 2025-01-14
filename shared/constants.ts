@@ -59,3 +59,7 @@ export const FEEDBACK_TYPE = [
   'whats_app',
   'email'
 ] as const
+
+export enum TABLE_ACTIONS {
+  edit
+}
