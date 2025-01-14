@@ -3,7 +3,7 @@ import path from 'path'
 import resizeImage from './resize_image'
 
 export default async (base64Image: string, maxWidth: number = 2000) => {
-  const imagesDir = path.resolve('public/articles/images')
+  const imagesDir = path.resolve('.output/public/uploads/images/articles')
 
   if (!base64Image) {
     throw createError({
@@ -25,7 +25,7 @@ export default async (base64Image: string, maxWidth: number = 2000) => {
   const extension = mimeType === 'image/svg+xml' ? 'svg' : 'jpg'
   const fileName = `article-image-${Date.now()}.${extension}`
   const filePath = path.join(imagesDir, fileName)
-  const imageUrl = `/articles/images/${fileName}`
+  const imageUrl = `/public/uploads/images/articles/${fileName}`
 
   fs.writeFileSync(filePath, base64Data, { encoding: 'base64' })
 
