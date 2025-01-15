@@ -52,6 +52,11 @@ export function useForm(): IUseForm {
 
   const handleSubmitFail: TSubmitFailHandler = ({ data }) => {
     if (!data) {
+      snackbar.add({
+        type: 'error',
+        title: 'Ошибка',
+        text: 'Произошла непредвиденная ошибка'
+      })
       return
     }
 
@@ -64,12 +69,6 @@ export function useForm(): IUseForm {
           title: 'Ошибка',
           text: snackbarError
         })
-      })
-    } else {
-      snackbar.add({
-        type: 'error',
-        title: 'Ошибка',
-        text: 'Произошла непредвиденная ошибка'
       })
     }
 

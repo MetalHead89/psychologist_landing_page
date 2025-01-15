@@ -85,6 +85,7 @@ const loadArticles = async () => {
 
 <style lang="scss" scoped>
 .articles-list {
+  width: 100%;
   max-width: $content-block-max-width;
   margin: 0 auto;
   display: flex;
