@@ -16,7 +16,7 @@
 
       <img
         v-if="previewImageUrl"
-        v-lazy="{ previewImageUrl }"
+        v-lazy="{ src: previewImageUrl }"
         class="preview-image"
       />
 
