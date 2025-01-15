@@ -14,7 +14,13 @@
 
     <div class="delimiter" />
 
-      <NuxtImg
+      <img
+        v-if="previewImageUrl"
+        v-lazy="{ previewImageUrl }"
+        class="preview-image"
+      />
+
+      <!-- <NuxtImg
         v-slot="{ src }"
         :src="previewImageUrl"
         format="webp"
@@ -26,7 +32,7 @@
           v-lazy="{ src }"
           class="preview-image"
         />
-      </NuxtImg>
+      </NuxtImg> -->
 
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="content" v-html="content" />

@@ -63,3 +63,5 @@ export const FEEDBACK_TYPE = [
 export enum TABLE_ACTIONS {
   edit
 }
+
+export const UPLOADS_DIR = 'uploads'

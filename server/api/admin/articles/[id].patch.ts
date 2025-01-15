@@ -14,7 +14,7 @@ export default defineEventHandler(async event => {
     await ArticleSchema.updateOne({ _id: id }, { $set: articleData })
 
     if (body.previewImage && currentBdArticleData?.previewImageUrl) {
-      await removeFile(`public${currentBdArticleData.previewImageUrl}`)
+      await removeFile(currentBdArticleData.previewImageUrl)
     }
 
     removeArticleContentImages({ old: currentBdArticleData?.content || '', new: body.content })

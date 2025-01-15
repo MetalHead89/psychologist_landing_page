@@ -1,6 +1,7 @@
 import removeFile from '@/server/helpers/remove_file'
+import { UPLOADS_DIR } from '@/shared/constants'
 
-const imagePathRegex = /\/articles\/images\/[^\s"']+/g
+const imagePathRegex = new RegExp(`/${UPLOADS_DIR}/[^\\s"']+`, 'g')
 
 export default ({ old, new: newText }: { old: string, new: string }) => {
   const oldPaths = new Set(old.match(imagePathRegex) || [])
@@ -8,6 +9,6 @@ export default ({ old, new: newText }: { old: string, new: string }) => {
   const missingPaths = [...oldPaths].filter(path => !newPaths.has(path))
 
   missingPaths.forEach(path => {
-    removeFile(`public${path}`)
+    removeFile(path)
   })
 }

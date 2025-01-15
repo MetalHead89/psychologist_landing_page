@@ -65,6 +65,12 @@ export function useForm(): IUseForm {
           text: snackbarError
         })
       })
+    } else {
+      snackbar.add({
+        type: 'error',
+        title: 'Ошибка',
+        text: 'Произошла непредвиденная ошибка'
+      })
     }
 
     errors.value = fieldErrors || {}

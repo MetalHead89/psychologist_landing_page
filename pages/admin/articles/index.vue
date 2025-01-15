@@ -7,7 +7,12 @@
     @page-change="changePage($event)"
   >
     <template #item-previewImageUrl="{ previewImageUrl }">
-      <NuxtImg
+      <img
+        v-lazy="{ src: previewImageUrl }"
+        alt="preview image"
+        class="preview"
+      />
+      <!-- <NuxtImg
         v-slot="{ src }"
         :src="previewImageUrl"
         format="webp"
@@ -19,7 +24,7 @@
         alt="preview image"
         class="preview"
       />
-      </NuxtImg>
+      </NuxtImg> -->
     </template>
 
     <template #item-isActive="{ isActive }">
