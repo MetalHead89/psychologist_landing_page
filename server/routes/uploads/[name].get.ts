@@ -1,13 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import getUploadsDirPath from '@/server/helpers/get_uploads_dir_path'
 
 const isNodeError = (error: unknown): error is NodeJS.ErrnoException => {
   return error instanceof Error && 'code' in error
 }
 
 export default defineEventHandler(async event => {
-  const base = 'uploads'
-  const filePath = path.join(base, event.context.params?.name || '')
+  const filePath = path.join(getUploadsDirPath(), event.context.params?.name || '')
 
   try {
     await fs.promises.access(filePath)

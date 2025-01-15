@@ -2,9 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import resizeImage from './resize_image'
 import { UPLOADS_DIR } from '@/shared/constants'
+import getUploadsDirPath from '@/server/helpers/get_uploads_dir_path'
 
 export default async (base64Image: string, maxWidth: number = 2000) => {
-  const imagesDir = path.resolve(UPLOADS_DIR)
+  const uploadsFullPath = path.resolve(getUploadsDirPath())
 
   if (!base64Image) {
     throw createError({
@@ -16,8 +17,8 @@ export default async (base64Image: string, maxWidth: number = 2000) => {
     })
   }
 
-  if (!fs.existsSync(imagesDir)) {
-    fs.mkdirSync(imagesDir, { recursive: true })
+  if (!fs.existsSync(uploadsFullPath)) {
+    fs.mkdirSync(uploadsFullPath, { recursive: true })
   }
 
   const base64Data = await resizeImage(base64Image.split(';base64,').pop() || '', maxWidth)
@@ -25,7 +26,7 @@ export default async (base64Image: string, maxWidth: number = 2000) => {
   const mimeType = base64Image.split(';')[0].split(':')[1]
   const extension = mimeType === 'image/svg+xml' ? 'svg' : 'jpg'
   const fileName = `article-image-${Date.now()}.${extension}`
-  const filePath = path.join(imagesDir, fileName)
+  const filePath = path.join(uploadsFullPath, fileName)
   const imageUrl = `/${UPLOADS_DIR}/${fileName}`
 
   fs.writeFileSync(filePath, base64Data, { encoding: 'base64' })
