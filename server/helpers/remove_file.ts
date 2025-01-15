@@ -7,7 +7,8 @@ const isNodeError = (error: unknown): error is NodeJS.ErrnoException => {
 
 export default async (filePath: string) => {
   try {
-    const absolutePath = path.resolve(filePath.replace(/^\//, ''))
+    const absolutePath = path.resolve(filePath)
+    console.log(`Удаление файла ${absolutePath}`)
     await fs.promises.access(absolutePath)
     await fs.promises.unlink(absolutePath)
   } catch (error: unknown) {

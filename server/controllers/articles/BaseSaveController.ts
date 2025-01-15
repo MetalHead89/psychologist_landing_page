@@ -56,6 +56,8 @@ export default abstract class ArticleValidator {
     if (this.body.previewImage) {
       const imageUrl = await saveArticleImage(this.body.previewImage)
       articleData.previewImageUrl = imageUrl
+    } else if (this.body.previewImage === null) {
+      articleData.previewImageUrl = ''
     }
 
     return articleData

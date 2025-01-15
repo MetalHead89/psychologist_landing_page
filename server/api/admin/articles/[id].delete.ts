@@ -1,5 +1,6 @@
 import removeFile from '@/server/helpers/remove_file'
 import removeArticleContentImages from '@/server/helpers/remove_article_content_images'
+import getUploadsFilePath from '@/server/helpers/get_uploads_file_path'
 
 export default defineEventHandler(async event => {
   try {
@@ -9,7 +10,7 @@ export default defineEventHandler(async event => {
     await ArticleSchema.deleteOne({ _id: id })
 
     if (currentBdArticleData?.previewImageUrl) {
-      await removeFile(currentBdArticleData.previewImageUrl)
+      await removeFile(getUploadsFilePath(currentBdArticleData.previewImageUrl))
     }
 
     removeArticleContentImages({ old: currentBdArticleData?.content || '', new: '' })
