@@ -22,8 +22,13 @@
       Загрузить изображение
     </CmsUiButton>
 
+    <div v-if="hasLoadingErrors" class="error">
+      <i class="ic-close load-error-icon" />
+      Ошибка при загрузке изображения
+    </div>
+
     <Cropper
-      v-if="originalImage"
+      v-if="originalImage && !hasLoadingErrors"
       class="cropper"
       :src="originalImage"
       :stencil-props="{
@@ -31,6 +36,7 @@
       }"
       :default-size="getDefaultCropperSize"
       @change="handleCropperChange"
+      @error="handleLoadingError"
     />
 
     <UiCloseButton
@@ -67,6 +73,7 @@ const cropperWrapper = ref<HTMLElement | null>(null)
 const isDragging = ref(false)
 const originalImage = ref<string | null>(null)
 const hasNewInitImage = ref(false)
+const hasLoadingErrors = ref(false)
 
 const { fileToBase64 } = useFileUtils()
 
@@ -156,8 +163,14 @@ const getDefaultCropperSize = ({ imageSize, visibleArea }: any) => {
 }
 
 const handleCloseClick = () => {
+  hasNewInitImage.value = false
   originalImage.value = null
+  hasLoadingErrors.value = false
   emit('update:model-value', null)
+}
+
+const handleLoadingError = () => {
+  hasLoadingErrors.value = true
 }
 </script>
 
@@ -197,6 +210,27 @@ const handleCloseClick = () => {
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+
+  .error {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $primary-background;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 15px;
+
+    .load-error-icon {
+      font-size: 70px;
+      color: $error;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
   }
 
   .close-button {

@@ -9,7 +9,7 @@ export default defineEventHandler(async event => {
     await ArticleSchema.deleteOne({ _id: id })
 
     if (currentBdArticleData?.previewImageUrl) {
-      await removeFile(`public${currentBdArticleData.previewImageUrl}`)
+      await removeFile(currentBdArticleData.previewImageUrl)
     }
 
     removeArticleContentImages({ old: currentBdArticleData?.content || '', new: '' })
