@@ -3,5 +3,5 @@ export default (path: string) => {
     return path.replace(/^\//, '')
   }
 
-  return `..${path}`
+  return `../..${path}`
 }

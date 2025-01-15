@@ -5,5 +5,5 @@ export default () => {
     return UPLOADS_DIR
   }
 
-  return `../${UPLOADS_DIR}`
+  return `../../${UPLOADS_DIR}`
 }
