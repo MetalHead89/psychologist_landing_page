@@ -2,22 +2,12 @@
   <div class="article-card">
     <NuxtLink :to="{ name: 'articles-slug', params: { slug } }" class="link-wrapper">
       <div class="image-wrapper">
-        <img
-          v-lazy="{ src: previewImageUrl }"
+
+        <UiImage
+          :src="previewImageUrl"
+          sizes="298 xs:457 sm:352 md:313"
           class="image"
         />
-        <!-- <NuxtImg
-          v-slot="{ src }"
-          :src="previewImageUrl"
-          format="webp"
-          sizes="298px xs:438px sm:457px md:313px"
-          custom
-        >
-          <img
-            v-lazy="{ src }"
-            class="image"
-          />
-        </NuxtImg> -->
       </div>
 
       <div class="info">

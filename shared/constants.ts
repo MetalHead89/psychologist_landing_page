@@ -65,3 +65,10 @@ export enum TABLE_ACTIONS {
 }
 
 export const UPLOADS_DIR = 'uploads'
+export const BREAKPOINTS = {
+  xs: 320,
+  sm: 480,
+  md: 768,
+  lg: 1024,
+  xl: 1920
+}

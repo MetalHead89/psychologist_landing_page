@@ -13,26 +13,12 @@
     </div>
 
     <div class="delimiter" />
-
-      <img
+      <UiImage
         v-if="previewImageUrl"
-        v-lazy="{ src: previewImageUrl }"
+        :src="previewImageUrl"
+        sizes="300 xs:460 sm:748 md:1004"
         class="preview-image"
       />
-
-      <!-- <NuxtImg
-        v-slot="{ src }"
-        :src="previewImageUrl"
-        format="webp"
-        sizes="300px xs:460px sm:748px md:1004px"
-        custom
-      >
-        <img
-          v-if="src"
-          v-lazy="{ src }"
-          class="preview-image"
-        />
-      </NuxtImg> -->
 
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="content" v-html="content" />
@@ -100,6 +86,7 @@ useHead({
     width: 100%;
     aspect-ratio: 16 / 9;
     margin: 0 auto;
+    margin-bottom: 40px;
     display: block;
   }
 
