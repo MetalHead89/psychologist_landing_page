@@ -15,6 +15,8 @@ export default defineEventHandler(async event => {
     await ArticleSchema.updateOne({ _id: id }, { $set: articleData })
 
     if ((body.previewImage || !articleData.previewImageUrl) && currentBdArticleData?.previewImageUrl) {
+      console.log('body.previewImage: ',body.previewImage)
+      console.log('articleData.previewImageUrl: ',articleData.previewImageUrl)
       await removeFile(getUploadsFilePath(currentBdArticleData.previewImageUrl))
     }
 

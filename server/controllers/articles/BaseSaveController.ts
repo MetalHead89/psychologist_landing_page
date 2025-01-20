@@ -3,7 +3,7 @@ import saveArticleImage from '@/server/helpers/save_article_image'
 type TExtendedArticlePayload = TArticlePayload & {
   previewImageUrl?: string}
 
-const ARTICLE_FIELDS = ['name', 'slug', 'content', 'description', 'keywords', 'isActive', 'title']
+const ARTICLE_FIELDS = ['name', 'slug', 'content', 'description', 'keywords', 'isActive', 'title', 'previewImageUrl']
 
 export default abstract class ArticleValidator {
   protected body: TArticlePayload
