@@ -8,19 +8,19 @@ const isNodeError = (error: unknown): error is NodeJS.ErrnoException => {
 }
 
 export default defineEventHandler(async event => {
-  const filePath = path.join(getUploadsDirPath(), event.context.params?.name || '')
+  const [fileName, format = 'jpg'] = (event.context.params?.name || '').split('.')
+  const fullFileName = `${fileName}.jpg`
+  const filePath = path.join(getUploadsDirPath(), fullFileName)
   const width = parseInt(getQuery(event).width as string) || undefined
   const density = getQuery(event).density as string || undefined
-  const [fileName, format = 'jpg'] = filePath.split('.')
-  const fullFileName = `${fileName}.jpg`
 
   try {
-    await fs.promises.access(fullFileName)
+    await fs.promises.access(filePath)
   } catch (error: unknown) {
     if (isNodeError(error) && error.code === 'ENOENT') {
       throw createError({
         statusCode: 404,
-        statusMessage: `Файл ${fullFileName} не существует.`
+        statusMessage: `Файл ${filePath} не существует.`
       })
     } else {
       throw createError({
@@ -30,7 +30,7 @@ export default defineEventHandler(async event => {
     }
   }
 
-  let transformedImage = sharp(fullFileName)
+  let transformedImage = sharp(filePath)
 
   if (width) {
     transformedImage = await transformedImage.resize({ width: density && density === '2x' ? width * 2 : width })
