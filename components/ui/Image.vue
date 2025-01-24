@@ -5,15 +5,13 @@
   >
     <div v-if="isLoading" class="load-overlay" />
     <picture>
-      <template v-for="(media, index) in sources" :key="index">
-        <source
-          v-for="(type, typeIndex) in media.types"
-          :key="typeIndex"
-          :srcset="type.srcset"
-          :media="media.media"
-          :type="type.type"
+      <source
+          v-for="({ type, media, srcset }, index) in sources"
+          :key="index"
+          :srcset="srcset"
+          :media="media"
+          :type="type"
         />
-      </template>
       <img
         ref="imageRef"
         :src="src"
@@ -28,27 +26,8 @@
 </template>
 
 <script setup lang="ts">
-import { BREAKPOINTS } from '@/shared/constants'
-
-type TBreakpointKey = keyof typeof BREAKPOINTS;
-
-// const SCREEN_SIZES: TBreakpointKey[] = Object.keys(BREAKPOINTS) as TBreakpointKey[]
-const DEFAULT_SIZES = '320 xs:480 sm:768 md:1024 lg:1920'
-
-type SizeEntry = {
-  width: number;
-  breakpoint: number;
-}
-
-type SourceType = {
-  type: string;
-  srcset: string;
-}
-
-type MediaSource = {
-  media: string | undefined;
-  types: SourceType[];
-}
+import getPictureSources from '@/helpers/getPictureSources'
+import { DEFAULT_IMAGE_SIZES } from '@/shared/constants'
 
 interface IProps {
   sizes?: string,
@@ -67,7 +46,7 @@ const classes = computed(() => {
 })
 
 const props = withDefaults(defineProps<IProps>(), {
-  sizes: DEFAULT_SIZES,
+  sizes: DEFAULT_IMAGE_SIZES,
   placeholder: '/images/image_placeholder_16x9.svg'
 })
 
@@ -79,75 +58,8 @@ onMounted(() => {
   }
 })
 
-const sources = computed<MediaSource[]>(() => {
-  const sizeEntries: SizeEntry[] = []
-  let defaultSize: null | number = null
-  const sizes = (props.sizes || DEFAULT_SIZES).split(' ')
-
-  if (sizes.length === 1) {
-    const [breakpointSize, imageWidth] = sizes[0].split(':')
-    const width = imageWidth ? parseInt(imageWidth, 10) : breakpointSize
-    const baseSrc = `${props.src.split('.')[0]}`
-
-    return [
-      {
-        types: [
-          {
-            type: 'image/avif',
-            srcset: `${baseSrc}.avif?width=${width}px, ${baseSrc}.avif?width=${width}px&density=2x 2x`
-          },
-          {
-            type: 'image/webp',
-            srcset: `${baseSrc}.webp?width=${width}px, ${baseSrc}.webp?width=${width}px&density=2x 2x`
-          }
-        ]
-      }
-    ] as MediaSource[]
-  }
-
-  sizes.forEach(size => {
-    if (size.includes(':')) {
-      const [breakpointSize, imageWidth] = size.split(':')
-      const breakpointValue = BREAKPOINTS[breakpointSize as TBreakpointKey]
-
-      sizeEntries.push({
-        width: parseInt(imageWidth, 10),
-        breakpoint: breakpointValue
-      })
-    } else {
-      defaultSize = Number(size)
-    }
-  })
-
-  sizeEntries.push({
-    width: 0,
-    breakpoint: sizeEntries[sizeEntries.length - 1].breakpoint + 1
-  })
-
-  let currentSize = defaultSize || sizeEntries[0].width
-
-  return sizeEntries.map(({ width, breakpoint }, index) => {
-    const media = index === sizeEntries.length - 1
-      ? `(min-width: ${breakpoint}px)`
-      : `(max-width: ${breakpoint}px)`
-
-    const baseSrc = `${props.src.split('.')[0]}`
-
-    const types: SourceType[] = [
-      {
-        type: 'image/avif',
-        srcset: `${baseSrc}.avif?width=${currentSize}px, ${baseSrc}.avif?width=${currentSize}px&density=2x 2x`
-      },
-      {
-        type: 'image/webp',
-        srcset: `${baseSrc}.webp?width=${currentSize}px, ${baseSrc}.webp?width=${currentSize}px&density=2x 2x`
-      }
-    ]
-
-    currentSize = width
-
-    return { media, types }
-  })
+const sources = computed(() => {
+  return getPictureSources({ sizes: props.sizes, src: props.src })
 })
 
 const handlePictureLoad = () => {

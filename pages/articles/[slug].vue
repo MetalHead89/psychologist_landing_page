@@ -21,7 +21,7 @@
       />
 
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div class="content" v-html="content" />
+    <div class="content" v-html="replaceImgWithPicture(content || '')" />
   </article>
 </template>
 
@@ -34,6 +34,7 @@ definePageMeta({
 
 const { $api } = useNuxtApp()
 const route = useRoute()
+const { replaceImgWithPicture } = useImgToPicture()
 
 const { data: articleData, error } = await useAsyncData(
   'articles',
@@ -138,9 +139,15 @@ useHead({
       }
     }
 
-    :deep(img) {
+    :deep(.picture-wrapper) {
       max-width: 100% !important;
       height: auto !important;
+      line-height: 0;
+
+      img {
+        width: 100%;
+        line-height: 0;
+      }
     }
   }
 }
