@@ -133,6 +133,6 @@ jobs:
           script: |
             cd /var/www/html/releases && ls -t -1 | tail -n +4 | xargs rm -rf
             cd /var/www/html/artifacts && rm -rf *
-      - uses: geekyeggo/delete-artifact@v1
+      - uses: geekyeggo/delete-artifact@v5.1.0
         with:
           name: app-artifacts
