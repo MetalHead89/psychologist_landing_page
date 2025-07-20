@@ -2,7 +2,7 @@
   <div class="main-page">
     <FeaturesHeroSection />
     <FeaturesAboutMeSection />
-    <FeaturesLocationSection />
+    <!-- <FeaturesLocationSection /> -->
     <!-- <FeaturesConsultationSection /> -->
     <!-- <FeaturesSkillsSection /> -->
     <FeaturesTechniquesInfo />
