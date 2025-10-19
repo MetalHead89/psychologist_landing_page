@@ -85,12 +85,8 @@
       <div class="social-media-links">
         <p><a href="https://vk.com/ekaterina.bakalova" class="link-global">Профиль в VK</a></p>
         <p>
-          Присоединяйтесь к замечательному сообществу и откройте для себя мир психологии!
+          Больше полезной информации у меня в <a href="https://t.me/CBT_for_Life" class="link-global">telegram канале</a>
         </p>
-        <p>
-          Здесь вы найдете ответы на самые важные вопросы о себе и других.
-        </p>
-        <p><a href="https://vk.com/psycholog.bakalova" class="link-global">Сообщество «Психология на каждый день»</a></p>
       </div>
 
       <div class="clear-fix" />
