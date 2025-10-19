@@ -35,6 +35,7 @@ definePageMeta({
 const { $api } = useNuxtApp()
 const route = useRoute()
 const { replaceImgWithPicture } = useImgToPicture()
+const url = useRequestURL()
 
 const { data: articleData, error } = await useAsyncData(
   'articles',
@@ -60,6 +61,9 @@ useHead({
   meta: [
     { name: 'description', content: description || '' },
     { name: 'keywords', content: keywords || '' }
+  ],
+  link: [
+    { rel: 'canonical', href: url.href }
   ]
 })
 </script>

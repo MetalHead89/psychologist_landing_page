@@ -57,11 +57,18 @@ const options = {
   .swiper-slide {
     flex-shrink: 0;
     width: 392px;
+    height: auto;
   }
 
   .card {
     flex-shrink: 0;
+    height: 100%;
     width: 100%;
+  }
+
+  :deep(.swiper-button-prev),
+  :deep(.swiper-button-next) {
+    color: #a4a4a4
   }
 }
 </style>

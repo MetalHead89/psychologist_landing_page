@@ -61,5 +61,10 @@ const options = {
     width: 100%;
     height: 350px;
   }
+
+  :deep(.swiper-button-prev),
+  :deep(.swiper-button-next) {
+    color: #a4a4a4
+  }
 }
 </style>
