@@ -1,5 +1,12 @@
 <template>
   <div class="review-card">
+    <div class="ic-quotes-right quotes" />
+    <UiStarRating
+      class="rating"
+      :rating="rating"
+      is-readonly
+    />
+
     <CmsUiScrollBar class="feedback-wrapper">
       <div class="feedback">
         {{ props.feedback }}
@@ -31,10 +38,11 @@ const props = defineProps<IProps>()
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 155px;
-  border: 1px solid $primary-color;
+  height: 190px;
+  border: 1px solid #ededed;
   border-radius: $base-border-radius;
   padding: 20px;
+  margin: 1px 0;
 
   .feedback-wrapper {
     flex-grow: 1;
@@ -42,6 +50,7 @@ const props = defineProps<IProps>()
 
   .name {
     margin-left: auto;
+    margin-top: 10px;
     font-style: italic;
   }
 
@@ -49,6 +58,17 @@ const props = defineProps<IProps>()
     :deep(.star) {
       font-size: 35px;
     }
+  }
+
+  .quotes {
+    position: absolute;
+    // font-size: 100px;
+    opacity: 0.05;
+    top: 40px;
+    left: 30px;
+    font-size: 120px;
+    // top: 0;
+    // right: 20px;
   }
 }
 </style>
