@@ -1,12 +1,12 @@
 <template>
   <UiBaseSlider
-    :slides="$props.reviews"
+    :slides="reviews"
     :options="options"
     swiper-class="reviews-slider"
   >
     <template #slide="slide ">
       <div class="swiper-slide">
-        <FeedbackCard v-bind="slide" />
+        <FeedbackCard v-bind="slide" class="card" />
       </div>
     </template>
   </UiBaseSlider>
@@ -26,20 +26,21 @@ const swiper = ref<Swiper | null>(null)
 const options = {
   autoplay: false,
   spaceBetween: 30,
+  slidesPerView: 'auto',
 
-  breakpoints: {
-    768: {
-      slidesPerView: 2
-    },
+  // breakpoints: {
+  //   768: {
+  //     slidesPerView: 2
+  //   },
 
-    1024: {
-      slidesPerView: 3
-    },
+  //   1024: {
+  //     slidesPerView: 3
+  //   },
 
-    1920: {
-      slidesPerView: 4
-    }
-  },
+  //   1920: {
+  //     slidesPerView: 4
+  //   }
+  // },
 
   on: {
     init: (swiperRef: Swiper) => {
@@ -48,3 +49,17 @@ const options = {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.reviews-slider {
+  .swiper-slide {
+    width: 357px;
+  }
+
+  .card {
+    flex-shrink: 0;
+    width: 100%;
+    height: 350px;
+  }
+}
+</style>

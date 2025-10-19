@@ -59,7 +59,7 @@ const education = [
       {
         title: 'Когнитивно-поведенческая психотерапия (7 ступеней) – 252 часа, г. Санкт-Петербург, 2025г.',
         document: 'удостоверение',
-        image: useAssetImage('/images/documents/diploma.jpeg')
+        image: useAssetImage('/images/documents/kognitivno-povedencheskaja-psihoterapija.jpg')
       },
       {
         title: '«Семейный психолог» - 640 часов, г. Москва, 2021г.',
