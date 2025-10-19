@@ -19,7 +19,7 @@
 import type Swiper from 'swiper/types/swiper-class'
 import UiBaseSlider from '@/components/ui/Slider/BaseSlider.vue'
 
-withDefaults(defineProps<{ items: any[]}>(), {
+withDefaults(defineProps<{ items: TPublicListArticleModel[]}>(), {
   items: () => []
 })
 
