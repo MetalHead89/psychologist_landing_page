@@ -43,7 +43,7 @@ const { open } = useModal({
 const links = ref([
   { section: '.hero-section', isActive: false, title: t('ui.navigation.main') },
   { section: '.about-me-section', isActive: false, title: t('ui.navigation.about_me') },
-  { section: '.memo-section', isActive: false, title: t('ui.navigation.memo') },
+  // { section: '.memo-section', isActive: false, title: t('ui.navigation.memo') },
   { section: '.education-section', isActive: false, title: t('ui.navigation.education') },
   { section: '.feedback-section', isActive: false, title: t('ui.navigation.feedback') }
 ])

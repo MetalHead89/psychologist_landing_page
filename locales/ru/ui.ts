@@ -12,9 +12,9 @@ export default {
       main: 'Главная',
       about_me: 'Обо мне',
       // techniques: 'Техники',
-      memo: 'Памятка',
+      // memo: 'Памятка',
       education: 'Образование',
-      feedback: 'Оставить заявку'
+      feedback: 'Записаться на консультацию'
     },
 
     copyright: '© Бакалова Е.Ю., {years}',

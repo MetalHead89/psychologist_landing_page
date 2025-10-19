@@ -2,11 +2,12 @@
   <div class="main-page">
     <FeaturesHeroSection />
     <FeaturesAboutMeSection />
+    <FeaturesArticlesSection />
     <!-- <FeaturesLocationSection /> -->
     <!-- <FeaturesConsultationSection /> -->
     <!-- <FeaturesSkillsSection /> -->
-    <FeaturesTechniquesInfo />
-    <FeaturesMemoSection />
+    <!-- <FeaturesTechniquesInfo /> -->
+    <!-- <FeaturesMemoSection /> -->
     <FeaturesEducationSection />
     <FeaturesReviewsSection />
     <FeaturesFeedbackSection />
