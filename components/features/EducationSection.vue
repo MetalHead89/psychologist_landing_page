@@ -82,6 +82,11 @@ const education = [
     title: 'Повышение квалификации',
     items: [
       {
+        title: '«Кризисная психотерапия: стратегии и техники» - 36 ч., г. Санкт-Петербург, 2025г.',
+        document: 'удостоверение',
+        image: useAssetImage('/images/documents/krizisnaja_psihoterapija_strategii_i_tehniki.jpg')
+      },
+      {
         title: 'Трансформационная психологическая игра. «Мама. Свобода быть собой», 2024г.',
         document: 'сертификат',
         image: useAssetImage('/images/documents/mama_svoboda_byt_soboj.jpg')
