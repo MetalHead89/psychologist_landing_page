@@ -48,6 +48,7 @@ jobs:
           echo YANDEX_VERIFICATION_ID=${{ secrets.YANDEX_VERIFICATION_ID }} >> .env
           echo NOTIFIER_BOT_TOKEN=${{ secrets.NOTIFIER_BOT_TOKEN }} >> .env
           echo NOTIFIER_BOT_TOKEN_VK=${{ secrets.NOTIFIER_BOT_TOKEN_VK }} >> .env
+          echo NOTIFIER_CHAT_ID_VK=${{ secrets.NOTIFIER_CHAT_ID_VK }} >> .env
           echo PSYCHOLOGY_TELEGRAM_CHAT_ID=${{ secrets.PSYCHOLOGY_TELEGRAM_CHAT_ID }} >> .env
 
           echo MONGO_USERNAME=${{ secrets.MONGO_USERNAME }} >> .env

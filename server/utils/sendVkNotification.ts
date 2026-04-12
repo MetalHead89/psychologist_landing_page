@@ -13,5 +13,5 @@ export default (message: string) => {
     v: '5.199'
   })
 
-  return $fetch(`https://api.vk.com/method/messages.send?${params}`)
+  return $fetch(`https://api.vk.ru/method/messages.send?${params}`)
 }
