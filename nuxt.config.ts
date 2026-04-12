@@ -84,6 +84,8 @@ export default defineNuxtConfig({
     mailPassword: process.env.MAIL_PASSWORD,
     contactMail: process.env.CONTACT_MAIL,
     notifierBotToken: process.env.NOTIFIER_BOT_TOKEN,
+    notifierBotTokenVk: process.env.NOTIFIER_BOT_TOKEN_VK,
+    notifierChatIdVk: process.env.NOTIFIER_CHAT_ID_VK,
     psychologyTelegramChatId: process.env.PSYCHOLOGY_TELEGRAM_CHAT_ID,
     accessTokenSalt: process.env.ACCESS_TOKEN_SALT,
     refreshTokenSalt: process.env.REFRESH_TOKEN_SALT,

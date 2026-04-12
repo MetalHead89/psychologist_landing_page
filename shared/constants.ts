@@ -56,7 +56,8 @@ export const ANXIETY = [
 export const FEEDBACK_TYPE = [
   'telegram',
   // 'viber',
-  'whats_app',
+  // 'whats_app',
+  'max',
   'email'
 ] as const
 

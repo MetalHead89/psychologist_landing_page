@@ -39,7 +39,8 @@ export default defineEventHandler(async event => {
 
     await FeedbackSchema.create({ name, rating, feedback })
 
-    sendTelegramNotification(generateMessage(name, rating, feedback))
+    // sendTelegramNotification(generateMessage(name, rating, feedback))
+    sendVkNotification(generateMessage(name, rating, feedback))
 
     return { success: true }
   }

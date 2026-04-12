@@ -13,14 +13,16 @@ export default defineEventHandler(async event => {
         (email ? `<b>${t('feedback.mail.mail')}:</b> ${email}\n` : '') +
         (phone ? `<b>${t('feedback.mail.phone')}:</b> ${phone}\n` : '')
 
-        await sendTelegramNotification(message)
+        // await sendTelegramNotification(message)
+        await sendVkNotification(message)
       })
       .catch(error => {
         return Promise.reject(error)
       })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    await await sendTelegramNotification(error)
+    // await await sendTelegramNotification(error)
+    await await sendVkNotification(error)
 
     const { statusCode, errors, message } = error?.cause || {}
     const data = errors
