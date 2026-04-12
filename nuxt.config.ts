@@ -93,7 +93,9 @@ export default defineNuxtConfig({
     public: {
       metrikaId: process.env.METRIKA_ID,
       gTagId: process.env.G_TAG_ID,
-      yandexVerificationId: process.env.YANDEX_VERIFICATION_ID
+      yandexVerificationId: process.env.YANDEX_VERIFICATION_ID,
+      notifierBotTokenVk: process.env.NOTIFIER_BOT_TOKEN_VK,
+      notifierChatIdVk: process.env.NOTIFIER_CHAT_ID_VK
     }
   },
 
