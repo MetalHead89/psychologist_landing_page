@@ -3,10 +3,10 @@
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Node version
-18.18.0
+20.17.0
 
 ### npm version
-9.8.1
+10.8.2
 
 ## Setup
 
